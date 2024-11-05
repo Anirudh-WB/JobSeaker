@@ -12,7 +12,7 @@ function HomePage() {
             More <span className="text-black font-semibold">jobs</span> for you to explore
             </p>   
         </div>
-        <SearchBar/>
+    <SearchBar/>
     </>
   );
 }
