@@ -1,9 +1,8 @@
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import HomePage from "./components/HomePage/HomePage";
-import Navbar from "./components/NavBar/Navbar";
 import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/NavBar/Navbar";
 import Joblist from "./components/JobList/Joblist";
-import Navbar from "./components/NavBar/navbar";
 
 function App() {
   return (
@@ -13,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/job-list" element={<Joblist />} />
         </Routes>
       </div>
     </div>
