@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App bg-gray-50 h-screen w-screen flex flex-col">
       <Navbar />
-      <div className="overflow-auto">
+      <div className="overflow-auto h-full">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />

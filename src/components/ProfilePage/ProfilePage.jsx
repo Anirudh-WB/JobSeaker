@@ -2,6 +2,8 @@ import React from "react";
 import ProfileHeader from "./ProfileHeader";
 import QuickLinks from "./QuickLinks";
 import Resume from "./Resume";
+import ResumeHeadline from "./ResumeHeadline";
+import KeySkills from "./KeySkills";
 
 function ProfilePage() {
   return (
@@ -9,7 +11,11 @@ function ProfilePage() {
       <ProfileHeader />
       <div className="flex gap-5">
         <QuickLinks />
-        <Resume />
+        <div className="flex flex-col gap-5 flex-1">
+          <Resume />
+          <ResumeHeadline />
+          <KeySkills />
+        </div>
       </div>
     </div>
   );
