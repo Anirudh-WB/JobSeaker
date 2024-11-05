@@ -1,12 +1,20 @@
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 import HomePage from "./components/HomePage/HomePage";
+import Navbar from "./components/NavBar/Navbar";
+import { Route, Routes } from "react-router-dom";
 import Joblist from "./components/JobList/Joblist";
 import Navbar from "./components/NavBar/navbar";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-      <Joblist/>
+    <div className="App bg-gray-50 h-screen w-screen flex flex-col">
+      <Navbar />
+      <div className="overflow-auto h-full">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+        </Routes>
+      </div>
     </div>
   );
 }
