@@ -16,7 +16,7 @@ function Jobfilters() {
     "Docker",
     "Kubernetes",
   ];
-  const [openSections, setOpenSections] = useState({ skills: false });
+  const [openSections, setOpenSections] = useState({ skills: false, experience: true });
   const [experienceRange, setExperienceRange] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSkills, setSelectedSkills] = useState([]);
