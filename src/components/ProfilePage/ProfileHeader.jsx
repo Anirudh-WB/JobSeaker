@@ -45,7 +45,9 @@ function ProfileHeader() {
             <p className="flex items-center gap-1">
               <CiWallet />
               21,00,000{" "}
-              <span className="font-semibold text-blue-700 px-2">Add breakup</span>
+              <span className="font-semibold text-blue-700 px-2">
+                Add breakup
+              </span>
             </p>
           </div>
           <hr />
