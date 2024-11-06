@@ -86,7 +86,7 @@ function JobDescription() {
             </div>
 
             <div className="p-3">
-              <h3 className="text-sm font-semibold">Skills</h3>
+              <h3 className="text-sm font-semibold">Key Skills</h3>
               <div className="flex flex-wrap gap-2 mt-1">
                 {job.skills.map((skill, skillIndex) => (
                   <span
