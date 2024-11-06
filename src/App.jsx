@@ -3,6 +3,7 @@ import HomePage from "./components/HomePage/HomePage";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/NavBar/Navbar";
 import Joblist from "./components/JobList/Joblist";
+import JobDetails from "./components/JobDetails/JobDetails";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/job-list" element={<Joblist />} />
+          <Route path="/job-details" element={<JobDetails/> }/>
         </Routes>
       </div>
     </div>
