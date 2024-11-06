@@ -18,7 +18,7 @@ function App() {
     <div className="App bg-gray-50 h-screen w-screen flex flex-col">
       <Navbar toggleSidebar={toggleSidebar} />
       <LoginSidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <div className="h-full pt-10">
+      <div className="overflow-auto h-full">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
