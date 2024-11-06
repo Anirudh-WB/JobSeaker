@@ -4,9 +4,17 @@ import {
   DialogTitle,
   DialogBackdrop,
 } from "@headlessui/react";
+import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
 
-export default function ResumeHeadlineModal({ isOpen, setIsOpen }) {
+export default function ResumeHeadlineModal({
+  isOpen,
+  setIsOpen,
+  resumeHeadline,
+  setResumeHeadline,
+}) {
+  const [headlineTemp, setHeadlineTemp] = useState(resumeHeadline);
+
   return (
     <>
       <Dialog
@@ -43,6 +51,8 @@ export default function ResumeHeadlineModal({ isOpen, setIsOpen }) {
                 <textarea
                   className="border w-full outline-none py-3 px-4 rounded-xl resize-none"
                   rows={3}
+                  value={headlineTemp}
+                  onChange={(e) => setHeadlineTemp(e.target.value)}
                 />
                 <span className="text-xs text-gray-600 text-right py-2 w-full block">
                   91 character(s) left
@@ -55,7 +65,13 @@ export default function ResumeHeadlineModal({ isOpen, setIsOpen }) {
                 >
                   Cancel
                 </button>
-                <button className="text-white bg-blue-600 px-7 py-2 rounded-full">
+                <button
+                  className="text-white bg-blue-600 px-7 py-2 rounded-full"
+                  onClick={() => {
+                    setResumeHeadline(headlineTemp);
+                    setIsOpen((prev) => !prev);
+                  }}
+                >
                   Save
                 </button>
               </div>
