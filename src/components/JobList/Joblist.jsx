@@ -4,7 +4,6 @@ import { PiHandbagSimple } from "react-icons/pi";
 import { BiRupee } from "react-icons/bi";
 import { IoLocationOutline } from "react-icons/io5";
 import { CgNotes } from "react-icons/cg";
-import SearchBar from "../HomePage/SearchBar";
 
 function Joblist() {
   const jobs = [
