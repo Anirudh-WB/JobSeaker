@@ -7,13 +7,13 @@ import {
 import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
 
-export default function ResumeHeadlineModal({
+export default function ProjectsModal({
   isOpen,
   setIsOpen,
-  resumeHeadline,
-  setResumeHeadline,
+  projectHeadline,
+  setprojectHeadline,
 }) {
-  const [headlineTemp, setHeadlineTemp] = useState(resumeHeadline);
+  const [projectTemp, setprojectTemp] = useState(projectHeadline);
 
   return (
     <>
@@ -119,7 +119,8 @@ export default function ResumeHeadlineModal({
                     </span>
                   </div>
 
-                  <a href="/" className="text-blue-700 font-semibold text-sm">
+                  <a href="/" className="text-blue-700 font-semibold text-sm
+                  ">
                     Add more details
                   </a>
                 </form>
@@ -134,7 +135,6 @@ export default function ResumeHeadlineModal({
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    setResumeHeadline(headlineTemp);
                     setIsOpen((prev) => !prev);
                   }}
                 >

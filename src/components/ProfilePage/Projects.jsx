@@ -7,9 +7,10 @@ function Projects() {
   const [projectHeadline, setProjectHeadline] = useState([
     {
       title: "Attendance Tracking System (Face Recognition)",
-      workType: "W.B (Offsite)",
-      startdate: "Feb 2024",
-      enddate: "Present (Full Time)",
+      client: "W.B (Offsite)",
+      month: "Feb",
+      year: "2024",
+      radio: "Completed",
       description:
         "Attendance Tracking System (Face Recognition) for the first time in the future and will be updated in the future when the system is fully implemented. This project aims to improve efficiency and accuracy in attendance recording, using advanced face recognition technology.",
     },
@@ -31,7 +32,7 @@ function Projects() {
           <h2
             className="font-semibold text-blue-700 cursor-pointer"
             id="Add-Project"
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsModalOpen((prev) => !prev)}
           >
             Add Project
           </h2>
@@ -40,15 +41,15 @@ function Projects() {
           <div key={index} className="flex flex-col gap-1">
             <div className="flex items-center gap-4">
               <span className="font-semibold text-sm">{project.title}</span>
-              <button onClick={() => setIsModalOpen(true)}>
+              <button onClick={() => setIsModalOpen((prev) => !prev)}>
                 <FiEdit2 className="text-sm text-gray-700" />
               </button>
             </div>
             <span className="font-semibold text-sm">{project.workType}</span>
             <div className="flex gap-1">
-              <span className="text-gray-500 text-sm">{project.startdate}</span>
+              <span className="text-gray-500 text-sm">{project.month} {project.year}</span>
               <span className="text-gray-500 text-sm">to</span>
-              <span className="text-gray-500 text-sm">{project.enddate}</span>
+              <span className="text-gray-500 text-sm">{project.radio}</span>
             </div>
             <span className="text-black text-sm">
               {isExpanded
