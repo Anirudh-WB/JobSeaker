@@ -2,7 +2,7 @@ import {
   Dialog,
   DialogPanel,
   DialogTitle,
-  DialogBackdrop,
+  DialogBackdrop, CloseButton
 } from "@headlessui/react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { FiPlus } from "react-icons/fi";
@@ -52,12 +52,9 @@ export default function KeySkillsModal({
               className="w-1/2 rounded-3xl bg-white p-10 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="flex justify-end w-full">
-                <button
-                  className="text-xl text-gray-500"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                >
+                <CloseButton as="button" className="text-xl text-gray-500">
                   <RiCloseLargeFill />
-                </button>
+                </CloseButton>
               </div>
               <DialogTitle as="h3" className="text-xl font-medium">
                 Key skills
