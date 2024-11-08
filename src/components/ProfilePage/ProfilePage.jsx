@@ -4,6 +4,8 @@ import QuickLinks from "./QuickLinks";
 import Resume from "./Resume";
 import ResumeHeadline from "./ResumeHeadline";
 import KeySkills from "./KeySkills";
+import Projects from "./Projects";
+import Careers from "./Careers";
 import ItSkills from "./ItSkills";
 
 function ProfilePage() {
@@ -17,6 +19,8 @@ function ProfilePage() {
           <ResumeHeadline />
           <KeySkills />
           <ItSkills />
+          <Careers/>
+          <Projects/>
         </div>
       </div>
     </div>
