@@ -9,7 +9,7 @@ import Careers from "./Careers";
 import PersonalDetails from "./PersonalDetails";
 import ItSkills from "./ItSkills";
 import Employment from "./Employment";
-
+import Education from "./Education";
 function ProfilePage() {
   return (
     <div className="py-8 px-48 w-full h-full overflow-auto flex flex-col gap-5">
@@ -21,6 +21,7 @@ function ProfilePage() {
           <ResumeHeadline />
           <KeySkills />
           <Employment />
+          <Education/>
           <ItSkills />
           <Careers />
           <Projects />
