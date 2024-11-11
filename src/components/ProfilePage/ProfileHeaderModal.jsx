@@ -320,6 +320,7 @@ export default function ProfileHeaderModal({
       </Dialog>
 
       <ToastContainer
+        containerId="profile__header__toast"
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
