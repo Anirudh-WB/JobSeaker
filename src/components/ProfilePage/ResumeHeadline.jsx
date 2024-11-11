@@ -12,7 +12,7 @@ function ResumeHeadline() {
     <>
       <div className="p-5 bg-white rounded-xl shadow-md h-fit flex flex-col gap-4">
         <div className="flex items-center gap-4">
-          <h2 className="font-semibold text-md" id="Resume-headline">
+          <h2 className="font-semibold text-lg" id="Resume-headline">
             Resume headline
           </h2>
           <button onClick={() => setIsResumeHeadlineOpen((prev) => !prev)}>

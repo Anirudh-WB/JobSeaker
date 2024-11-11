@@ -27,7 +27,7 @@ function Projects() {
     <>
       <div className="p-5 bg-white rounded-xl shadow-md h-fit flex flex-col gap-4">
         <div className="flex items-center gap-4 justify-between">
-          <h2 className="font-semibold text-md" id="Project">
+          <h2 className="font-semibold text-lg" id="Project">
             Projects
           </h2>
           <h2
