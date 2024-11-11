@@ -20,9 +20,8 @@ function ProfilePage() {
           <ResumeHeadline />
           <KeySkills />
           <ItSkills />
-          <Careers/>
-          <Projects/>
-          <Careers/>
+          <Careers />
+          <Projects />
           <PersonalDetails/>
         </div>
       </div>
