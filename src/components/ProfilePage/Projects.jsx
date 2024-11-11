@@ -6,6 +6,7 @@ function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projectHeadline, setProjectHeadline] = useState([
     {
+      id: 0,
       title: "Attendance Tracking System (Face Recognition)",
       client: "W.B (Offsite)",
       month: "Feb",
@@ -47,7 +48,9 @@ function Projects() {
             </div>
             <span className="font-semibold text-sm">{project.workType}</span>
             <div className="flex gap-1">
-              <span className="text-gray-500 text-sm">{project.month} {project.year}</span>
+              <span className="text-gray-500 text-sm">
+                {project.month} {project.year}
+              </span>
               <span className="text-gray-500 text-sm">to</span>
               <span className="text-gray-500 text-sm">{project.radio}</span>
             </div>

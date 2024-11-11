@@ -69,29 +69,72 @@ export default function CareersModal({
               </p>
               <div>
                 <div className="mt-4 flex flex-col gap-5">
-                  <div className="flex flex-col gap-2">
+                  <div className="relative flex flex-col gap-2">
                     <label className="text-sm text-black font-semibold">
                       Current Industry <span className="text-red-600">*</span>
                     </label>
-                    <select className="p-2 text-black outline-none rounded-xl border "></select>
+                    <div className="relative mt-1">
+                      <select className="peer p-2 text-black outline-none rounded-xl border w-full text-gray-600 bg-white">
+                        <option value="IT">IT</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Current Industry
+                      </label>
+                    </div>
                   </div>
+
                   <div className="flex flex-col gap-2">
                     <label className="text-sm text-black font-semibold">
                       Department <span className="text-red-600">*</span>
                     </label>
-                    <select className="p-2 text-black outline-none rounded-xl border "></select>
+                    <div className="relative mt-1">
+                      <select className="peer p-2 text-black outline-none rounded-xl border w-full text-gray-600 bg-white">
+                        <option value="IT">IT</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Department
+                      </label>
+                    </div>
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-sm text-black font-semibold">
                       Role Category <span className="text-red-600">*</span>
                     </label>
-                    <select className="p-2 text-black outline-none rounded-xl border "></select>
+                    <div className="relative mt-1">
+                      <select className="peer p-2 text-black outline-none rounded-xl border w-full text-gray-600 bg-white">
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Roles
+                      </label>
+                    </div>
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-sm text-black font-semibold">
                       Job Role <span className="text-red-600">*</span>
                     </label>
-                    <select className="p-2 text-black outline-none rounded-xl border "></select>
+                    <div className="relative mt-1">
+                      <select className="peer p-2 text-black outline-none rounded-xl border w-full text-gray-600 bg-white">
+                        <option value="Full-time">SWE</option>
+                        <option value="Part-time">SDE</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Job Roles
+                      </label>
+                    </div>
                   </div>
                   <div className="flex flex-col gap-2 w-1/2">
                     <span className="text-sm text-black font-semibold">
@@ -183,16 +226,26 @@ export default function CareersModal({
                     <label className="text-sm text-black font-semibold">
                       Preferred work location (Max 10)
                     </label>
-                    <input
-                      type="text"
-                      className="p-2 text-black outline-none rounded-xl border text-md"
-                      value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
-                      onKeyDown={(e) => e.key === "Enter" && addLocation(e)}
-                      placeholder="Tell us your location preferences to work"
-                    />
 
-                    <div className="flex flex-wrap gap-2 mt-2">
+                    <div class="relative">
+                      <input
+                        type="text"
+                        id="floating_outlined"
+                        className="w-full outline-none border rounded-md p-2 peer"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        onKeyDown={(e) => e.key === "Enter" && addLocation(e)}
+                        placeholder=" "
+                      />
+                      <label
+                        for="floating_outlined"
+                        class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      >
+                        Preferred location
+                      </label>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
                       {locations.map((location, index) => (
                         <div
                           key={index}
@@ -213,10 +266,20 @@ export default function CareersModal({
                     <label className="text-sm text-black font-semibold">
                       Expected Salary
                     </label>
-                    <input
-                      type="number"
-                      className="p-2 text-black outline-none rounded-xl border text-md"
-                    />
+                    <div class="relative">
+                      <input
+                        type="text"
+                        id="floating_outlined"
+                        class="w-full outline-none border rounded-md p-2 peer"
+                        placeholder=" "
+                      />
+                      <label
+                        for="floating_outlined"
+                        class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      >
+                        Expected Salary
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>

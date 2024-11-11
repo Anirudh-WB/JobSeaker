@@ -121,32 +121,63 @@ export default function PersonalDetailsModal({
                     Date of Birth
                   </label>
                   <div className="w-full flex flex-1 items-center gap-2">
-                    <select
-                      name="date"
-                      className="w-1/3 outline-none border p-2 rounded-xl"
-                    >
-                      <option value="" className="text-gray-700">
+                    <div className="relative w-1/3">
+                      <select className="peer outline-none border w-full p-2 rounded-xl text-gray-700">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                      </select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Day
-                      </option>
-                    </select>
+                      </label>
+                    </div>
 
-                    <select
-                      name="month"
-                      className="w-1/3 outline-none border p-2 rounded-xl"
-                    >
-                      <option value="" className="text-gray-700">
+                    <div className="relative w-1/3">
+                      <select className="peer outline-none border w-full p-2 rounded-xl text-gray-700">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Month
-                      </option>
-                    </select>
+                      </label>
+                    </div>
 
-                    <select
-                      name="year"
-                      className="w-1/3 outline-none border p-2 rounded-xl"
-                    >
-                      <option value="" className="text-gray-700">
+                    <div className="relative w-1/3">
+                      <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                      </select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Year
-                      </option>
-                    </select>
+                      </label>
+                    </div>
                   </div>
                 </div>
 
@@ -221,15 +252,15 @@ export default function PersonalDetailsModal({
                   <label className="text-base font-semibold">
                     Work permit for USA
                   </label>
-                  <div className="w-full flex flex-1">
-                    <select
-                      name="workpermit"
-                      className="w-full outline-none border p-2 rounded-xl"
-                    >
-                      <option value="" className="text-gray-700">
-                        Select work permit
-                      </option>
+                  <div className="relative">
+                    <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
+                      <option value="US">US</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Other">Other</option>
                     </select>
+                    <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                      Select work permit
+                    </label>
                   </div>
                 </div>
 
@@ -238,15 +269,15 @@ export default function PersonalDetailsModal({
                   <label className="text-base font-semibold">
                     Work permit for other countries
                   </label>
-                  <div className="w-full flex flex-1">
-                    <select
-                      name="workpermit"
-                      className="w-full outline-none border p-2 rounded-xl"
-                    >
-                      <option value="" className="text-gray-700">
-                        Select countries
-                      </option>
+                  <div className="relative">
+                    <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
+                      <option value="US">US</option>
+                      <option value="Canada">Canada</option>
+                      <option value="Other">Other</option>
                     </select>
+                    <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                      Select Countries
+                    </label>
                   </div>
                 </div>
 
@@ -255,39 +286,57 @@ export default function PersonalDetailsModal({
                   <label className="text-base font-semibold">
                     Permanent address
                   </label>
-                  <div className="w-full flex flex-1">
+                  <div class="relative">
                     <input
                       type="text"
-                      name="workpermit"
-                      className="w-full outline-none border p-2 rounded-xl text-gray-600"
-                      placeholder="Enter permanent address"
-                    ></input>
+                      id="floating_outlined"
+                      class="w-full outline-none border rounded-md p-2 peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="floating_outlined"
+                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Address
+                    </label>
                   </div>
                 </div>
 
                 {/* Home Town Selection */}
                 <div className="flex flex-col gap-2">
                   <label className="text-base font-semibold">Hometown</label>
-                  <div className="w-full flex flex-1">
+                  <div class="relative">
                     <input
                       type="text"
-                      name="hometown"
-                      className="w-full outline-none border p-2 rounded-xl text-gray-600"
-                      placeholder="Enter hometown"
-                    ></input>
+                      id="floating_outlined"
+                      class="w-full outline-none border rounded-md p-2 peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="floating_outlined"
+                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Hometown
+                    </label>
                   </div>
                 </div>
 
                 {/* Pincode Selection */}
                 <div className="flex flex-col gap-2">
                   <label className="text-base font-semibold">Pincode</label>
-                  <div className="w-full flex flex-1">
+                  <div class="relative">
                     <input
                       type="number"
-                      name="pincode"
-                      className="w-full outline-none border p-2 rounded-xl text-gray-600"
-                      placeholder="Enter pincode"
-                    ></input>
+                      id="floating_outlined"
+                      class="w-full outline-none border rounded-md p-2 peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="floating_outlined"
+                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Pincode
+                    </label>
                   </div>
                 </div>
 
@@ -316,26 +365,30 @@ export default function PersonalDetailsModal({
 
                         {/* Language and proficiency selection */}
                         <div className="w-full flex gap-2">
-                          <select
-                            name="language"
-                            className="w-1/2 outline-none border p-2 rounded-xl text-gray-700 text-sm"
-                          >
-                            <option value="" className="text-gray-700">
-                              Select language
-                            </option>
-                          </select>
+                          <div className="relative w-1/2">
+                            <select className="peer outline-none border p-2 w-full text-sm rounded-xl text-gray-700">
+                              <option value="English">English</option>
+                              <option value="Hindi">Hindi</option>
+                              <option value="Spanish">Spanish</option>
+                              <option value="French">French</option>
+                              <option value="German">German</option>
+                              <option value="Other">Other</option>
+                            </select>
+                            <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                              Language
+                            </label>
+                          </div>
 
-                          <select
-                            name="proficiency"
-                            className="w-1/2 outline-none border p-2 rounded-xl text-gray-700 text-sm"
-                          >
-                            <option value="" className="text-gray-700">
+                          <div className="relative w-1/2">
+                            <select className="peer outline-none border p-2 w-full text-sm rounded-xl text-gray-700">
+                              <option value="Expert">Expert</option>
+                              <option value="Intermediate">Intermediate</option>
+                              <option value="Proficient">Proficient</option>
+                            </select>
+                            <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                               Proficiency
-                            </option>
-                            <option value="Expert">Expert</option>
-                            <option value="Intermediate">Intermediate</option>
-                            <option value="Proficient">Proficient</option>
-                          </select>
+                            </label>
+                          </div>
                         </div>
 
                         {/* Checkboxes and Delete option */}

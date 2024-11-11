@@ -58,11 +58,20 @@ export default function ProfileHeaderModal({
                   <span className="text-base font-semibold">
                     Name <span className="text-red-600">*</span>
                   </span>
-                  <input
-                    type="text"
-                    placeholder="e.g.. John Doe"
-                    className="outline-none border p-2 w-full rounded-xl"
-                  />
+                  <div class="relative">
+                    <input
+                      type="text"
+                      id="floating_outlined"
+                      class="w-full outline-none border rounded-md p-2 peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="floating_outlined"
+                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Name
+                    </label>
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -94,15 +103,38 @@ export default function ProfileHeaderModal({
                   <span className="text-sm font-semibold text-gray-500">
                     This helps recruiters know your years of experience
                   </span>
-                  <div className="w-full flex gap-2">
-                    <select
-                      type="text"
-                      className="outline-none border p-2 w-1/2 rounded-xl"
-                    />
-                    <select
-                      type="text"
-                      className="outline-none border p-2 w-1/2 rounded-xl"
-                    />
+                  <div className="relative w-full flex gap-2">
+                    <div className="relative w-1/2">
+                      <select className="peer outline-none border w-full p-2 rounded-xl text-gray-700">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                      </select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Month
+                      </label>
+                    </div>
+                    <div className="relative w-1/2">
+                      <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                      </select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Year
+                      </label>
+                    </div>
                   </div>
                 </div>
 
@@ -113,22 +145,36 @@ export default function ProfileHeaderModal({
                   <span className="text-sm font-semibold text-gray-500">
                     Salary information helps us find relevant jobs for you
                   </span>
-                  <input
-                    type="text"
-                    placeholder="e.g.. 200000"
-                    className="outline-none border p-2 w-full rounded-xl"
-                  />
+                  <div class="relative">
+                    <input
+                      type="text"
+                      id="floating_outlined"
+                      class="w-full outline-none border rounded-md p-2 peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="floating_outlined"
+                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Current Salary
+                    </label>
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
                   <span className="text-base font-semibold">
                     Salary breakdown <span className="text-red-600">*</span>
                   </span>
-                  <select
-                    type="text"
-                    placeholder="e.g.. 200000"
-                    className="outline-none border p-2 w-full rounded-xl"
-                  />
+                  <div className="relative">
+                    <select className="peer outline-none border w-full p-2 rounded-xl text-gray-700">
+                      <option value="1">100000</option>
+                      <option value="2">200000</option>
+                      <option value="3">300000</option>
+                    </select>
+                    <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                      Salary breakdown
+                    </label>
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -153,11 +199,20 @@ export default function ProfileHeaderModal({
                       </span>
                     </div>
                   </div>
-                  <input
-                    type="text"
-                    placeholder="Mumbai"
-                    className="outline-none border p-2 w-1/3 rounded-xl"
-                  />
+                  <div class="relative">
+                    <input
+                      type="text"
+                      id="floating_outlined"
+                      class="w-1/3 outline-none border rounded-md p-2 peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="floating_outlined"
+                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Location
+                    </label>
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -167,11 +222,20 @@ export default function ProfileHeaderModal({
                   <span className="text-sm font-semibold text-gray-500">
                     This helps us reach out to you
                   </span>
-                  <input
-                    type="number"
-                    placeholder="e.g.. 8956238529"
-                    className="outline-none border p-2 w-full rounded-xl"
-                  />
+                  <div class="relative">
+                    <input
+                      type="number"
+                      id="floating_outlined"
+                      class="w-full outline-none border rounded-md p-2 peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="floating_outlined"
+                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Conatact No.
+                    </label>
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -181,11 +245,20 @@ export default function ProfileHeaderModal({
                   <span className="text-sm font-semibold text-gray-500">
                     We will send relevant jobs and updates to this email
                   </span>
-                  <input
-                    type="number"
-                    placeholder="e.g.. xyz@gmail.com"
-                    className="outline-none border p-2 w-full rounded-xl"
-                  />
+                  <div class="relative">
+                    <input
+                      type="text"
+                      id="floating_outlined"
+                      class="w-full outline-none border rounded-md p-2 peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="floating_outlined"
+                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Email
+                    </label>
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
