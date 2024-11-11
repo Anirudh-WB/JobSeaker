@@ -89,13 +89,21 @@ export default function KeySkillsModal({
                     ))}
                   </div>
                   <div className="relative flex flex-col gap-2 text-sm">
-                    <input
-                      type="text"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="border border-gray-300 rounded-2xl px-4 py-2 w-full outline-none"
-                      placeholder="Add skills"
-                    />
+                    <div class="relative">
+                      <input
+                        type="text"
+                        id="floating_outlined"
+                        class="border border-gray-300 rounded-2xl px-4 py-2 w-full outline-none peer"
+                        placeholder=" "
+                      />
+                      <label
+                        for="floating_outlined"
+                        class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      >
+                        Add skills
+                      </label>
+                    </div>
+
                     {searchTerm && filteredSuggestions.length > 0 && (
                       <div className="absolute top-full left-0 w-full max-h-60 overflow-y-auto rounded-lg bg-white shadow-lg z-10">
                         {filteredSuggestions.map((skill, index) => (
