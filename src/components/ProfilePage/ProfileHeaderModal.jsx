@@ -306,7 +306,7 @@ export default function ProfileHeaderModal({
                       pauseOnHover: true,
                       draggable: true,
                       progress: undefined,
-                      theme: "colored",
+                      theme: "colored", 
                       transition: Bounce,
                     });
                   }}
