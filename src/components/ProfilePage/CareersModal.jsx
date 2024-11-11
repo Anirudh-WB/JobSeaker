@@ -402,6 +402,7 @@ export default function CareersModal({
       </Dialog>
 
       <ToastContainer
+        containerId="career__toast"
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}

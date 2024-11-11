@@ -6,6 +6,7 @@ import {
 } from "@headlessui/react";
 import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function PersonalDetailsModal({
   isOpen,
@@ -434,7 +435,7 @@ export default function PersonalDetailsModal({
                           </div>
 
                           {/* Delete option */}
-                          <button className="text-blue-600 text-sm font-semibold font-medium">
+                          <button className="text-blue-600 text-sm font-semibold">
                             Delete
                           </button>
                         </div>
@@ -461,6 +462,17 @@ export default function PersonalDetailsModal({
                       category: selectedCategory,
                     });
                     setIsOpen((prev) => !prev);
+                    toast.success("Key Skills saved successfully", {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                      transition: Bounce,
+                    });
                   }}
                 >
                   Save
@@ -470,6 +482,21 @@ export default function PersonalDetailsModal({
           </div>
         </div>
       </Dialog>
+
+      <ToastContainer
+        containerId="personal__details__toast"
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
     </>
   );
 }

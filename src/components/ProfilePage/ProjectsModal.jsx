@@ -211,6 +211,7 @@ export default function ProjectsModal({
       </Dialog>
 
       <ToastContainer
+        containerId="projects__toast"
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}

@@ -282,6 +282,7 @@ export default function ItSkillsModal({
       </Dialog>
 
       <ToastContainer
+        containerId="it__skills__toast"
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
