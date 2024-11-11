@@ -8,6 +8,7 @@ import Projects from "./Projects";
 import Careers from "./Careers";
 import PersonalDetails from "./PersonalDetails";
 import ItSkills from "./ItSkills";
+import Employment from "./Employment";
 
 function ProfilePage() {
   return (
@@ -19,10 +20,11 @@ function ProfilePage() {
           <Resume />
           <ResumeHeadline />
           <KeySkills />
+          <Employment />
           <ItSkills />
           <Careers />
           <Projects />
-          <PersonalDetails/>
+          <PersonalDetails />
         </div>
       </div>
     </div>

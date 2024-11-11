@@ -22,7 +22,7 @@ function KeySkills() {
     <>
       <div className="p-5 bg-white rounded-xl shadow-md h-fit flex flex-col gap-4">
         <div className="flex items-center gap-4">
-          <h2 className="font-semibold text-md" id="Key-skills">
+          <h2 className="font-semibold text-lg" id="Key-skills">
             Key skills
           </h2>
           <button onClick={() => setIsKeySkillsOpen((prev) => !prev)}>

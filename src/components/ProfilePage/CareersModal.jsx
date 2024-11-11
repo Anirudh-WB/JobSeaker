@@ -235,7 +235,10 @@ export default function CareersModal({
                     </h3>
                     <div className="flex items-center gap-6">
                       {jobTypes.map((type, idx) => (
-                        <Field className="flex items-center gap-3 w-1/3">
+                        <Field
+                          className="flex items-center gap-3 w-1/3"
+                          key={idx}
+                        >
                           <Checkbox
                             value={type}
                             key={idx}
@@ -256,7 +259,10 @@ export default function CareersModal({
                     </h3>
                     <div className="flex items-center gap-6">
                       {employmentTypes.map((type, idx) => (
-                        <Field className="flex items-center gap-3 w-1/3">
+                        <Field
+                          className="flex items-center gap-3 w-1/3"
+                          key={idx}
+                        >
                           <Checkbox
                             value={type}
                             key={idx}
