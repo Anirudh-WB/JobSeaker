@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
-import KeySkillsModal from "./KeySkillsModal";
+import KeySkillsModal from "./Modals/KeySkillsModal";
 
 function KeySkills() {
   let [isKeySkillsOpen, setIsKeySkillsOpen] = useState(false);

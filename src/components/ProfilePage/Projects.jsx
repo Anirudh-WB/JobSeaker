@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
-import ProjectsModal from "./ProjectsModal";
+import ProjectsModal from "./Modals/ProjectsModal";
 
 function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false);

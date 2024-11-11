@@ -6,7 +6,7 @@ import { LuCalendar } from "react-icons/lu";
 import { CiWallet } from "react-icons/ci";
 import { IoBriefcaseOutline } from "react-icons/io5";
 import { FiEdit2 } from "react-icons/fi";
-import ProfileHeaderModal from "./ProfileHeaderModal";
+import ProfileHeaderModal from "./Modals/ProfileHeaderModal";
 
 function ProfileHeader() {
   let [isProjectHeaderOpen, setIsProjectHeaderOpen] = useState(false);

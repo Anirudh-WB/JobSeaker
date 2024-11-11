@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
-import CareersModal from "./CareersModal";
+import CareersModal from "./Modals/CareersModal";
 
 function Careers() {
   let [isCareersOpen, setIsCareersOpen] = useState(false);

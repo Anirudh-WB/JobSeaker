@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
-import EducationModal from "./EducationModal";
+import EducationModal from "./Modals/EducationModal";
 
 function Education() {
   let [isEducationOpen, setIsEducationOpen] = useState(false);
