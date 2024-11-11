@@ -44,7 +44,7 @@ function Education() {
           <h2 className="font-semibold text-md" id="Education">
             Education
           </h2>
-          <button className="text-blue-700 text-base font-semibold">Add</button>
+          <button className="text-blue-700 text-base font-semibold" onClick={() => setIsEducationOpen((prev) => !prev)}>Add</button>
         </div>
 
         <div className="flex flex-col gap-8">
