@@ -189,17 +189,6 @@ export default function ProjectsModal({
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
                     setIsOpen((prev) => !prev);
-                    toast.success("Projects saved successfully", {
-                      position: "top-right",
-                      autoClose: 5000,
-                      hideProgressBar: false,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: true,
-                      progress: undefined,
-                      theme: "colored",
-                      transition: Bounce,
-                    });
                   }}
                 >
                   Save
@@ -211,7 +200,6 @@ export default function ProjectsModal({
       </Dialog>
 
       <ToastContainer
-        containerId="projects__toast"
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
