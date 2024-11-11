@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
-import ResumeHeadlineModal from "./ResumeHeadlineModal";
+import ResumeHeadlineModal from "./Modals/ResumeHeadlineModal";
 
 function ResumeHeadline() {
   let [isResumeHeadlineOpen, setIsResumeHeadlineOpen] = useState(false);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import EmploymentModal from "./EmploymentModal";
+import EmploymentModal from "./Modals/EmploymentModal";
 import { FiEdit2 } from "react-icons/fi";
 
 function Employment() {

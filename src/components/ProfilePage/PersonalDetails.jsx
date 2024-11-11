@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
-import PersonalDetailsModal from "./PersonalDetailsModal";
+import PersonalDetailsModal from "./Modals/PersonalDetailsModal";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 function PersonalDetails() {

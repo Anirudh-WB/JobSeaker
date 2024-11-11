@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
-import ItSkillsModal from "./ItSkillsModal";
+import ItSkillsModal from "./Modals/ItSkillsModal";
 
 function ItSkills() {
   let [isItSkillsOpen, setIsItSkillsOpen] = useState(false);
