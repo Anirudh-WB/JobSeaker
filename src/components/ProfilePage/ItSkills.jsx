@@ -12,7 +12,7 @@ function ItSkills() {
     lastUsed: NaN,
     experience: {
       year: 0,
-      month: 0,
+      month:  0 ,
     },
   });
 
