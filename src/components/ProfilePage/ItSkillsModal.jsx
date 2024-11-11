@@ -11,6 +11,7 @@ import {
 import { RiCloseLargeFill } from "react-icons/ri";
 import { FaChevronDown } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 
 export default function ItSkillsModal({
   isOpen,
@@ -112,7 +113,7 @@ export default function ItSkillsModal({
                     <h2 className="text-sm font-medium">Software version</h2>
                     <input
                       type="number"
-                      value={skillsTemp.version}
+                      value={skillsTemp.version || ""}
                       onChange={(e) =>
                         setSkillsTemp((prev) => ({
                           ...prev,
@@ -137,21 +138,13 @@ export default function ItSkillsModal({
                               lastUsed: e.target.value,
                             }))
                           }
+                          value={skillsTemp.lastUsed || ""}
                         >
-                          <option
-                            value=""
-                            selected={true}
-                            disabled={true}
-                            hidden={true}
-                          >
+                          <option value="" disabled={true} hidden={true}>
                             Last used
                           </option>
-                          {lastUse.map((yr) => (
-                            <option
-                              value={yr}
-                              selected={skillsTemp.lastUsed === yr}
-                              className="text-black"
-                            >
+                          {lastUse.map((yr, idx) => (
+                            <option value={yr} key={idx}>
                               {yr}
                             </option>
                           ))}
@@ -183,21 +176,13 @@ export default function ItSkillsModal({
                                   },
                                 }))
                               }
+                              value={skillsTemp.experience.year || ""}
                             >
-                              <option
-                                value=""
-                                selected={true}
-                                disabled={true}
-                                hidden={true}
-                              >
+                              <option value="" disabled={true} hidden={true}>
                                 Years
                               </option>
-                              {exp.map((yr) => (
-                                <option
-                                  value={yr}
-                                  selected={skillsTemp.experience.year === yr}
-                                  className="text-black"
-                                >
+                              {exp.map((yr, idx) => (
+                                <option value={yr} key={idx}>
                                   {yr}
                                 </option>
                               ))}
@@ -224,24 +209,13 @@ export default function ItSkillsModal({
                                   },
                                 }))
                               }
+                              value={skillsTemp.experience.month || ""}
                             >
-                              <option
-                                value=""
-                                selected={true}
-                                disabled={true}
-                                hidden={true}
-                              >
+                              <option value="" disabled={true} hidden={true}>
                                 Months
                               </option>
-                              {months.map((month) => (
-                                <option
-                                  value={month}
-                                  selected={
-                                    skillsTemp.experience.month === month ||
-                                    d.getFullYear() === month
-                                  }
-                                  className="text-black"
-                                >
+                              {months.map((month, index) => (
+                                <option value={month} key={index}>
                                   {month}
                                 </option>
                               ))}
@@ -286,6 +260,17 @@ export default function ItSkillsModal({
                       },
                     });
                     setIsOpen((prev) => !prev);
+                    toast.success("IT Skills saved successfully", {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                      transition: Bounce,
+                    });
                   }}
                 >
                   Save
@@ -295,6 +280,20 @@ export default function ItSkillsModal({
           </div>
         </div>
       </Dialog>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
     </>
   );
 }

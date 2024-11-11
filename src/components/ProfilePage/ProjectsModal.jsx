@@ -6,6 +6,7 @@ import {
 } from "@headlessui/react";
 import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function ProjectsModal({
   isOpen,
@@ -119,8 +120,11 @@ export default function ProjectsModal({
                     </span>
                   </div>
 
-                  <a href="/" className="text-blue-700 font-semibold text-sm
-                  ">
+                  <a
+                    href="/"
+                    className="text-blue-700 font-semibold text-sm
+                  "
+                  >
                     Add more details
                   </a>
                 </form>
@@ -136,6 +140,17 @@ export default function ProjectsModal({
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
                     setIsOpen((prev) => !prev);
+                    toast.success("Projects saved successfully", {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                      transition: Bounce,
+                    });
                   }}
                 >
                   Save
@@ -145,6 +160,20 @@ export default function ProjectsModal({
           </div>
         </div>
       </Dialog>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
     </>
   );
 }

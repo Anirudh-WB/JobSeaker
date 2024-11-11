@@ -3,9 +3,19 @@ import {
   DialogPanel,
   DialogTitle,
   DialogBackdrop,
+  CloseButton,
+  Field,
+  Label,
+  Select,
+  Checkbox,
 } from "@headlessui/react";
 import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
+import { FaChevronDown } from "react-icons/fa6";
+import { TfiCheck } from "react-icons/tfi";
+import { LiaCheckSolid } from "react-icons/lia";
+import { IoCheckmarkSharp } from "react-icons/io5";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function CareersModal({
   isOpen,
@@ -36,6 +46,34 @@ export default function CareersModal({
     setLocations(locations.filter((location) => location !== locationToRemove));
   };
 
+  const industries = [
+    "IT Services & Consulting",
+    "Engineering",
+    "Sales",
+    "Call Center",
+  ];
+
+  const departments = [
+    "Enineering - Software & QA",
+    "Humar Resources",
+    "Accounts",
+    "Management",
+  ];
+
+  const roleCategories = ["Software Development", "QA"];
+
+  const jobRoles = [
+    "Technical Lead",
+    "Software Developer",
+    "Software Engineer",
+    "Senior Software Developer",
+    "Senior Software Engineer",
+  ];
+
+  const jobTypes = ["Permanent", "Contractual"];
+
+  const employmentTypes = ["Full time", "Part time"];
+
   return (
     <>
       <Dialog
@@ -53,15 +91,12 @@ export default function CareersModal({
               className="w-1/2 rounded-3xl bg-white p-10 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="flex justify-end w-full">
-                <button
-                  className="text-xl text-gray-500"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                >
+                <CloseButton as="button" className="text-xl text-gray-500">
                   <RiCloseLargeFill />
-                </button>
+                </CloseButton>
               </div>
               <DialogTitle as="h3" className="text-xl font-medium">
-                Careers
+                Career proflie
               </DialogTitle>
               <p className="mt-1 text-sm text-gray-500 font-medium">
                 Add details about your current and preferred job profile. This
@@ -70,77 +105,169 @@ export default function CareersModal({
               <div>
                 <div className="mt-4 flex flex-col gap-5">
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm text-black font-semibold">
-                      Current Industry <span className="text-red-600">*</span>
-                    </label>
-                    <select className="p-2 text-black outline-none rounded-xl border "></select>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm text-black font-semibold">
-                      Department <span className="text-red-600">*</span>
-                    </label>
-                    <select className="p-2 text-black outline-none rounded-xl border "></select>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm text-black font-semibold">
-                      Role Category <span className="text-red-600">*</span>
-                    </label>
-                    <select className="p-2 text-black outline-none rounded-xl border "></select>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm text-black font-semibold">
-                      Job Role <span className="text-red-600">*</span>
-                    </label>
-                    <select className="p-2 text-black outline-none rounded-xl border "></select>
-                  </div>
-                  <div className="flex flex-col gap-2 w-1/2">
-                    <span className="text-sm text-black font-semibold">
-                      Desired Job Type
-                    </span>
-                    <div className="flex items-center gap-10 justify-between">
-                      <div className="flex items-center gap-2 w-1/2">
-                        <input
-                          type="checkbox"
-                          className="form-checkbox h-4 w-4 text-black"
-                          value="permanent"
-                        />
-                        <span className="text-gray-900 text-md">Permanent</span>
+                    <Field>
+                      <Label className="text-sm font-medium">
+                        Current Industry <span className="text-red-500">*</span>
+                      </Label>
+                      <div className="relative border rounded-2xl flex items-center m-1">
+                        <Select
+                          className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
+                            !careersTemp.currentIndustry ? "text-gray-400" : ""
+                          }`}
+                          onChange={(e) =>
+                            setcareersTemp((prev) => ({
+                              ...prev,
+                              currentIndustry: e.target.value,
+                            }))
+                          }
+                          value={careersTemp.currentIndustry || ""}
+                        >
+                          <option value="" disabled={true} hidden={true}>
+                            Current Industry
+                          </option>
+                          {industries.map((industry, idx) => (
+                            <option value={industry} key={idx}>
+                              {industry}
+                            </option>
+                          ))}
+                        </Select>
+                        <FaChevronDown className="text-gray-500 text-xs mr-3" />
                       </div>
-
-                      <div className="flex items-center gap-2 w-1/2">
-                        <input
-                          type="checkbox"
-                          className="form-checkbox h-4 w-4 text-black"
-                          value="contractual"
-                        />
-                        <span className="text-gray-900 text-md">
-                          Contractual
-                        </span>
+                    </Field>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Field>
+                      <Label className="text-sm font-medium">
+                        Department <span className="text-red-500">*</span>
+                      </Label>
+                      <div className="relative border rounded-2xl flex items-center m-1">
+                        <Select
+                          className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
+                            !careersTemp.department ? "text-gray-400" : ""
+                          }`}
+                          onChange={(e) =>
+                            setcareersTemp((prev) => ({
+                              ...prev,
+                              department: e.target.value,
+                            }))
+                          }
+                          value={careersTemp.department || ""}
+                        >
+                          <option value="" disabled={true} hidden={true}>
+                            Department
+                          </option>
+                          {departments.map((department, idx) => (
+                            <option value={department} key={idx}>
+                              {department}
+                            </option>
+                          ))}
+                        </Select>
+                        <FaChevronDown className="text-gray-500 text-xs mr-3" />
                       </div>
+                    </Field>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Field>
+                      <Label className="text-sm font-medium">
+                        Role Category <span className="text-red-500">*</span>
+                      </Label>
+                      <div className="relative border rounded-2xl flex items-center m-1">
+                        <Select
+                          className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
+                            !careersTemp.roleCategory ? "text-gray-400" : ""
+                          }`}
+                          onChange={(e) =>
+                            setcareersTemp((prev) => ({
+                              ...prev,
+                              roleCategory: e.target.value,
+                            }))
+                          }
+                          value={careersTemp.roleCategory || ""}
+                        >
+                          <option value="" disabled={true} hidden={true}>
+                            Role Category
+                          </option>
+                          {roleCategories.map((category, idx) => (
+                            <option value={category} key={idx}>
+                              {category}
+                            </option>
+                          ))}
+                        </Select>
+                        <FaChevronDown className="text-gray-500 text-xs mr-3" />
+                      </div>
+                    </Field>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Field>
+                      <Label className="text-sm font-medium">
+                        Job Role <span className="text-red-500">*</span>
+                      </Label>
+                      <div className="relative border rounded-2xl flex items-center m-1">
+                        <Select
+                          className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
+                            !careersTemp.jobRole ? "text-gray-400" : ""
+                          }`}
+                          onChange={(e) =>
+                            setcareersTemp((prev) => ({
+                              ...prev,
+                              jobRole: e.target.value,
+                            }))
+                          }
+                          value={careersTemp.jobRole || ""}
+                        >
+                          <option value="" disabled={true} hidden={true}>
+                            Job Role
+                          </option>
+                          {jobRoles.map((role, idx) => (
+                            <option value={role} key={idx}>
+                              {role}
+                            </option>
+                          ))}
+                        </Select>
+                        <FaChevronDown className="text-gray-500 text-xs mr-3" />
+                      </div>
+                    </Field>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-sm text-black font-semibold">
+                      Desired job type
+                    </h3>
+                    <div className="flex items-center gap-6">
+                      {jobTypes.map((type, idx) => (
+                        <Field className="flex items-center gap-3 w-1/3">
+                          <Checkbox
+                            value={type}
+                            key={idx}
+                            // checked={enabled}
+                            // onChange={setEnabled}
+                            className="rounded size-[1.2rem] border bg-white data-[checked]:bg-black flex items-center justify-center"
+                          >
+                            <IoCheckmarkSharp className="text-white" />
+                          </Checkbox>
+                          <Label>{type}</Label>
+                        </Field>
+                      ))}
                     </div>
                   </div>
-                  <div className="flex flex-col gap-2 w-1/2">
-                    <span className="text-sm text-black font-semibold">
-                      Desired employeement Type
-                    </span>
-                    <div className="flex items-center gap-10 justify-between">
-                      <div className="flex items-center gap-2 w-1/2">
-                        <input
-                          type="checkbox"
-                          className="form-checkbox h-4 w-4 text-black"
-                          value="Full-Time"
-                        />
-                        <span className="text-gray-900 text-md">Full-Time</span>
-                      </div>
-
-                      <div className="flex items-center gap-2 w-1/2">
-                        <input
-                          type="checkbox"
-                          className="form-checkbox h-4 w-4 text-black"
-                          value="Part-Time"
-                        />
-                        <span className="text-gray-900 text-md">Part-Time</span>
-                      </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-sm text-black font-semibold">
+                      Desired employeement type
+                    </h3>
+                    <div className="flex items-center gap-6">
+                      {employmentTypes.map((type, idx) => (
+                        <Field className="flex items-center gap-3 w-1/3">
+                          <Checkbox
+                            value={type}
+                            key={idx}
+                            // checked={enabled}
+                            // onChange={setEnabled}
+                            className="rounded size-[1.2rem] border bg-white data-[checked]:bg-black flex items-center justify-center"
+                          >
+                            <IoCheckmarkSharp className="text-white" />
+                          </Checkbox>
+                          <Label>{type}</Label>
+                        </Field>
+                      ))}
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
@@ -232,6 +359,17 @@ export default function CareersModal({
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
                     setIsOpen((prev) => !prev);
+                    toast.success("Careers saved successfully", {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                      transition: Bounce,
+                    });
                   }}
                 >
                   Save
@@ -241,6 +379,20 @@ export default function CareersModal({
           </div>
         </div>
       </Dialog>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
     </>
   );
 }

@@ -4,19 +4,17 @@ import CareersModal from "./CareersModal";
 
 function Careers() {
   let [isCareersOpen, setIsCareersOpen] = useState(false);
-  let [careers, setCareers] = useState([
-    {
-      currentIndustry: "It Services & Consulting",
-      department: "Engineering - Software & QA",
-      roleCategory: "Software Development",
-      jobRole: "Software Engineer",
-      jobType: ["permanent", "contractual"],
-      employeeType: ["full-time", "part-time"],
-      shift: "flexible",
-      location: ["Mumbai", "Thane", "Navi Mumbai"],
-      salary: 2500000,
-    },
-  ]);
+  let [careers, setCareers] = useState({
+    currentIndustry: "IT Services & Consulting",
+    department: "Engineering - Software & QA",
+    roleCategory: "Software Development",
+    jobRole: "Software Engineer",
+    desiredJobTypes: ["permanent", "contractual"],
+    employeeType: ["full-time", "part-time"],
+    shift: "flexible",
+    location: ["Mumbai", "Thane", "Navi Mumbai"],
+    salary: 2500000,
+  });
 
   return (
     <>
@@ -36,15 +34,13 @@ function Careers() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Current Industry
               </h3>
-              <p className="font-semibold text-sm">
-                {careers[0].currentIndustry}
-              </p>
+              <p className="font-semibold text-sm">{careers.currentIndustry}</p>
             </div>
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">
                 Department
               </h3>
-              <p className="font-semibold text-sm">{careers[0].department}</p>
+              <p className="font-semibold text-sm">{careers.department}</p>
             </div>
           </div>
 
@@ -53,11 +49,11 @@ function Careers() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Role category
               </h3>
-              <p className="font-semibold text-sm">{careers[0].roleCategory}</p>
+              <p className="font-semibold text-sm">{careers.roleCategory}</p>
             </div>
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">Job role</h3>
-              <p className="font-semibold text-sm">{careers[0].jobRole}</p>
+              <p className="font-semibold text-sm">{careers.jobRole}</p>
             </div>
           </div>
 
@@ -66,13 +62,17 @@ function Careers() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Desired job type
               </h3>
-              <p className="font-semibold text-sm">{careers[0].jobType.join(", ")}</p>
+              <p className="font-semibold text-sm">
+                {careers.desiredJobTypes.join(", ")}
+              </p>
             </div>
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">
                 Desired employee type
               </h3>
-              <p className="font-semibold text-sm">{careers[0].employeeType.join(", ")}</p>
+              <p className="font-semibold text-sm">
+                {careers.employeeType.join(", ")}
+              </p>
             </div>
           </div>
 
@@ -81,13 +81,15 @@ function Careers() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Preferred shifts
               </h3>
-              <p className="font-semibold text-sm">{careers[0].shift}</p>
+              <p className="font-semibold text-sm">{careers.shift}</p>
             </div>
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">
                 Preferred work locations
               </h3>
-              <p className="font-semibold text-sm">{careers[0].location.join(", ")}</p>
+              <p className="font-semibold text-sm">
+                {careers.location.join(", ")}
+              </p>
             </div>
           </div>
 
@@ -96,7 +98,7 @@ function Careers() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Expected Salary
               </h3>
-              <p className="font-semibold text-sm">{careers[0].salary}</p>
+              <p className="font-semibold text-sm">{careers.salary}</p>
             </div>
           </div>
         </div>

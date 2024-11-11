@@ -7,6 +7,7 @@ import {
 } from "@headlessui/react";
 import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function ResumeHeadlineModal({
   isOpen,
@@ -68,6 +69,17 @@ export default function ResumeHeadlineModal({
                   onClick={() => {
                     setResumeHeadline(headlineTemp);
                     setIsOpen((prev) => !prev);
+                    toast.success("Resume Headline saved successfully", {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                      transition: Bounce,
+                    });
                   }}
                 >
                   Save
@@ -77,6 +89,20 @@ export default function ResumeHeadlineModal({
           </div>
         </div>
       </Dialog>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
     </>
   );
 }

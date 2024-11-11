@@ -2,12 +2,14 @@ import {
   Dialog,
   DialogPanel,
   DialogTitle,
-  DialogBackdrop, CloseButton
+  DialogBackdrop,
+  CloseButton,
 } from "@headlessui/react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { FiPlus } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function KeySkillsModal({
   isOpen,
@@ -157,6 +159,17 @@ export default function KeySkillsModal({
                   onClick={() => {
                     setSkills(skillsTemp);
                     setIsOpen((prev) => !prev);
+                    toast.success("Key Skills saved successfully", {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                      transition: Bounce,
+                    });
                   }}
                 >
                   Save
@@ -166,6 +179,20 @@ export default function KeySkillsModal({
           </div>
         </div>
       </Dialog>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
     </>
   );
 }
