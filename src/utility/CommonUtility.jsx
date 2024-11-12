@@ -47,6 +47,20 @@ function CommonUtility() {
     "December",
   ];
 
+  const getEducation = ["Bachelor's Degree", "Master's Degree", "PhD"]
+
+  const getCourse = ["Computer Science","AI-DS", "Information Engineering", "Electronic Engineering", "Bio Engineering"]
+
+  const getSpecializations = ["Software Engineering","Network Engineering","Structural Engineering"]
+
+  const getGrade = ["A", "B", "C",  "D", "E", "F"]
+
+  const getCourseTypes = [
+    { value: "full-time", label: "Full-time" },
+    { value: "part-time", label: "Part-time" },
+    { value: "correspondence/Distance learning", label: "Correspondence/Distance learning" },
+  ];
+
   const getProjectStatusOptions = [
     { label: "In Progress", value: "ongoing" },
     { label: "Finished", value: "completed" },
@@ -70,6 +84,11 @@ function CommonUtility() {
     yearOptions,
     monthOptions,
     getProjectStatusOptions,
+    getEducation,
+    getCourse,
+    getSpecializations,
+    getGrade,
+    getCourseTypes,
     addToArray,
     removeFromArray,
   };

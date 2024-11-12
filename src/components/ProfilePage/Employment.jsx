@@ -54,7 +54,7 @@ function Employment() {
           </button>
         </div>
 
-        {employments.map((employment, index) => (
+        {employments?.map((employment, index) => (
           <div key={index} className="flex flex-col gap-1">
             <div className="flex items-center gap-4">
               <h3 className="font-semibold">{employment.jobTitle}</h3>
