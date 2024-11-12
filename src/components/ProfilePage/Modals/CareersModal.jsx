@@ -9,70 +9,16 @@ import {
   Select,
   Checkbox,
 } from "@headlessui/react";
-import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { FaChevronDown } from "react-icons/fa6";
-import { TfiCheck } from "react-icons/tfi";
-import { LiaCheckSolid } from "react-icons/lia";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import CommonUtility from "../../../utility/CommonUtility";
+import CareerUtility from "../../../utility/CareerUtility";
 
-export default function CareersModal({
-  isOpen,
-  setIsOpen,
-  careers,
-  setCareers,
-}) {
-  const [careersTemp, setcareersTemp] = useState(careers);
-
-  const [locations, setLocations] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-
-  // Function to add a new location tag
-  const addLocation = (e) => {
-    e.preventDefault();
-    if (
-      inputValue.trim() &&
-      locations.length < 10 &&
-      !locations.includes(inputValue)
-    ) {
-      setLocations([...locations, inputValue.trim()]);
-      setInputValue(""); // Clear input
-    }
-  };
-
-  // Function to remove a location tag
-  const removeLocation = (locationToRemove) => {
-    setLocations(locations.filter((location) => location !== locationToRemove));
-  };
-
-  const industries = [
-    "IT Services & Consulting",
-    "Engineering",
-    "Sales",
-    "Call Center",
-  ];
-
-  const departments = [
-    "Enineering - Software & QA",
-    "Humar Resources",
-    "Accounts",
-    "Management",
-  ];
-
-  const roleCategories = ["Software Development", "QA"];
-
-  const jobRoles = [
-    "Technical Lead",
-    "Software Developer",
-    "Software Engineer",
-    "Senior Software Developer",
-    "Senior Software Engineer",
-  ];
-
-  const jobTypes = ["Permanent", "Contractual"];
-
-  const employmentTypes = ["Full time", "Part time"];
+export default function CareersModal({ isOpen, toggleModal }) {
+  const utility = CommonUtility();
+  const careerUtility = CareerUtility();
 
   return (
     <>
@@ -80,7 +26,7 @@ export default function CareersModal({
         open={isOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={() => setIsOpen((prev) => !prev)}
+        onClose={toggleModal}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -112,21 +58,29 @@ export default function CareersModal({
                       <div className="relative border rounded-2xl flex items-center m-1">
                         <Select
                           className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
-                            !careersTemp.currentIndustry ? "text-gray-400" : ""
+                            !careerUtility.careersTemp.currentIndustry
+                              ? "text-gray-400"
+                              : ""
                           }`}
                           onChange={(e) =>
-                            setcareersTemp((prev) => ({
+                            careerUtility.setCareersTemp((prev) => ({
                               ...prev,
                               currentIndustry: e.target.value,
                             }))
                           }
-                          value={careersTemp.currentIndustry || ""}
+                          value={
+                            careerUtility.careersTemp.currentIndustry || ""
+                          }
                         >
                           <option value="" disabled={true} hidden={true}>
                             Current Industry
                           </option>
-                          {industries.map((industry, idx) => (
-                            <option value={industry} key={idx}>
+                          {utility.industries.map((industry, idx) => (
+                            <option
+                              value={industry}
+                              key={idx}
+                              className="text-black"
+                            >
                               {industry}
                             </option>
                           ))}
@@ -144,20 +98,22 @@ export default function CareersModal({
                       <div className="relative border rounded-2xl flex items-center m-1">
                         <Select
                           className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
-                            !careersTemp.department ? "text-gray-400" : ""
+                            !careerUtility.careersTemp.department
+                              ? "text-gray-400"
+                              : ""
                           }`}
                           onChange={(e) =>
-                            setcareersTemp((prev) => ({
+                            careerUtility.setCareersTemp((prev) => ({
                               ...prev,
                               department: e.target.value,
                             }))
                           }
-                          value={careersTemp.department || ""}
+                          value={careerUtility.careersTemp.department || ""}
                         >
                           <option value="" disabled={true} hidden={true}>
                             Department
                           </option>
-                          {departments.map((department, idx) => (
+                          {utility.departments.map((department, idx) => (
                             <option value={department} key={idx}>
                               {department}
                             </option>
@@ -175,20 +131,22 @@ export default function CareersModal({
                       <div className="relative border rounded-2xl flex items-center m-1">
                         <Select
                           className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
-                            !careersTemp.roleCategory ? "text-gray-400" : ""
+                            !careerUtility.careersTemp.roleCategory
+                              ? "text-gray-400"
+                              : ""
                           }`}
                           onChange={(e) =>
-                            setcareersTemp((prev) => ({
+                            careerUtility.setCareersTemp((prev) => ({
                               ...prev,
                               roleCategory: e.target.value,
                             }))
                           }
-                          value={careersTemp.roleCategory || ""}
+                          value={careerUtility.careersTemp.roleCategory || ""}
                         >
                           <option value="" disabled={true} hidden={true}>
                             Role Category
                           </option>
-                          {roleCategories.map((category, idx) => (
+                          {utility.roleCategories.map((category, idx) => (
                             <option value={category} key={idx}>
                               {category}
                             </option>
@@ -206,20 +164,22 @@ export default function CareersModal({
                       <div className="relative border rounded-2xl flex items-center m-1">
                         <Select
                           className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
-                            !careersTemp.jobRole ? "text-gray-400" : ""
+                            !careerUtility.careersTemp.jobRole
+                              ? "text-gray-400"
+                              : ""
                           }`}
                           onChange={(e) =>
-                            setcareersTemp((prev) => ({
+                            careerUtility.setCareersTemp((prev) => ({
                               ...prev,
                               jobRole: e.target.value,
                             }))
                           }
-                          value={careersTemp.jobRole || ""}
+                          value={careerUtility.careersTemp.jobRole || ""}
                         >
                           <option value="" disabled={true} hidden={true}>
                             Job Role
                           </option>
-                          {jobRoles.map((role, idx) => (
+                          {utility.jobRoles.map((role, idx) => (
                             <option value={role} key={idx}>
                               {role}
                             </option>
@@ -234,7 +194,7 @@ export default function CareersModal({
                       Desired job type
                     </h3>
                     <div className="flex items-center gap-6">
-                      {jobTypes.map((type, idx) => (
+                      {utility.jobTypes.map((type, idx) => (
                         <Field
                           className="flex items-center gap-3 w-1/3"
                           key={idx}
@@ -258,7 +218,7 @@ export default function CareersModal({
                       Desired employeement type
                     </h3>
                     <div className="flex items-center gap-6">
-                      {employmentTypes.map((type, idx) => (
+                      {utility.employmentTypes.map((type, idx) => (
                         <Field
                           className="flex items-center gap-3 w-1/3"
                           key={idx}
@@ -323,9 +283,13 @@ export default function CareersModal({
                         type="text"
                         id="floating_outlined"
                         className="w-full outline-none border rounded-md p-2 peer"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        onKeyDown={(e) => e.key === "Enter" && addLocation(e)}
+                        value={careerUtility.inputValue}
+                        onChange={(e) =>
+                          careerUtility.setInputValue(e.target.value)
+                        }
+                        onKeyDown={(e) =>
+                          e.key === "Enter" && careerUtility.addLocation(e)
+                        }
                         placeholder=" "
                       />
                       <label
@@ -337,14 +301,14 @@ export default function CareersModal({
                     </div>
 
                     <div className="flex flex-wrap gap-2">
-                      {locations.map((location, index) => (
+                      {careerUtility.locations.map((location, index) => (
                         <div
                           key={index}
                           className="flex items-center gap-1 p-2 bg-gray-200 rounded-full text-sm border border-black text-black font-semibold"
                         >
                           <span>{location}</span>
                           <button
-                            onClick={() => removeLocation(location)}
+                            onClick={careerUtility.removeLocation}
                             className="text-gray-500 hover:text-black"
                           >
                             ×
@@ -376,16 +340,13 @@ export default function CareersModal({
               </div>
 
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button
-                  className="text-blue-700"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                >
+                <button className="text-blue-700" onClick={toggleModal}>
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    setIsOpen((prev) => !prev);
+                    toggleModal();
                     toast.success("Careers saved successfully", {
                       position: "top-right",
                       autoClose: 5000,
