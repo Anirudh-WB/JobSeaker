@@ -1,20 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import CareersModal from "./Modals/CareersModal";
+import CareerUtility from "../../utility/CareerUtility";
 
 function Careers() {
-  let [isCareersOpen, setIsCareersOpen] = useState(false);
-  let [careers, setCareers] = useState({
-    currentIndustry: "IT Services & Consulting",
-    department: "Engineering - Software & QA",
-    roleCategory: "Software Development",
-    jobRole: "Software Engineer",
-    desiredJobTypes: ["permanent", "contractual"],
-    employeeType: ["full-time", "part-time"],
-    shift: "flexible",
-    location: ["Mumbai", "Thane", "Navi Mumbai"],
-    salary: 2500000,
-  });
+  const utility = CareerUtility();
 
   return (
     <>
@@ -23,7 +13,7 @@ function Careers() {
           <h2 className="font-semibold text-lg" id="careers">
             Careers
           </h2>
-          <button onClick={() => setIsCareersOpen((prev) => !prev)}>
+          <button onClick={utility.toggleModal}>
             <FiEdit2 className="text-sm text-gray-700" />
           </button>
         </div>
@@ -34,13 +24,17 @@ function Careers() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Current Industry
               </h3>
-              <p className="font-semibold text-sm">{careers.currentIndustry}</p>
+              <p className="font-semibold text-sm">
+                {utility.careers.currentIndustry}
+              </p>
             </div>
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">
                 Department
               </h3>
-              <p className="font-semibold text-sm">{careers.department}</p>
+              <p className="font-semibold text-sm">
+                {utility.careers.department}
+              </p>
             </div>
           </div>
 
@@ -49,11 +43,13 @@ function Careers() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Role category
               </h3>
-              <p className="font-semibold text-sm">{careers.roleCategory}</p>
+              <p className="font-semibold text-sm">
+                {utility.careers.roleCategory}
+              </p>
             </div>
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">Job role</h3>
-              <p className="font-semibold text-sm">{careers.jobRole}</p>
+              <p className="font-semibold text-sm">{utility.careers.jobRole}</p>
             </div>
           </div>
 
@@ -63,7 +59,7 @@ function Careers() {
                 Desired job type
               </h3>
               <p className="font-semibold text-sm">
-                {careers.desiredJobTypes.join(", ")}
+                {utility.careers.desiredJobTypes.join(", ")}
               </p>
             </div>
             <div className="w-1/2">
@@ -71,7 +67,7 @@ function Careers() {
                 Desired employee type
               </h3>
               <p className="font-semibold text-sm">
-                {careers.employeeType.join(", ")}
+                {utility.careers.employeeType.join(", ")}
               </p>
             </div>
           </div>
@@ -81,14 +77,14 @@ function Careers() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Preferred shifts
               </h3>
-              <p className="font-semibold text-sm">{careers.shift}</p>
+              <p className="font-semibold text-sm">{utility.careers.shift}</p>
             </div>
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">
                 Preferred work locations
               </h3>
               <p className="font-semibold text-sm">
-                {careers.location.join(", ")}
+                {utility.careers.location.join(", ")}
               </p>
             </div>
           </div>
@@ -98,17 +94,15 @@ function Careers() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Expected Salary
               </h3>
-              <p className="font-semibold text-sm">{careers.salary}</p>
+              <p className="font-semibold text-sm">{utility.careers.salary}</p>
             </div>
           </div>
         </div>
       </div>
 
       <CareersModal
-        isOpen={isCareersOpen}
-        setIsOpen={setIsCareersOpen}
-        careers={careers}
-        setCareers={setCareers}
+        isOpen={utility.isCareersOpen}
+        toggleModal={utility.toggleModal}
       />
     </>
   );
