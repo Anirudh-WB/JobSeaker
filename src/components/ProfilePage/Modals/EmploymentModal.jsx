@@ -15,7 +15,7 @@ export default function EmploymentModal({
   employment,
   setEmployment,
 }) {
-  const [headlineTemp, setHeadlineTemp] = useState(employment);
+  const [employeeTemp, setEmployeeTemp] = useState(employment);
 
   return (
     <>
@@ -239,9 +239,7 @@ export default function EmploymentModal({
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="font-medium">
-                    Job profile
-                  </h3>
+                  <h3 className="font-medium">Job profile</h3>
                   <div class="relative">
                     <textarea
                       type="text"
@@ -256,7 +254,9 @@ export default function EmploymentModal({
                       Type here...
                     </label>
                   </div>
-                  <span className="text-xs text-gray-500 text-right">4000 character(s) left</span>
+                  <span className="text-xs text-gray-500 text-right">
+                    4000 character(s) left
+                  </span>
                 </div>
                 <div className="flex flex-col gap-2">
                   <h3 className="font-medium">
@@ -280,7 +280,6 @@ export default function EmploymentModal({
                         Notice period
                       </label>
                     </div>
-                    
                   </div>
                 </div>
               </div>
@@ -294,9 +293,9 @@ export default function EmploymentModal({
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    setEmployment(headlineTemp);
+                    setEmployment(employeeTemp);
                     setIsOpen((prev) => !prev);
-                    toast.success("Resume Headline saved successfully", {
+                    toast.success("Employeement details saved successfully", {
                       position: "top-right",
                       autoClose: 5000,
                       hideProgressBar: false,
@@ -318,6 +317,7 @@ export default function EmploymentModal({
       </Dialog>
 
       <ToastContainer
+        containerId="employeeId"
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
