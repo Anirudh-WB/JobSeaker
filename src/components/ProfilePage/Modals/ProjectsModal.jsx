@@ -4,25 +4,20 @@ import {
   DialogTitle,
   DialogBackdrop,
 } from "@headlessui/react";
-import { useState } from "react";
+
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import CommonUtility from "../../../utility/CommonUtility";
 
-export default function ProjectsModal({
-  isOpen,
-  setIsOpen,
-  projectHeadline,
-  setprojectHeadline,
-}) {
-  const [projectTemp, setprojectTemp] = useState(projectHeadline);
-
+export default function ProjectsModal({ isOpen, toggleModal }) {
+  const commonUtility = CommonUtility();
   return (
     <>
       <Dialog
         open={isOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={() => setIsOpen((prev) => !prev)}
+        onClose={toggleModal}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -33,10 +28,7 @@ export default function ProjectsModal({
               className="w-1/2 rounded-3xl bg-white p-10 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="flex justify-end w-full">
-                <button
-                  className="text-xl text-gray-500"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                >
+                <button className="text-xl text-gray-500" onClick={toggleModal}>
                   <RiCloseLargeFill />
                 </button>
               </div>
@@ -89,25 +81,21 @@ export default function ProjectsModal({
                   <label className="font-semibold text-sm">
                     Project Status
                   </label>
-                  <div class="inline-flex items-center gap-20">
-                    <label class="flex items-center text-sm text-gray-700">
-                      <input
-                        type="radio"
-                        name="status"
-                        value="ongoing"
-                        className="mr-1"
-                      />
-                      In Progress
-                    </label>
-                    <label class="flex items-center text-sm text-gray-700">
-                      <input
-                        type="radio"
-                        name="status"
-                        value="completed"
-                        className="mr-1"
-                      />
-                      Finished
-                    </label>
+                  <div className="inline-flex items-center gap-20">
+                    {commonUtility.getProjectStatusOptions.map((status) => (
+                      <label
+                        key={status.value}
+                        className="flex items-center text-sm text-gray-700"
+                      >
+                        <input
+                          type="radio"
+                          name="status"
+                          value={status.value}
+                          className="mr-1"
+                        />
+                        {status.label}
+                      </label>
+                    ))}
                   </div>
 
                   <label className="     font-semibold text-sm">
@@ -116,12 +104,11 @@ export default function ProjectsModal({
                   <div className="w-full flex gap-3">
                     <div className="relative w-1/2">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
+                        {commonUtility.yearOptions.map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Year
@@ -129,17 +116,11 @@ export default function ProjectsModal({
                     </div>
                     <div className="relative w-1/2">
                       <select className="peer outline-none border w-full p-2 rounded-xl text-gray-700">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
+                        {commonUtility.monthOptions.map((month) => (
+                          <option key={month} value={month}>
+                            {month}
+                          </option>
+                        ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Month
@@ -179,16 +160,24 @@ export default function ProjectsModal({
                 </form>
               </div>
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button
-                  className="text-blue-700"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                >
+                <button className="text-blue-700" onClick={toggleModal}>
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    setIsOpen((prev) => !prev);
+                    toggleModal();
+                    toast.success("Project Details successfully", {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                      transition: Bounce,
+                    });
                   }}
                 >
                   Save

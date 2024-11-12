@@ -27,6 +27,31 @@ function CommonUtility() {
 
   const employmentTypes = ["Full time", "Part time"];
 
+  const yearOptions = Array.from(
+    { length: 100 },
+    (_, i) => new Date().getFullYear() - i
+  );
+
+  const monthOptions = [
+    "January",
+    "Febuary",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const getProjectStatusOptions = [
+    { label: "In Progress", value: "ongoing" },
+    { label: "Finished", value: "completed" },
+  ];
+
   const addToArray = (toAdd, state, setState) => {
     setState([...state, toAdd]);
   };
@@ -42,6 +67,9 @@ function CommonUtility() {
     jobRoles,
     jobTypes,
     employmentTypes,
+    yearOptions,
+    monthOptions,
+    getProjectStatusOptions,
     addToArray,
     removeFromArray,
   };

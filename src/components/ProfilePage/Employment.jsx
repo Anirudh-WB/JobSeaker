@@ -47,15 +47,6 @@ function Employment() {
           <button
             className="font-semibold text-blue-700"
             onClick={() => {
-              //   setSkillToEdit({
-              //     name: "",
-              //     version: NaN,
-              //     lastUsed: NaN,
-              //     experience: {
-              //       year: 0,
-              //       month: 0,
-              //     },
-              //   });
               setIsEmploymentOpen((prev) => !prev);
             }}
           >
