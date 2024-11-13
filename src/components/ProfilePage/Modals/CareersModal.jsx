@@ -114,7 +114,11 @@ export default function CareersModal({ isOpen, toggleModal }) {
                             Department
                           </option>
                           {utility.departments.map((department, idx) => (
-                            <option value={department} key={idx}>
+                            <option
+                              value={department}
+                              key={idx}
+                              className="text-black"
+                            >
                               {department}
                             </option>
                           ))}
@@ -147,7 +151,11 @@ export default function CareersModal({ isOpen, toggleModal }) {
                             Role Category
                           </option>
                           {utility.roleCategories.map((category, idx) => (
-                            <option value={category} key={idx}>
+                            <option
+                              value={category}
+                              key={idx}
+                              className="text-black"
+                            >
                               {category}
                             </option>
                           ))}
@@ -180,7 +188,11 @@ export default function CareersModal({ isOpen, toggleModal }) {
                             Job Role
                           </option>
                           {utility.jobRoles.map((role, idx) => (
-                            <option value={role} key={idx}>
+                            <option
+                              value={role}
+                              key={idx}
+                              className="text-black"
+                            >
                               {role}
                             </option>
                           ))}

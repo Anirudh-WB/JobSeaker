@@ -10,41 +10,25 @@ import {
 } from "@headlessui/react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { FaChevronDown } from "react-icons/fa6";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import ItSkillsUtility from "../../../utility/ItSkillsUtility";
+import CommonUtility from "../../../utility/CommonUtility";
 
 export default function ItSkillsModal({
   isOpen,
-  setIsOpen,
-  skills,
+  toggleModal,
   setSkills,
   skillToEdit,
 }) {
-  const [skillsTemp, setSkillsTemp] = useState(
-    skillToEdit || {
-      name: "",
-      version: NaN,
-      lastUsed: NaN,
-      experience: {
-        year: 0,
-        month: 0,
-      },
-    }
-  );
-
   useEffect(() => {
     if (skillToEdit) {
-      setSkillsTemp(skillToEdit);
+      skillsUtility.setSkillsTemp(skillToEdit);
     }
   }, [skillToEdit]);
 
-  const d = new Date();
-
-  const lastUse = [...Array(d.getFullYear()).keys()].map((n) => n + 1);
-
-  const months = [...Array(11).keys()].map((n) => n + 1);
-
-  const exp = [...Array(100).keys()].map((n) => n + 1);
+  const utility = CommonUtility();
+  const skillsUtility = ItSkillsUtility();
 
   return (
     <>
@@ -53,7 +37,7 @@ export default function ItSkillsModal({
         as="div"
         className="relative z-50 focus:outline-none"
         onClose={() => {
-          setSkillsTemp({
+          skillsUtility.setSkillsTemp({
             name: "",
             version: NaN,
             lastUsed: NaN,
@@ -62,7 +46,7 @@ export default function ItSkillsModal({
               month: 0,
             },
           });
-          setIsOpen((prev) => !prev);
+          toggleModal();
         }}
         __demoMode
       >
@@ -97,9 +81,9 @@ export default function ItSkillsModal({
                   </h2>
                   <input
                     type="text"
-                    value={skillsTemp.name}
+                    value={skillsUtility.skillsTemp.name}
                     onChange={(e) => {
-                      setSkillsTemp((prev) => ({
+                      skillsUtility.setSkillsTemp((prev) => ({
                         ...prev,
                         name: e.target.value,
                       }));
@@ -113,9 +97,9 @@ export default function ItSkillsModal({
                     <h2 className="text-sm font-medium">Software version</h2>
                     <input
                       type="number"
-                      value={skillsTemp.version || ""}
+                      value={skillsUtility.skillsTemp.version || ""}
                       onChange={(e) =>
-                        setSkillsTemp((prev) => ({
+                        skillsUtility.setSkillsTemp((prev) => ({
                           ...prev,
                           version: e.target.value,
                         }))
@@ -130,21 +114,23 @@ export default function ItSkillsModal({
                       <div className="relative border rounded-2xl flex items-center m-1">
                         <Select
                           className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
-                            !skillsTemp.lastUsed ? "text-gray-400" : ""
+                            !skillsUtility.skillsTemp.lastUsed
+                              ? "text-gray-400"
+                              : ""
                           }`}
                           onChange={(e) =>
-                            setSkillsTemp((prev) => ({
+                            skillsUtility.setSkillsTemp((prev) => ({
                               ...prev,
                               lastUsed: e.target.value,
                             }))
                           }
-                          value={skillsTemp.lastUsed || ""}
+                          value={skillsUtility.skillsTemp.lastUsed || ""}
                         >
                           <option value="" disabled={true} hidden={true}>
                             Last used
                           </option>
-                          {lastUse.map((yr, idx) => (
-                            <option value={yr} key={idx}>
+                          {utility.years.map((yr, idx) => (
+                            <option value={yr} key={idx} className="text-black">
                               {yr}
                             </option>
                           ))}
@@ -163,12 +149,12 @@ export default function ItSkillsModal({
                           <div className="relative border rounded-2xl flex items-center m-1">
                             <Select
                               className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
-                                !skillsTemp.experience.year
+                                !skillsUtility.skillsTemp.experience.year
                                   ? "text-gray-400"
                                   : ""
                               }`}
                               onChange={(e) =>
-                                setSkillsTemp((prev) => ({
+                                skillsUtility.setSkillsTemp((prev) => ({
                                   ...prev,
                                   experience: {
                                     ...prev.experience,
@@ -176,13 +162,19 @@ export default function ItSkillsModal({
                                   },
                                 }))
                               }
-                              value={skillsTemp.experience.year || ""}
+                              value={
+                                skillsUtility.skillsTemp.experience.year || ""
+                              }
                             >
                               <option value="" disabled={true} hidden={true}>
                                 Years
                               </option>
-                              {exp.map((yr, idx) => (
-                                <option value={yr} key={idx}>
+                              {utility.experience.map((yr, idx) => (
+                                <option
+                                  value={yr}
+                                  key={idx}
+                                  className="text-black"
+                                >
                                   {yr}
                                 </option>
                               ))}
@@ -196,12 +188,12 @@ export default function ItSkillsModal({
                           <div className="relative border rounded-2xl flex items-center m-1">
                             <Select
                               className={`w-full border border-none rounded-2xl p-3 text-sm outline-none appearance-none ${
-                                !skillsTemp.experience.month
+                                !skillsUtility.skillsTemp.experience.month
                                   ? "text-gray-400"
                                   : ""
                               }`}
                               onChange={(e) =>
-                                setSkillsTemp((prev) => ({
+                                skillsUtility.setSkillsTemp((prev) => ({
                                   ...prev,
                                   experience: {
                                     ...prev.experience,
@@ -209,13 +201,19 @@ export default function ItSkillsModal({
                                   },
                                 }))
                               }
-                              value={skillsTemp.experience.month || ""}
+                              value={
+                                skillsUtility.skillsTemp.experience.month || ""
+                              }
                             >
                               <option value="" disabled={true} hidden={true}>
                                 Months
                               </option>
-                              {months.map((month, index) => (
-                                <option value={month} key={index}>
+                              {utility.monthsNum.map((month, index) => (
+                                <option
+                                  value={month}
+                                  key={index}
+                                  className="text-black"
+                                >
                                   {month}
                                 </option>
                               ))}
@@ -232,8 +230,8 @@ export default function ItSkillsModal({
                 <button
                   className="text-blue-700"
                   onClick={() => {
-                    setSkillsTemp(skillToEdit);
-                    setIsOpen((prev) => !prev);
+                    skillsUtility.setSkillsTemp(skillToEdit);
+                    toggleModal();
                   }}
                 >
                   Cancel
@@ -245,12 +243,18 @@ export default function ItSkillsModal({
                       skillToEdit.id
                         ? prev.map((skill) =>
                             skill.id === skillToEdit.id
-                              ? { ...skill, ...skillsTemp }
+                              ? { ...skill, ...skillsUtility.skillsTemp }
                               : skill
                           )
-                        : [{ id: skills.length + 1, ...skillsTemp }, ...prev]
+                        : [
+                            {
+                              id: skillsUtility.itSkills.length + 1,
+                              ...skillsUtility.skillsTemp,
+                            },
+                            ...prev,
+                          ]
                     );
-                    setSkillsTemp({
+                    skillsUtility.setSkillsTemp({
                       name: "",
                       version: NaN,
                       lastUsed: NaN,
@@ -259,7 +263,7 @@ export default function ItSkillsModal({
                         month: 0,
                       },
                     });
-                    setIsOpen((prev) => !prev);
+                    toggleModal();
                     toast.success("IT Skills saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

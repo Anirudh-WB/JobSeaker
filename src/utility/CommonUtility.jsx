@@ -102,6 +102,33 @@ function CommonUtility() {
     setState(state.filter((st) => st !== toRemove));
   };
 
+  const d = new Date();
+
+  const years = [...Array(d.getFullYear()).keys()].map((n) => n + 1).reverse();
+
+  const monthsNum = [...Array(11).keys()].map((n) => n + 1);
+
+  const experience = [...Array(100).keys()].map((n) => n + 1);
+
+  const genders = ["Male", "Female", "Transgender"];
+
+  const maritialStatuses = [
+    "Single/unmarried",
+    "Married",
+    "Widowed",
+    "Divorced",
+    "Separated",
+    "Other",
+  ];
+
+  const categories = [
+    "General",
+    "Scheduled Caste (SC)",
+    "Scheduled Tribes (ST)",
+    "OBC",
+    "Other",
+  ];
+
   return {
     industries,
     departments,
@@ -122,6 +149,12 @@ function CommonUtility() {
     noticePeriodNumber,
     addToArray,
     removeFromArray,
+    years,
+    monthsNum,
+    experience,
+    genders,
+    maritialStatuses,
+    categories,
   };
 }
 

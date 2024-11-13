@@ -8,34 +8,11 @@ import {
 import { RiCloseLargeFill } from "react-icons/ri";
 import { FiPlus } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
-import { useState } from "react";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import KeySkillsUtility from "../../../utility/KeySkillsUtility";
 
-export default function KeySkillsModal({
-  isOpen,
-  setIsOpen,
-  skills,
-  setSkills,
-}) {
-  const [skillsTemp, setSkillsTemp] = useState(skills);
-  const [suggestedSkills, setSuggestedSkills] = useState([
-    "Procedure Development",
-    "Problem Resolution",
-    "Problem Solving",
-    "Problem Solving Skills",
-    "Problem Solving Tools",
-    "PROC SQL",
-    "Procedural Programming",
-    "Procedure",
-    " Process",
-    "Process Adherence",
-  ]);
-
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredSuggestions = suggestedSkills.filter((skill) =>
-    skill.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+export default function KeySkillsModal({ isOpen, toggleModal, setSkills }) {
+  const skillUtility = KeySkillsUtility();
 
   return (
     <>
@@ -43,7 +20,7 @@ export default function KeySkillsModal({
         open={isOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={() => setIsOpen((prev) => !prev)}
+        onClose={toggleModal}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -69,7 +46,7 @@ export default function KeySkillsModal({
                 <div className="flex flex-col gap-7">
                   <h2 className="text-sm font-medium">Skills</h2>
                   <div className="flex items-center gap-2 flex-wrap text-sm px-4">
-                    {skillsTemp?.map((skill, index) => (
+                    {skillUtility.skillsTemp?.map((skill, index) => (
                       <span
                         className="rounded-full px-3 py-1 bg-gray-300 border border-black font-medium flex items-end gap-1"
                         key={index}
@@ -78,7 +55,7 @@ export default function KeySkillsModal({
 
                         <button
                           onClick={() =>
-                            setSkillsTemp((prev) =>
+                            skillUtility.setSkillsTemp((prev) =>
                               prev.filter((item) => item !== skill)
                             )
                           }
@@ -94,7 +71,7 @@ export default function KeySkillsModal({
                         type="text"
                         id="floating_outlined"
                         class="border border-gray-300 rounded-2xl px-4 py-2 w-full outline-none peer"
-                        placeholder=" "
+                        placeholder=""
                       />
                       <label
                         for="floating_outlined"
@@ -104,25 +81,31 @@ export default function KeySkillsModal({
                       </label>
                     </div>
 
-                    {searchTerm && filteredSuggestions.length > 0 && (
-                      <div className="absolute top-full left-0 w-full max-h-60 overflow-y-auto rounded-lg bg-white shadow-lg z-10">
-                        {filteredSuggestions.map((skill, index) => (
-                          <div
-                            key={index}
-                            className="cursor-pointer px-4 py-2 hover:bg-blue-100"
-                            onClick={() => {
-                              setSkillsTemp((prev) => [skill, ...prev]);
-                              setSuggestedSkills((prev) =>
-                                prev.filter((item) => item !== skill)
-                              );
-                              setSearchTerm("");
-                            }}
-                          >
-                            {skill}
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    {skillUtility.searchTerm &&
+                      skillUtility.filteredSuggestions.length > 0 && (
+                        <div className="absolute top-full left-0 w-full max-h-60 overflow-y-auto rounded-lg bg-white shadow-lg z-10">
+                          {skillUtility.filteredSuggestions.map(
+                            (skill, index) => (
+                              <div
+                                key={index}
+                                className="cursor-pointer px-4 py-2 hover:bg-blue-100"
+                                onClick={() => {
+                                  skillUtility.setSkillsTemp((prev) => [
+                                    skill,
+                                    ...prev,
+                                  ]);
+                                  skillUtility.setSuggestedSkills((prev) =>
+                                    prev.filter((item) => item !== skill)
+                                  );
+                                  skillUtility.setSearchTerm("");
+                                }}
+                              >
+                                {skill}
+                              </div>
+                            )
+                          )}
+                        </div>
+                      )}
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
@@ -130,7 +113,7 @@ export default function KeySkillsModal({
                     Or you can select from the suggested set of skills
                   </h2>
                   <div className="flex items-center gap-2 flex-wrap text-sm text-gray-700">
-                    {suggestedSkills.map((skill, index) => (
+                    {skillUtility.suggestedSkills.map((skill, index) => (
                       <span
                         className="border rounded-full px-3 py-1 font-medium flex items-end gap-1"
                         key={index}
@@ -139,8 +122,11 @@ export default function KeySkillsModal({
 
                         <button
                           onClick={() => {
-                            setSkillsTemp((prev) => [skill, ...prev]);
-                            setSuggestedSkills((prev) =>
+                            skillUtility.setSkillsTemp((prev) => [
+                              skill,
+                              ...prev,
+                            ]);
+                            skillUtility.setSuggestedSkills((prev) =>
                               prev.filter((item) => item !== skill)
                             );
                           }}
@@ -156,8 +142,8 @@ export default function KeySkillsModal({
                 <button
                   className="text-blue-700"
                   onClick={() => {
-                    setSkillsTemp(skills);
-                    setIsOpen((prev) => !prev);
+                    skillUtility.setSkillsTemp(skillUtility.skills);
+                    toggleModal();
                   }}
                 >
                   Cancel
@@ -165,8 +151,8 @@ export default function KeySkillsModal({
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    setSkills(skillsTemp);
-                    setIsOpen((prev) => !prev);
+                    setSkills(skillUtility.skillsTemp);
+                    toggleModal();
                     toast.success("Key Skills saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

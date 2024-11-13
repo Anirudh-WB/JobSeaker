@@ -1,83 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ItSkillsModal from "./Modals/ItSkillsModal";
+import ItSkillUtility from "../../utility/ItSkillsUtility";
 
 function ItSkills() {
-  let [isItSkillsOpen, setIsItSkillsOpen] = useState(false);
-
-  const [skillToEdit, setSkillToEdit] = useState({
-    id: 0,
-    name: "",
-    version: NaN,
-    lastUsed: NaN,
-    experience: {
-      year: 0,
-      month:  0 ,
-    },
-  });
-
-  let [itSkills, setItSkills] = useState([
-    {
-      id: 1,
-      name: "Docker",
-      version: NaN,
-      lastUsed: 2024,
-      experience: {
-        year: 0,
-        month: 0,
-      },
-    },
-    {
-      id: 2,
-      name: "MySQL",
-      version: NaN,
-      lastUsed: 2024,
-      experience: {
-        year: 0,
-        month: 0,
-      },
-    },
-    {
-      id: 3,
-      name: "SQL Server",
-      version: NaN,
-      lastUsed: 2024,
-      experience: {
-        year: 0,
-        month: 0,
-      },
-    },
-    {
-      id: 4,
-      name: "C#",
-      version: 12,
-      lastUsed: 2024,
-      experience: {
-        year: 12,
-        month: 0,
-      },
-    },
-    {
-      id: 5,
-      name: "React.js",
-      version: 18,
-      lastUsed: 2024,
-      experience: {
-        year: 2,
-        month: 0,
-      },
-    },
-    {
-      id: 6,
-      name: ".Net Core",
-      version: 8,
-      lastUsed: 2024,
-      experience: {
-        year: 4,
-        month: 0,
-      },
-    },
-  ]);
+  const utility = ItSkillUtility();
 
   return (
     <>
@@ -90,7 +17,7 @@ function ItSkills() {
           <button
             className="font-semibold text-blue-700"
             onClick={() => {
-              setSkillToEdit({
+              utility.setSkillToEdit({
                 name: "",
                 version: NaN,
                 lastUsed: NaN,
@@ -99,7 +26,7 @@ function ItSkills() {
                   month: 0,
                 },
               });
-              setIsItSkillsOpen((prev) => !prev);
+              utility.toggleModal();
             }}
           >
             Add details
@@ -116,7 +43,7 @@ function ItSkills() {
             </div>
 
             <div className="w-full flex flex-col gap-5 font-medium mt-4">
-              {itSkills?.map((skill, index) => (
+              {utility.itSkills?.map((skill, index) => (
                 <div className="w-full flex" key={index}>
                   <p className="w-1/5">{skill.name}</p>
                   <p className="w-1/5">
@@ -137,8 +64,8 @@ function ItSkills() {
                   <p className="w-1/5 text-center">
                     <button
                       onClick={() => {
-                        setSkillToEdit(skill);
-                        setIsItSkillsOpen((prev) => !prev);
+                        utility.setSkillToEdit(skill);
+                        utility.toggleModal();
                       }}
                     >
                       <FiEdit2 className="text-sm text-gray-700" />
@@ -152,11 +79,11 @@ function ItSkills() {
       </div>
 
       <ItSkillsModal
-        isOpen={isItSkillsOpen}
-        setIsOpen={setIsItSkillsOpen}
-        skills={itSkills}
-        setSkills={setItSkills}
-        skillToEdit={skillToEdit}
+        isOpen={utility.isItSkillsOpen}
+        toggleModal={utility.toggleModal}
+        skills={utility.itSkills}
+        setSkills={utility.setItSkills}
+        skillToEdit={utility.skillToEdit}
       />
     </>
   );
