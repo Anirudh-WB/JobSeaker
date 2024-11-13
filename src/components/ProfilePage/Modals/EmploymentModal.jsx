@@ -28,7 +28,11 @@ export default function EmploymentModal({ isOpen, toggleEmployment }) {
               className="w-1/2 rounded-3xl bg-white p-10 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="flex justify-end w-full">
-                <CloseButton as="button" className="text-xl text-gray-500" onClick={toggleEmployment}>
+                <CloseButton
+                  as="button"
+                  className="text-xl text-gray-500"
+                  onClick={toggleEmployment}
+                >
                   <RiCloseLargeFill />
                 </CloseButton>
               </div>
@@ -75,8 +79,10 @@ export default function EmploymentModal({ isOpen, toggleEmployment }) {
                   <div className="mt-1 w-full flex flex-1 gap-2">
                     <div className="relative w-1/2">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
-                        {commonUtility.yearOptions.map((year) => (
-                          <option value={year}>{year}</option>
+                        {commonUtility.yearOptions.map((year, index) => (
+                          <option value={year} key={index}>
+                            {year}
+                          </option>
                         ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
@@ -143,8 +149,10 @@ export default function EmploymentModal({ isOpen, toggleEmployment }) {
                     <div className="relative w-1/2">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700 text-base">
                         <option>Select year</option>
-                        {commonUtility.yearOptions.map((year) => (
-                          <option value={year}>{year}</option>
+                        {commonUtility.yearOptions.map((year, index) => (
+                          <option value={year} key={index}>
+                            {year}
+                          </option>
                         ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
@@ -154,8 +162,10 @@ export default function EmploymentModal({ isOpen, toggleEmployment }) {
                     <div className="relative w-1/2">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
                         <option>Select month</option>
-                        {commonUtility.yearOptions.map((month) => (
-                          <option value={month}>{month}</option>
+                        {commonUtility.yearOptions.map((month, index) => (
+                          <option value={month} key={index}>
+                            {month}
+                          </option>
                         ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
@@ -229,8 +239,10 @@ export default function EmploymentModal({ isOpen, toggleEmployment }) {
                   <div className="mt-1 w-full flex flex-1 gap-2">
                     <div className="relative w-full">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
-                        {commonUtility.noticePeriodNumber.map((num) => (
-                          <option value={num}>{num} months</option>
+                        {commonUtility.noticePeriodNumber.map((num, index) => (
+                          <option value={num} key={index}>
+                            {num} months
+                          </option>
                         ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">

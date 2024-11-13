@@ -24,8 +24,8 @@ function PersonalDetails() {
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">Personal</h3>
               <p className="font-semibold text-sm">
-                {utility.personalDetails.personal.join(", ")}
-                {", "}
+                {utility.personalDetails.gender},{" "}
+                {utility.personalDetails.marritalStatus},{" "}
                 <a href="/" className="text-sm text-blue-700 font-semibold">
                   Add more info
                 </a>
