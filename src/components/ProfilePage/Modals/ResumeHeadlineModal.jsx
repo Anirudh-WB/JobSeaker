@@ -5,17 +5,16 @@ import {
   DialogBackdrop,
   CloseButton,
 } from "@headlessui/react";
-import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import ResumeHeadlineUtility from "../../../utility/ResumeHeadlineUtility";
 
 export default function ResumeHeadlineModal({
   isOpen,
-  setIsOpen,
-  resumeHeadline,
+  toggleModal,
   setResumeHeadline,
 }) {
-  const [headlineTemp, setHeadlineTemp] = useState(resumeHeadline);
+  const utility = ResumeHeadlineUtility();
 
   return (
     <>
@@ -23,7 +22,7 @@ export default function ResumeHeadlineModal({
         open={isOpen}
         as="div"
         className="relative z-10 focus:outline-none"
-        onClose={() => setIsOpen((prev) => !prev)}
+        onClose={toggleModal}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -50,25 +49,22 @@ export default function ResumeHeadlineModal({
                 <textarea
                   className="border w-full outline-none py-3 px-4 rounded-xl resize-none"
                   rows={3}
-                  value={headlineTemp}
-                  onChange={(e) => setHeadlineTemp(e.target.value)}
+                  value={utility.headlineTemp}
+                  onChange={(e) => utility.setHeadlineTemp(e.target.value)}
                 />
                 <span className="text-xs text-gray-600 text-right py-2 w-full block">
                   91 character(s) left
                 </span>
               </div>
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button
-                  className="text-blue-700"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                >
+                <button className="text-blue-700" onClick={toggleModal}>
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    setResumeHeadline(headlineTemp);
-                    setIsOpen((prev) => !prev);
+                    setResumeHeadline(utility.headlineTemp);
+                    toggleModal();
                     toast.success("Resume Headline saved successfully", {
                       position: "top-right",
                       autoClose: 5000,
@@ -106,9 +102,3 @@ export default function ResumeHeadlineModal({
     </>
   );
 }
-
-
-
-
-
-

@@ -3,44 +3,21 @@ import {
   DialogPanel,
   DialogTitle,
   DialogBackdrop,
+  CloseButton,
 } from "@headlessui/react";
-import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import CommonUtility from "../../../utility/CommonUtility";
+import PersonalDetailsUtility from "../../../utility/PersonalDetailsUtility";
 
 export default function PersonalDetailsModal({
   isOpen,
-  setIsOpen,
-  personalDetails,
+  toggleModal,
   setPersonalDetails,
 }) {
-  const [personalDetailsTemp, setPersonalDetailsTemp] =
-    useState(personalDetails);
-  const [selectedGender, setSelectedGender] = useState("");
-  const [selectedMaritalStatus, setSelectedMaritalStatus] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
   const sections = [1, 2, 3];
-
-  const jsonData = [
-    {
-      gender: ["Male", "Female", "Transgender"],
-      maritialStatus: [
-        "Single/unmarried",
-        "Married",
-        "Widowed",
-        "Divorced",
-        "Separated",
-        "Other",
-      ],
-      category: [
-        "General",
-        "Scheduled Caste (SC)",
-        "Scheduled Tribes (ST)",
-        "OBC",
-        "Other",
-      ],
-    },
-  ];
+  const utility = CommonUtility();
+  const personalUtility = PersonalDetailsUtility();
 
   return (
     <>
@@ -48,7 +25,7 @@ export default function PersonalDetailsModal({
         open={isOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={() => setIsOpen((prev) => !prev)}
+        onClose={toggleModal}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -59,12 +36,9 @@ export default function PersonalDetailsModal({
               className="w-1/2 rounded-3xl bg-white p-10 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="flex justify-end w-full">
-                <button
-                  className="text-xl text-gray-500"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                >
+                <CloseButton as="button" className="text-xl text-gray-500">
                   <RiCloseLargeFill />
-                </button>
+                </CloseButton>
               </div>
               <DialogTitle as="h3" className="text-xl font-medium">
                 Personal Details
@@ -78,12 +52,17 @@ export default function PersonalDetailsModal({
                 <div className="flex flex-col gap">
                   <label className="text-base font-semibold">Gender</label>
                   <div className="flex flex-wrap gap-3 mt-2">
-                    {jsonData[0].gender.map((option) => (
+                    {utility.genders.map((option) => (
                       <button
                         key={option}
-                        onClick={() => setSelectedGender(option)}
+                        onClick={() =>
+                          personalUtility.setPersonalDetailsTemp((prev) => ({
+                            ...prev,
+                            gender: option,
+                          }))
+                        }
                         className={`px-4 py-2 rounded-full border text-sm ${
-                          selectedGender === option
+                          personalUtility.personalDetailsTemp.gender === option
                             ? "bg-gray-200 font-semibold border-gray-400"
                             : "bg-white text-gray-500 font-semibold border-gray-300 hover:bg-gray-100"
                         }`}
@@ -100,12 +79,18 @@ export default function PersonalDetailsModal({
                     Marital Status
                   </label>
                   <div className="flex flex-wrap gap-3 mt-2">
-                    {jsonData[0].maritialStatus.map((option) => (
+                    {utility.maritialStatuses.map((option) => (
                       <button
                         key={option}
-                        onClick={() => setSelectedMaritalStatus(option)}
+                        onClick={() =>
+                          personalUtility.setPersonalDetailsTemp((prev) => ({
+                            ...prev,
+                            marritalStatus: option,
+                          }))
+                        }
                         className={`px-4 py-2 rounded-full border text-sm ${
-                          selectedMaritalStatus === option
+                          personalUtility.personalDetailsTemp.marritalStatus ===
+                          option
                             ? "bg-gray-200 font-semibold border-gray-400"
                             : "bg-white text-gray-500 font-semibold border-gray-300 hover:bg-gray-100"
                         }`}
@@ -190,12 +175,18 @@ export default function PersonalDetailsModal({
                     equality among all citizens
                   </p>
                   <div className="flex flex-wrap gap-3 mt-2">
-                    {jsonData[0].category.map((option) => (
+                    {utility.categories.map((option) => (
                       <button
                         key={option}
-                        onClick={() => setSelectedCategory(option)}
+                        onClick={() =>
+                          personalUtility.setPersonalDetailsTemp((prev) => ({
+                            ...prev,
+                            category: option,
+                          }))
+                        }
                         className={`px-4 py-2 rounded-full border text-sm ${
-                          selectedCategory === option
+                          personalUtility.personalDetailsTemp.category ===
+                          option
                             ? "bg-gray-200 font-semibold border-gray-400"
                             : "bg-white text-gray-500 font-semibold border-gray-300 hover:bg-gray-100"
                         }`}
@@ -446,23 +437,15 @@ export default function PersonalDetailsModal({
               </div>
 
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button
-                  className="text-blue-700"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                >
+                <button className="text-blue-700" onClick={toggleModal}>
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    setPersonalDetails({
-                      ...personalDetailsTemp,
-                      gender: selectedGender,
-                      maritalStatus: selectedMaritalStatus,
-                      category: selectedCategory,
-                    });
-                    setIsOpen((prev) => !prev);
-                    toast.success("Key Skills saved successfully", {
+                    setPersonalDetails(personalUtility.personalDetailsTemp);
+                    toggleModal();
+                    toast.success("Personal Details saved successfully", {
                       position: "top-right",
                       autoClose: 5000,
                       hideProgressBar: false,

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import CommonUtility from "./CommonUtility";
-import { Bounce, toast } from "react-toastify";
 
 function CareerUtility() {
   let [isCareersOpen, setIsCareersOpen] = useState(false);

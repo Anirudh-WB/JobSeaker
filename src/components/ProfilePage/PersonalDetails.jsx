@@ -1,41 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import PersonalDetailsModal from "./Modals/PersonalDetailsModal";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+import PersonalDetailsUtility from "../../utility/PersonalDetailsUtility";
 
 function PersonalDetails() {
-  let [isPersonalDetailsOpen, setIsPersonalDetailsOpen] = useState(false);
-  let [personalDetails, setPersonalDetails] = useState({
-    personal: ["Male", "Married"],
-    careerBreak: "No",
-    dateOfBirth: "1990-01-01",
-    category: "General",
-    address: "123 Main St, City, State, ZIP",
-    differentlyAble: "No",
-    languages: [
-      {
-        name: "Hindi",
-        proficiency: "Expert",
-        canRead: true,
-        canWrite: true,
-        canSpeak: true,
-      },
-      {
-        name: "Urdu",
-        proficiency: "Expert",
-        canRead: true,
-        canWrite: true,
-        canSpeak: true,
-      },
-      {
-        name: "English",
-        proficiency: "Proficient",
-        canRead: true,
-        canWrite: true,
-        canSpeak: true,
-      },
-    ],
-  });
+  const utility = PersonalDetailsUtility();
 
   return (
     <>
@@ -44,7 +14,7 @@ function PersonalDetails() {
           <h2 className="font-semibold text-lg" id="PersonalDetails">
             Personal Details
           </h2>
-          <button onClick={() => setIsPersonalDetailsOpen((prev) => !prev)}>
+          <button onClick={utility.toggleModal}>
             <FiEdit2 className="text-sm text-gray-700" />
           </button>
         </div>
@@ -54,7 +24,7 @@ function PersonalDetails() {
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">Personal</h3>
               <p className="font-semibold text-sm">
-                {personalDetails.personal.join(", ")}
+                {utility.personalDetails.personal.join(", ")}
                 {", "}
                 <a href="/" className="text-sm text-blue-700 font-semibold">
                   Add more info
@@ -66,7 +36,7 @@ function PersonalDetails() {
                 Carreer break
               </h3>
               <p className="font-semibold text-sm">
-                {personalDetails.careerBreak}
+                {utility.personalDetails.careerBreak}
               </p>
             </div>
           </div>
@@ -77,7 +47,7 @@ function PersonalDetails() {
                 Date of birth
               </h3>
               <p className="font-semibold text-sm">
-                {personalDetails.dateOfBirth}
+                {utility.personalDetails.dateOfBirth}
               </p>
             </div>
             <div className="w-1/2">
@@ -94,12 +64,14 @@ function PersonalDetails() {
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">Category</h3>
               <p className="font-semibold text-sm">
-                {personalDetails.category}
+                {utility.personalDetails.category}
               </p>
             </div>
             <div className="w-1/2">
               <h3 className="text-gray-500 text-sm font-semibold">Address</h3>
-              <p className="font-semibold text-sm">{personalDetails.address}</p>
+              <p className="font-semibold text-sm">
+                {utility.personalDetails.address}
+              </p>
             </div>
           </div>
 
@@ -109,7 +81,7 @@ function PersonalDetails() {
                 Differently abled
               </h3>
               <p className="font-semibold text-sm">
-                {personalDetails.differentlyAble}
+                {utility.personalDetails.differentlyAble}
               </p>
             </div>
           </div>
@@ -145,7 +117,7 @@ function PersonalDetails() {
               </div>
             </div>
             <div className="mt-2 flex flex-col gap-5">
-              {personalDetails.languages.map((language, index) => (
+              {utility.personalDetails.languages.map((language, index) => (
                 <div
                   key={index}
                   className="w-full text-sm text-left flex flex-1 items-center gap-10"
@@ -179,10 +151,9 @@ function PersonalDetails() {
       </div>
 
       <PersonalDetailsModal
-        isOpen={isPersonalDetailsOpen}
-        setIsOpen={setIsPersonalDetailsOpen}
-        personalDetails={personalDetails}
-        setPersonalDetails={setPersonalDetails}
+        isOpen={utility.isPersonalDetailsOpen}
+        toggleModal={utility.toggleModal}
+        setPersonalDetails={utility.setPersonalDetails}
       />
     </>
   );
