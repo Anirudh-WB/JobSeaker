@@ -1,4 +1,3 @@
-import React, {useState} from "react";
 import { GrLocation } from "react-icons/gr";
 import { FiPhone } from "react-icons/fi";
 import { MdMailOutline } from "react-icons/md";
@@ -7,11 +6,12 @@ import { CiWallet } from "react-icons/ci";
 import { IoBriefcaseOutline } from "react-icons/io5";
 import { FiEdit2 } from "react-icons/fi";
 import ProfileHeaderModal from "./Modals/ProfileHeaderModal";
+import ProfileHeaderUtility from "../../utility/ProfileHeaderUtility";
+import { useState } from "react";
 
 function ProfileHeader() {
-  let [isProjectHeaderOpen, setIsProjectHeaderOpen] = useState(false);
-  let [projectHeader, setProjectHeader] = useState(null);
-
+  const utility = ProfileHeaderUtility();
+ 
   return (
     <>
       <div className="bg-white p-6 shadow-lg rounded-2xl flex items-center justify-center gap-10">
@@ -30,17 +30,17 @@ function ProfileHeader() {
             <div className="flex flex-col">
               <div className="flex items-end gap-4">
                 <h1 className="text-2xl font-bold">John Doe</h1>
-                <button onClick={() => setIsProjectHeaderOpen((prev) => !prev)}>
+                <button onClick={utility.toggleProfileHeader}>
                   <FiEdit2 className="text-sm text-gray-700 mb-1" />
                 </button>
               </div>
-              <p className="font-semibold text-lg text-gray-700">Team Lead</p>
+              <p className="font-semibold text-lg text-gray-700">{utility.projectHeader[0].role}</p>
               <p className="text-gray-700">at Facebook</p>
             </div>
             <div>
               <p className="text-sm text-gray-500">
                 Profile last updated -{" "}
-                <span className="text-gray-700">03 Nov, 2024</span>
+                <span className="text-gray-700">{utility.projectHeader[0].lastUpdated}</span>
               </p>
             </div>
           </div>
@@ -48,14 +48,14 @@ function ProfileHeader() {
           <div className="flex gap-2 text-sm text-gray-700">
             <div className="flex flex-col gap-2 w-1/2">
               <p className="flex items-center gap-1">
-                <GrLocation /> Mumbai, INDIA
+                <GrLocation /> {utility.projectHeader[0].location}
               </p>
               <p className="flex items-center gap-1">
-                <IoBriefcaseOutline /> 12 Years
+                <IoBriefcaseOutline /> {utility.projectHeader[0].exp} Years
               </p>
               <p className="flex items-center gap-1">
                 <CiWallet />
-                21,00,000{" "}
+                {utility.projectHeader[0].salary}{" "}
                 <span className="font-semibold text-blue-700 px-2">
                   Add breakup
                 </span>
@@ -64,23 +64,21 @@ function ProfileHeader() {
             <hr />
             <div className="flex flex-col gap-2 w-1/2">
               <p className="flex items-center gap-1">
-                <FiPhone /> 7418529630
+                <FiPhone /> {utility.projectHeader[0].contact}
               </p>
               <p className="flex items-center gap-1">
-                <MdMailOutline /> email@gmail.com
+                <MdMailOutline /> {utility.projectHeader[0].email}
               </p>
               <p className="flex items-center gap-1">
-                <LuCalendar /> 1 Month notice period
+                <LuCalendar /> {utility.projectHeader[0].noticePeriod} Month notice period
               </p>
             </div>
           </div>
         </div>
       </div>
       <ProfileHeaderModal
-        isOpen={isProjectHeaderOpen}
-        setIsOpen={setIsProjectHeaderOpen}
-        projectHeader={projectHeader}
-        setProjectHeader={setProjectHeader}
+        isOpen={utility.isProjectHeaderOpen}
+        toggleProfileHeader={utility.toggleProfileHeader}
       />
     </>
   );

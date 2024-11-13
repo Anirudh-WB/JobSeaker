@@ -5,25 +5,19 @@ import {
   DialogBackdrop,
   CloseButton,
 } from "@headlessui/react";
-import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import CommonUtility from "../../../utility/CommonUtility";
 
-export default function EmploymentModal({
-  isOpen,
-  setIsOpen,
-  employment,
-  setEmployment,
-}) {
-  const [employeeTemp, setEmployeeTemp] = useState(employment);
-
+export default function EmploymentModal({ isOpen, toggleEmployment }) {
+  const commonUtility = CommonUtility();
   return (
     <>
       <Dialog
         open={isOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={() => setIsOpen((prev) => !prev)}
+        onClose={toggleEmployment}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -34,7 +28,7 @@ export default function EmploymentModal({
               className="w-1/2 rounded-3xl bg-white p-10 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="flex justify-end w-full">
-                <CloseButton as="button" className="text-xl text-gray-500">
+                <CloseButton as="button" className="text-xl text-gray-500" onClick={toggleEmployment}>
                   <RiCloseLargeFill />
                 </CloseButton>
               </div>
@@ -81,16 +75,9 @@ export default function EmploymentModal({
                   <div className="mt-1 w-full flex flex-1 gap-2">
                     <div className="relative w-1/2">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
+                        {commonUtility.yearOptions.map((year) => (
+                          <option value={year}>{year}</option>
+                        ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Year
@@ -98,18 +85,11 @@ export default function EmploymentModal({
                     </div>
                     <div className="relative w-1/2">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
+                        {commonUtility.monthOptions.map((month) => (
+                          <option key={month} value={month}>
+                            {month}
+                          </option>
+                        ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Month
@@ -163,16 +143,9 @@ export default function EmploymentModal({
                     <div className="relative w-1/2">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700 text-base">
                         <option>Select year</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
+                        {commonUtility.yearOptions.map((year) => (
+                          <option value={year}>{year}</option>
+                        ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Year
@@ -181,18 +154,9 @@ export default function EmploymentModal({
                     <div className="relative w-1/2">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
                         <option>Select month</option>
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
+                        {commonUtility.yearOptions.map((month) => (
+                          <option value={month}>{month}</option>
+                        ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Month
@@ -265,16 +229,9 @@ export default function EmploymentModal({
                   <div className="mt-1 w-full flex flex-1 gap-2">
                     <div className="relative w-full">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
+                        {commonUtility.noticePeriodNumber.map((num) => (
+                          <option value={num}>{num} months</option>
+                        ))}
                       </select>
                       <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
                         Notice period
@@ -284,17 +241,13 @@ export default function EmploymentModal({
                 </div>
               </div>
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button
-                  className="text-blue-700"
-                  onClick={() => setIsOpen((prev) => !prev)}
-                >
+                <button className="text-blue-700" onClick={toggleEmployment}>
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    setEmployment(employeeTemp);
-                    setIsOpen((prev) => !prev);
+                    toggleEmployment();
                     toast.success("Employeement details saved successfully", {
                       position: "top-right",
                       autoClose: 5000,
