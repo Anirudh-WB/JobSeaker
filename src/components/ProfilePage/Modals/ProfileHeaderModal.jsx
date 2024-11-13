@@ -12,7 +12,7 @@ import ProfileHeaderUtility from "../../../utility/ProfileHeaderUtility";
 
 export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
   const commonUtility = CommonUtility();
-  const profileHeaderUtility = ProfileHeaderUtility()
+  const profileHeaderUtility = ProfileHeaderUtility();
 
   return (
     <>
@@ -95,8 +95,10 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
                   <div className="relative w-full flex gap-2">
                     <div className="relative w-1/2">
                       <select className="peer outline-none border w-full p-2 rounded-xl text-gray-700">
-                        {commonUtility.monthOptions.map((month) => (
-                          <option value={month}>{month}</option>
+                        {commonUtility.monthOptions.map((month, index) => (
+                          <option value={month} key={index}>
+                            {month}
+                          </option>
                         ))}
                         ;
                       </select>
@@ -106,8 +108,10 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
                     </div>
                     <div className="relative w-1/2">
                       <select className="peer outline-none border p-2 w-full rounded-xl text-gray-700">
-                        {commonUtility.yearOptions.map((year) => (
-                          <option value={year}>{year}</option>
+                        {commonUtility.yearOptions.map((year, index) => (
+                          <option value={year} key={index}>
+                            {year}
+                          </option>
                         ))}
                         ;
                       </select>
@@ -254,7 +258,9 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
                     {commonUtility.noticePeriod.map((option) => (
                       <button
                         key={option}
-                        onClick={() => profileHeaderUtility.setSelectedPeriod(option)}
+                        onClick={() =>
+                          profileHeaderUtility.setSelectedPeriod(option)
+                        }
                         className={`px-4 py-2 rounded-full border text-sm ${
                           profileHeaderUtility.selectedPeriod === option
                             ? "bg-gray-200 font-semibold border-gray-400"
