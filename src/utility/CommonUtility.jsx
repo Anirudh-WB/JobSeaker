@@ -27,6 +27,73 @@ function CommonUtility() {
 
   const employmentTypes = ["Full time", "Part time"];
 
+  const yearOptions = Array.from(
+    { length: 100 },
+    (_, i) => new Date().getFullYear() - i
+  );
+
+  const monthOptions = [
+    "January",
+    "Febuary",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const getProjectStatusOptions = [
+    { label: "In Progress", value: "ongoing" },
+    { label: "Finished", value: "completed" },
+  ];
+
+  const getEducation = ["Bachelor's Degree", "Master's Degree", "PhD"];
+
+  const getCourse = [
+    "Computer Science",
+    "AI-DS",
+    "Information Engineering",
+    "Electronic Engineering",
+    "Bio Engineering",
+  ];
+
+  const getSpecializations = [
+    "Software Engineering",
+    "Network Engineering",
+    "Structural Engineering",
+  ];
+
+  const getGrade = ["A", "B", "C", "D", "E", "F"];
+
+  const getCourseTypes = [
+    { value: "full-time", label: "Full-time" },
+    { value: "part-time", label: "Part-time" },
+    {
+      value: "correspondence/Distance learning",
+      label: "Correspondence/Distance learning",
+    },
+  ];
+
+  const salaryBreakdown = [
+    100000, 200000, 300000, 400000, 500000, 600000, 700000,
+  ];
+
+  const noticePeriod = [
+    "15 Days or less",
+    "1 Month",
+    "2 Months",
+    "3 Months",
+    "More than 3 Months",
+    "Serving Notice Period",
+  ];
+
+  const noticePeriodNumber = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+
   const addToArray = (toAdd, state, setState) => {
     setState([...state, toAdd]);
   };
@@ -69,6 +136,17 @@ function CommonUtility() {
     jobRoles,
     jobTypes,
     employmentTypes,
+    yearOptions,
+    monthOptions,
+    getProjectStatusOptions,
+    getEducation,
+    getCourse,
+    getSpecializations,
+    getGrade,
+    getCourseTypes,
+    salaryBreakdown,
+    noticePeriod,
+    noticePeriodNumber,
     addToArray,
     removeFromArray,
     years,

@@ -1,40 +1,10 @@
-import React, { useState } from "react";
+import EmployeementUtility from "../../utility/EmployeementUtility";
 import EmploymentModal from "./Modals/EmploymentModal";
 import { FiEdit2 } from "react-icons/fi";
 
 function Employment() {
-  let [isEmploymentOpen, setIsEmploymentOpen] = useState(false);
 
-  const [isExpanded, setIsExpanded] = useState([]);
-
-  const [employments, setEmployment] = useState([
-    {
-      id: 1,
-      isCurrentEmployment: false,
-      jobTitle: "Full Stack Developer",
-      companyName: "Oasis Infotech",
-      employmentType: "Internship",
-      joiningDate: "Mar 2024",
-      endDate: "May 2024",
-      salary: 0,
-      jobProfile:
-        "Attendance Tracking System (Face Recognition) for the first time in the future and will be updated in the future when the system is fully implemented. This employment aims to improve efficiency and accuracy in attendance recording, using advanced face recognition technology.",
-      noticePeriod: 2,
-    },
-    {
-      id: 2,
-      isCurrentEmployment: true,
-      jobTitle: "Software Developer",
-      companyName: "WonderBiz Technologies",
-      employmentType: "Full-time",
-      joiningDate: "Mar 2024",
-      endDate: "",
-      salary: 2100000,
-      jobProfile:
-        "Attendance Tracking System (Face Recognition) for the first time in the future and will be updated in the future when the system is fully implemented. This employment aims to improve efficiency and accuracy in attendance recording, using advanced face recognition technology.",
-      noticePeriod: 0,
-    },
-  ]);
+  const employeeUtility = EmployeementUtility();
 
   return (
     <>
@@ -46,28 +16,17 @@ function Employment() {
 
           <button
             className="font-semibold text-blue-700"
-            onClick={() => {
-              //   setSkillToEdit({
-              //     name: "",
-              //     version: NaN,
-              //     lastUsed: NaN,
-              //     experience: {
-              //       year: 0,
-              //       month: 0,
-              //     },
-              //   });
-              setIsEmploymentOpen((prev) => !prev);
-            }}
+            onClick={employeeUtility.toggleEmployment}
           >
             Add details
           </button>
         </div>
 
-        {employments.map((employment, index) => (
+        {employeeUtility.employments.map((employment, index) => (
           <div key={index} className="flex flex-col gap-1">
             <div className="flex items-center gap-4">
               <h3 className="font-semibold">{employment.jobTitle}</h3>
-              <button onClick={() => setIsEmploymentOpen((prev) => !prev)}>
+              <button onClick={employeeUtility.toggleEmployment}>
                 <FiEdit2 className="text-sm text-gray-700" />
               </button>
             </div>
@@ -99,12 +58,12 @@ function Employment() {
               <></>
             )}
             <p className="text-gray-900 text-sm">
-              {isExpanded.includes(employment.id)
+              {employeeUtility.isExpanded.includes(employment.id)
                 ? employment.jobProfile
                 : `${employment.jobProfile.slice(0, 200)}... `}
               <button
                 onClick={() =>
-                  setIsExpanded((prev) =>
+                  employeeUtility.setIsExpanded((prev) =>
                     !prev.includes(employment.id)
                       ? [employment.id, ...prev]
                       : prev.filter((item) => item !== employment.id)
@@ -112,7 +71,7 @@ function Employment() {
                 }
                 className="text-blue-700 text-xs font-semibold"
               >
-                {isExpanded.includes(employment.id) ? "Read Less" : "Read More"}
+                {employeeUtility.isExpanded.includes(employment.id) ? "Read Less" : "Read More"}
               </button>
             </p>
           </div>
@@ -120,10 +79,8 @@ function Employment() {
       </div>
 
       <EmploymentModal
-        isOpen={isEmploymentOpen}
-        setIsOpen={setIsEmploymentOpen}
-        employments={employments}
-        setEmployment={setEmployment}
+        isOpen={employeeUtility.isEmploymentOpen}
+        toggleEmployment = {employeeUtility.toggleEmployment}
       />
     </>
   );
