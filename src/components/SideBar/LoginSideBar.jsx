@@ -51,7 +51,7 @@ function LoginSidebar({ isOpen, toggleSidebar }) {
             Login
           </button>
 
-          <a href="/" className="text-blue-600 text-center font-bold">
+          <a href="/" className="text-blue-600 text-center font-bold text-sm mt-2">
             Use OTP to Login
           </a>
 
