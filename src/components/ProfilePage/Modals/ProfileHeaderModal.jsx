@@ -47,16 +47,16 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
                   <span className="text-base font-semibold">
                     Name <span className="text-red-600">*</span>
                   </span>
-                  <div class="relative">
+                  <div className="relative">
                     <input
                       type="text"
                       id="floating_outlined"
-                      class="w-full outline-none border rounded-md p-2 peer"
+                      className="w-full outline-none border rounded-md p-2 peer"
                       placeholder=" "
                     />
                     <label
                       for="floating_outlined"
-                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                     >
                       Name
                     </label>
@@ -129,16 +129,16 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
                   <span className="text-sm font-semibold text-gray-500">
                     Salary information helps us find relevant jobs for you
                   </span>
-                  <div class="relative">
+                  <div className="relative">
                     <input
                       type="text"
                       id="floating_outlined"
-                      class="w-full outline-none border rounded-md p-2 peer"
+                      className="w-full outline-none border rounded-md p-2 peer"
                       placeholder=" "
                     />
                     <label
                       for="floating_outlined"
-                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                     >
                       Current Salary
                     </label>
@@ -185,16 +185,16 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
                       </span>
                     </div>
                   </div>
-                  <div class="relative">
+                  <div className="relative">
                     <input
                       type="text"
                       id="floating_outlined"
-                      class="w-1/3 outline-none border rounded-md p-2 peer"
+                      className="w-1/3 outline-none border rounded-md p-2 peer"
                       placeholder=" "
                     />
                     <label
                       for="floating_outlined"
-                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                     >
                       Location
                     </label>
@@ -208,16 +208,16 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
                   <span className="text-sm font-semibold text-gray-500">
                     This helps us reach out to you
                   </span>
-                  <div class="relative">
+                  <div className="relative">
                     <input
                       type="number"
                       id="floating_outlined"
-                      class="w-full outline-none border rounded-md p-2 peer"
+                      className="w-full outline-none border rounded-md p-2 peer"
                       placeholder=" "
                     />
                     <label
                       for="floating_outlined"
-                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                     >
                       Conatact No.
                     </label>
@@ -231,16 +231,16 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
                   <span className="text-sm font-semibold text-gray-500">
                     We will send relevant jobs and updates to this email
                   </span>
-                  <div class="relative">
+                  <div className="relative">
                     <input
                       type="text"
                       id="floating_outlined"
-                      class="w-full outline-none border rounded-md p-2 peer"
+                      className="w-full outline-none border rounded-md p-2 peer"
                       placeholder=" "
                     />
                     <label
                       for="floating_outlined"
-                      class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                     >
                       Email
                     </label>
