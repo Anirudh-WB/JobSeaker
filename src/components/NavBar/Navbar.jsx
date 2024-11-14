@@ -52,7 +52,7 @@ function Navbar({ toggleSidebar }) {
             >
               Login
             </button>
-            {location.pathname === "register" && (
+            {location.pathname !== "/register" && (
               <a
                 href="/register"
                 className="text-red-600 bg-white border border-red-300 focus:outline-none hover:bg-red-100 focus:ring-4 focus:ring-red-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-800 dark:text-white dark:border-red-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
