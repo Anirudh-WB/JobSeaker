@@ -4,7 +4,6 @@ import {
   DialogTitle,
   DialogBackdrop,
 } from "@headlessui/react";
-import { useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../utility/CommonUtility";
