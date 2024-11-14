@@ -35,7 +35,6 @@ function CareerUtility() {
   const toggleModal = () => {
     setIsCareersOpen((prev) => !prev);
   };
-
   const addLocation = (e) => {
     e.preventDefault();
     if (
