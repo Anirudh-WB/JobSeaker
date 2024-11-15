@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/NavBar/Navbar";
-import Joblist from "./components/JobList/Joblist";
+import Joblist from "./components/JobList/JobListPage";
 import JobDetails from "./components/JobDetails/JobDetails";
 import ProfilePage from "./components/JobSeekers/ProfilePage/ProfilePage";
 import HomePage from "./components/HomePage/HomePage";
