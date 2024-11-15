@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/NavBar/Navbar";
 import Joblist from "./components/JobList/Joblist";
 import JobDetails from "./components/JobDetails/JobDetails";
-import ProfilePage from "./components/ProfilePage/ProfilePage";
+import ProfilePage from "./components/JobSeekers/ProfilePage/ProfilePage";
 import HomePage from "./components/HomePage/HomePage";
 import LoginSidebar from "./components/SideBar/LoginSideBar";
 import Regsiter from "./components/Register/Regsiter";

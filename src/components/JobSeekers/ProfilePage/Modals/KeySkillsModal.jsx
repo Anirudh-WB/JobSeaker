@@ -9,7 +9,7 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { FiPlus } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import KeySkillsUtility from "../../../utility/KeySkillsUtility";
+import KeySkillsUtility from "../../../../utility/KeySkillsUtility";
 
 export default function KeySkillsModal({ isOpen, toggleModal, setSkills }) {
   const skillUtility = KeySkillsUtility();

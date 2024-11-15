@@ -2,10 +2,12 @@ import React from "react";
 import { BsWhatsapp } from "react-icons/bs";
 import { FaWhatsapp } from "react-icons/fa";
 import { FcGlobe, FcGoogle } from "react-icons/fc";
+import CommonUtility from "../../utility/CommonUtility";
 
 function RegisterForm() {
+  const commonUtility = CommonUtility();
   return (
-    <div className="p-10 bg-white rounded-xl shadow-md h-fit flex flex-col gap-8">
+    <div className="p-10 bg-white rounded-xl shadow-md h-fit flex flex-col gap-5">
       <div className="flex flex-col gap-1">
         <h2 className="font-semibold text-lg" id="careers">
           Create yours JobSeeker profile
@@ -15,12 +17,20 @@ function RegisterForm() {
           will appear on our website, allowing potential employers to find you.
         </p>
       </div>
+      <div className="flex gap-2 items-center">
+        <label className="text-base font-semibold">Register as : </label>
+        <select className="ml-2 outline-none border p-2 rounded-md w-2/3 text-sm text-gray-700">
+          {commonUtility.login.map((user) => (
+            <option>{user}</option>
+          ))}
+        </select>
+      </div>
       <div className="flex gap-3">
         <div className="flex flex-col gap-3 w-4/5">
           {/* First Name */}
           <div className="flex flex-col gap-1">
             <label className="text-base font-semibold" for="first_name">
-              First name <span className="text-red-600 font-semibold">*</span>
+              Full name <span className="text-red-600 font-semibold">*</span>
             </label>
             <div className="relative">
               <input

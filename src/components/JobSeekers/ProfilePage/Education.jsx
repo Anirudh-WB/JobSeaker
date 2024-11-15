@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
 import EducationModal from "./Modals/EducationModal";
-import EducationUtlity from "../../utility/EducationUtlity";
+import EducationUtlity from "../../../utility/EducationUtlity";
 
 function Education() {
   

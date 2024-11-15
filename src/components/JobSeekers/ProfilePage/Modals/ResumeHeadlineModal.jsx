@@ -7,7 +7,7 @@ import {
 } from "@headlessui/react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import ResumeHeadlineUtility from "../../../utility/ResumeHeadlineUtility";
+import ResumeHeadlineUtility from "../../../../utility/ResumeHeadlineUtility";
 
 export default function ResumeHeadlineModal({
   isOpen,

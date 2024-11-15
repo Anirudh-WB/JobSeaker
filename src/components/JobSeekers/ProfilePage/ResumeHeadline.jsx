@@ -1,7 +1,7 @@
 import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ResumeHeadlineModal from "./Modals/ResumeHeadlineModal";
-import ResumeHeadlineUtility from "../../utility/ResumeHeadlineUtility";
+import ResumeHeadlineUtility from "../../../utility/ResumeHeadlineUtility";
 
 function ResumeHeadline() {
   const utility = ResumeHeadlineUtility();

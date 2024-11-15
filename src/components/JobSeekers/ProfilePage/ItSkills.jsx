@@ -1,7 +1,7 @@
 import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ItSkillsModal from "./Modals/ItSkillsModal";
-import ItSkillUtility from "../../utility/ItSkillsUtility";
+import ItSkillUtility from "../../../utility/ItSkillsUtility";
 
 function ItSkills() {
   const utility = ItSkillUtility();

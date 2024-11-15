@@ -13,8 +13,8 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { FaChevronDown } from "react-icons/fa6";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import CommonUtility from "../../../utility/CommonUtility";
-import CareerUtility from "../../../utility/CareerUtility";
+import CommonUtility from "../../../../utility/CommonUtility";
+import CareerUtility from "../../../../utility/CareerUtility";
 
 export default function CareersModal({ isOpen, toggleModal }) {
   const utility = CommonUtility();
