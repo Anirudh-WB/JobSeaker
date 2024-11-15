@@ -28,7 +28,7 @@ function CommonUtility() {
 
   const jobTypes = ["Permanent", "Contractual"];
 
-  const employmentTypes = ["Full time", "Part time"];
+  const employmentTypes = ["Full time", "Part time", "Permanent"];
 
   const yearOptions = Array.from(
     { length: 100 },

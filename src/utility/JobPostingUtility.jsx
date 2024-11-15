@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import Quill from "quill";
+import { useEffect, useRef, useState } from "react";
+
 
 function JobPostingUtility() {
-  let [isJobPostingOpen, setIsJobPostingOpen] = useState(false);
+  const [isJobPostingOpen, setIsJobPostingOpen] = useState(false);
+  const [content, setContent] = useState("");
+
+
   const toggleJobPost = () => {
     setIsJobPostingOpen((prev) => !prev);
   };
-  return {
-    isJobPostingOpen,
-    toggleJobPost,
-  };
+
+  return { isJobPostingOpen, toggleJobPost, content, setContent };
 }
 
 export default JobPostingUtility;
