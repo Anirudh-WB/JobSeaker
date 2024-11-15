@@ -1,17 +1,20 @@
-import Quill from "quill";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import "quill/dist/quill.snow.css";
 
 
 function JobPostingUtility() {
   const [isJobPostingOpen, setIsJobPostingOpen] = useState(false);
-  const [content, setContent] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
 
+  const handleChange = (content) => {
+    setJobDescription(content);
+  };
 
   const toggleJobPost = () => {
     setIsJobPostingOpen((prev) => !prev);
   };
 
-  return { isJobPostingOpen, toggleJobPost, content, setContent };
+  return { isJobPostingOpen, toggleJobPost, jobDescription , handleChange};
 }
 
 export default JobPostingUtility;
