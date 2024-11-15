@@ -7,11 +7,11 @@ import {
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
-import ProfileHeaderUtility from "../../../../utility/ProfileHeaderUtility";
+import CompanyHeaderUtility from "../../../../utility/CompanyHeaderUtility";
 
-export default function CompanyHeaderModal({ isOpen, toggleProfileHeader }) {
+export default function CompanyHeaderModal({ isOpen, toggleCompanyHeader }) {
   const commonUtility = CommonUtility();
-  const profileHeaderUtility = ProfileHeaderUtility();
+  const companyHeaderUtility = CompanyHeaderUtility();
 
   return (
     <>
@@ -19,7 +19,7 @@ export default function CompanyHeaderModal({ isOpen, toggleProfileHeader }) {
         open={isOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleProfileHeader}
+        onClose={toggleCompanyHeader}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -32,13 +32,13 @@ export default function CompanyHeaderModal({ isOpen, toggleProfileHeader }) {
               <div className="flex justify-end w-full">
                 <button
                   className="text-xl text-gray-500"
-                  onClick={toggleProfileHeader}
+                  onClick={toggleCompanyHeader}
                 >
                   <RiCloseLargeFill />
                 </button>
               </div>
               <DialogTitle as="h3" className="text-xl font-medium">
-                Basic Details
+                Company Details
               </DialogTitle>
 
               <div className="mt-4 flex flex-col gap-5">
@@ -58,6 +58,64 @@ export default function CompanyHeaderModal({ isOpen, toggleProfileHeader }) {
                       className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                     >
                       Name
+                    </label>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <span className="text-base font-semibold">
+                    Motive <span className="text-red-600">*</span>
+                  </span>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="floating_outlined"
+                      className="w-full outline-none border rounded-md p-2 peer"
+                      placeholder=""
+                    />
+                    <label
+                      for="floating_outlined"
+                      className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Motive
+                    </label>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <span className="text-base font-semibold">
+                    Current Location <span className="text-red-600">*</span>
+                  </span>
+                  <span className="text-sm font-semibold text-gray-500">
+                    This helps us find relevant jobs for you
+                  </span>
+                  <div className="w-1/3  flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <input type="radio" name="workStatus" value="employed" />
+                      <span className="text-sm font-semibold text-gray-700">
+                        India
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <input type="radio" name="workStatus" value="employed" />
+                      <span className="text-sm font-semibold text-gray-700">
+                        Outside India
+                      </span>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="floating_outlined"
+                      className="w-1/3 outline-none border rounded-md p-2 peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="floating_outlined"
+                      className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                    >
+                      Location
                     </label>
                   </div>
                 </div>
@@ -164,44 +222,6 @@ export default function CompanyHeaderModal({ isOpen, toggleProfileHeader }) {
 
                 <div className="flex flex-col gap-2">
                   <span className="text-base font-semibold">
-                    Current Location <span className="text-red-600">*</span>
-                  </span>
-                  <span className="text-sm font-semibold text-gray-500">
-                    This helps us find relevant jobs for you
-                  </span>
-                  <div className="w-1/3  flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <input type="radio" name="workStatus" value="employed" />
-                      <span className="text-sm font-semibold text-gray-700">
-                        India
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <input type="radio" name="workStatus" value="employed" />
-                      <span className="text-sm font-semibold text-gray-700">
-                        Outside India
-                      </span>
-                    </div>
-                  </div>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="floating_outlined"
-                      className="w-1/3 outline-none border rounded-md p-2 peer"
-                      placeholder=" "
-                    />
-                    <label
-                      for="floating_outlined"
-                      className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-                    >
-                      Location
-                    </label>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <span className="text-base font-semibold">
                     Mobile Number <span className="text-red-600">*</span>
                   </span>
                   <span className="text-sm font-semibold text-gray-500">
@@ -258,10 +278,10 @@ export default function CompanyHeaderModal({ isOpen, toggleProfileHeader }) {
                       <button
                         key={option}
                         onClick={() =>
-                          profileHeaderUtility.setSelectedPeriod(option)
+                          companyHeaderUtility.setSelectedPeriod(option)
                         }
                         className={`px-4 py-2 rounded-full border text-sm ${
-                          profileHeaderUtility.selectedPeriod === option
+                          companyHeaderUtility.selectedPeriod === option
                             ? "bg-gray-200 font-semibold border-gray-400"
                             : "bg-white text-gray-500 border-gray-300 hover:bg-gray-100"
                         }`}
@@ -274,14 +294,14 @@ export default function CompanyHeaderModal({ isOpen, toggleProfileHeader }) {
               </div>
 
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleProfileHeader}>
+                <button className="text-blue-700" onClick={toggleCompanyHeader}>
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    toggleProfileHeader();
-                    toast.success("Basic Details saved successfully", {
+                    toggleCompanyHeader();
+                    toast.success("Company Details saved successfully", {
                       position: "top-right",
                       autoClose: 5000,
                       hideProgressBar: false,
@@ -303,7 +323,7 @@ export default function CompanyHeaderModal({ isOpen, toggleProfileHeader }) {
       </Dialog>
 
       <ToastContainer
-        containerId="profile__header__toast"
+        containerId="company__header__toast"
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
