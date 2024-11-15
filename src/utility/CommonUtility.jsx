@@ -1,4 +1,7 @@
 function CommonUtility() {
+
+  const login = ["JobSeekers", "Company"]
+
   const industries = [
     "IT Services & Consulting",
     "Engineering",
@@ -130,6 +133,7 @@ function CommonUtility() {
   ];
 
   return {
+    login,
     industries,
     departments,
     roleCategories,

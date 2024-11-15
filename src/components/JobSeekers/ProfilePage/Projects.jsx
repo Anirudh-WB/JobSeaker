@@ -1,7 +1,7 @@
 import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ProjectsModal from "./Modals/ProjectsModal";
-import ProjectUtility from "../../utility/ProjectUtility";
+import ProjectUtility from "../../../utility/ProjectUtility";
 
 function Projects() {
   const utility = ProjectUtility();

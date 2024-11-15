@@ -2,7 +2,7 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import PersonalDetailsModal from "./Modals/PersonalDetailsModal";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import PersonalDetailsUtility from "../../utility/PersonalDetailsUtility";
+import PersonalDetailsUtility from "../../../utility/PersonalDetailsUtility";
 
 function PersonalDetails() {
   const utility = PersonalDetailsUtility();

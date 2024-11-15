@@ -7,8 +7,8 @@ import {
 } from "@headlessui/react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import CommonUtility from "../../../utility/CommonUtility";
-import PersonalDetailsUtility from "../../../utility/PersonalDetailsUtility";
+import CommonUtility from "../../../../utility/CommonUtility";
+import PersonalDetailsUtility from "../../../../utility/PersonalDetailsUtility";
 
 export default function PersonalDetailsModal({
   isOpen,

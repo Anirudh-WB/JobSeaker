@@ -6,8 +6,8 @@ import {
 } from "@headlessui/react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import CommonUtility from "../../../utility/CommonUtility";
-import ProfileHeaderUtility from "../../../utility/ProfileHeaderUtility";
+import CommonUtility from "../../../../utility/CommonUtility";
+import ProfileHeaderUtility from "../../../../utility/ProfileHeaderUtility";
 
 export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
   const commonUtility = CommonUtility();

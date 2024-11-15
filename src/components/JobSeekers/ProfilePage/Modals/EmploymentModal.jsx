@@ -7,7 +7,7 @@ import {
 } from "@headlessui/react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import CommonUtility from "../../../utility/CommonUtility";
+import CommonUtility from "../../../../utility/CommonUtility";
 
 export default function EmploymentModal({ isOpen, toggleEmployment }) {
   const commonUtility = CommonUtility();

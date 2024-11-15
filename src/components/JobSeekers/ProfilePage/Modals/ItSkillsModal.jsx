@@ -12,8 +12,8 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { FaChevronDown } from "react-icons/fa6";
 import { useEffect } from "react";
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import ItSkillsUtility from "../../../utility/ItSkillsUtility";
-import CommonUtility from "../../../utility/CommonUtility";
+import ItSkillsUtility from "../../../../utility/ItSkillsUtility";
+import CommonUtility from "../../../../utility/CommonUtility";
 
 export default function ItSkillsModal({
   isOpen,

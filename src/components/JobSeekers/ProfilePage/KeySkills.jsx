@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
 import KeySkillsModal from "./Modals/KeySkillsModal";
-import KeySkillsUtility from "../../utility/KeySkillsUtility";
+import KeySkillsUtility from "../../../utility/KeySkillsUtility";
 
 function KeySkills() {
   const utility = KeySkillsUtility();

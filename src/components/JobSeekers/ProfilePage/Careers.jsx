@@ -1,7 +1,7 @@
 import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import CareersModal from "./Modals/CareersModal";
-import CareerUtility from "../../utility/CareerUtility";
+import CareerUtility from "../../../utility/CareerUtility";
 
 function Careers() {
   const utility = CareerUtility();
