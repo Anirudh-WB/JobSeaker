@@ -7,6 +7,7 @@ import ProfilePage from "./components/JobSeekers/ProfilePage/ProfilePage";
 import HomePage from "./components/HomePage/HomePage";
 import LoginSidebar from "./components/SideBar/LoginSideBar";
 import Regsiter from "./components/Register/Regsiter";
+import CompanyProfile from "./components/Company/CompanyProfile/CompanyProfile";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -26,6 +27,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/job-list" element={<Joblist />} />
           <Route path="/job-details" element={<JobDetails />} />
+          <Route path="/company-profile" element={<CompanyProfile />} />
         </Routes>
       </div>
     </div>
