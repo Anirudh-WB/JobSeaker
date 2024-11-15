@@ -5,7 +5,6 @@ import JobPostingModal from "./Modals/JobPostingModal";
 import JobPostingUtility from "../../../utility/JobPostingUtility";
 
 function CompanyJobInfo() {
-
   const jobPostingUtility = JobPostingUtility();
   return (
     <>
@@ -32,13 +31,18 @@ function CompanyJobInfo() {
             Take the next step in your career with us and help shape the future.
           </p>
         </div>
-        <button className="text-white bg-blue-600 py-1.5 px-3 rounded-full" onClick={jobPostingUtility.toggleJobPost}>
+        <button
+          className="text-white bg-blue-600 py-1.5 px-3 rounded-full"
+          onClick={jobPostingUtility.toggleJobPost}
+        >
           Add Job
         </button>
       </div>
-      <JobPostingModal 
-      isOpen={jobPostingUtility.isJobPostingOpen}
-      toggleJobPost={jobPostingUtility.toggleJobPost}/>
+
+      <JobPostingModal
+        isOpen={jobPostingUtility.isJobPostingOpen}
+        toggleJobPost={jobPostingUtility.toggleJobPost}
+      />
     </>
   );
 }

@@ -8,13 +8,11 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function JobPostingModal({ isOpen, toggleJobPost }) {
-
   return (
     <>
       <Dialog
         open={isOpen}
         as="div"
-        
         className="relative z-50 focus:outline-none"
         onClose={toggleJobPost}
         __demoMode
@@ -67,22 +65,22 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
             </DialogPanel>
           </div>
         </div>
-      </Dialog>
 
-      <ToastContainer
-        containerId="profile__header__toast"
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-        transition={Bounce}
-      />
+        <ToastContainer
+          containerId="job__posting__toast"
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          transition={Bounce}
+        />
+      </Dialog>
     </>
   );
 }

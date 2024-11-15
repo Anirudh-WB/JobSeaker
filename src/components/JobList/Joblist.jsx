@@ -60,7 +60,6 @@ function Joblist() {
         "Web Api",
       ],
     },
-    // More job objects can be added here
   ];
 
   return (
