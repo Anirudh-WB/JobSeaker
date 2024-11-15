@@ -8,7 +8,7 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
 import JobPostingUtility from "../../../../utility/JobPostingUtility";
-import { Editor } from "@tinymce/tinymce-react";
+import ReactQuill from "react-quill";
 
 export default function JobPostingModal({ isOpen, toggleJobPost }) {
   const commonUtility = CommonUtility();
@@ -29,7 +29,7 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
               transition
               className="w-1/2 rounded-3xl bg-white p-10 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
-              <div className="flex justify-end w-full">
+              <div className="flex justify-end w-full h-fit">
                 <button
                   className="text-xl text-gray-500"
                   onClick={toggleJobPost}
@@ -160,18 +160,20 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
                     <label className="text-base font-semibold text-gray-700">
                       Job Description <span className="text-red-600">*</span>
                     </label>
-                    <div>
-        <Editor
-          editorState={editorState}
-          wrapperClassName="demo-wrapper"
-          editorClassName="demo-editor"
-          onEditorStateChange={this.onEditorStateChange}
-        />
-        <textarea
-          disabled
-          value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-        />
-      </div>
+                    <ReactQuill
+                      value={jobPostingUtility.jobDescription}
+                      onChange={jobPostingUtility.handleChange}
+                      placeholder="Type the job description here..."
+                      modules={{
+                        toolbar: [
+                          ["bold", "italic", "underline"], // Text styling
+                          [{ list: "ordered" }, { list: "bullet" }], // Lists
+                          ["link"], // Links
+                        ],
+                      }}
+                      className="rounded-md bg-white text-gray-600"
+                      style={{ minHeight: "150px" }}
+                    />
                   </div>
                 </div>
               </div>
