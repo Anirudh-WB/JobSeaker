@@ -4,7 +4,7 @@ import { MdMailOutline } from "react-icons/md";
 import { LuCalendar } from "react-icons/lu";
 import { CiWallet } from "react-icons/ci";
 import { useState } from "react";
-import { FaLink } from "react-icons/fa6";
+import { FaRegUser } from "react-icons/fa6";
 
 function CompanyHeader() {
   const [data, setData] = useState([
@@ -20,6 +20,12 @@ function CompanyHeader() {
         companyAddress: "Mumbai, India",
       },
       lastUpdated: "November 15, 2024",
+      contactPerson: {
+        name: "John Doe",
+        title: "Customer Support Manager",
+        email: "john.doe@tech.com",
+        phone: "+91 98765 43210",
+      },
     },
   ]);
 
@@ -28,10 +34,10 @@ function CompanyHeader() {
       <img
         src={data[0].companyLogoUrl}
         alt="company-logo"
-        className="rounded-full h-36 w-36 shadow-md"
+        className="rounded-full h-48 w-48 shadow-2xl"
       />
 
-      <div className="flex flex-col gap-5 w-4/5">
+      <div className="flex flex-col gap-3 w-4/5">
         <div className="flex items-end justify-between">
           <div className="flex flex-col">
             <div className="flex items-end gap-4">
@@ -51,23 +57,49 @@ function CompanyHeader() {
             </p>
           </div>
         </div>
-        <hr />
+        <div className="flex items-center gap-4">
+          <label className="text-black font-semibold">Company Details</label>
+          <hr className="flex-1 border-t border-gray-300" />
+        </div>
         <div className="flex gap-4 text-sm text-gray-700">
           <div className="flex flex-col gap-2 w-1/2">
             <p className="flex items-center gap-1">
               <GrLocation /> {data[0].contactInfo.companyAddress}
             </p>
             <p className="flex items-center gap-1">
-              <FaLink /> {data[0].contactInfo.companyWebsite}
+              <LuCalendar /> {data[0].contactInfo.companyWebsite}
             </p>
-            
           </div>
           <div className="flex flex-col gap-2 w-1/2">
             <p className="flex items-center gap-1">
-              <FiPhone /> {data[0].contactInfo.companyPhone}
+              <MdMailOutline /> {data[0].contactInfo.companyEmail}
             </p>
             <p className="flex items-center gap-1">
-              <MdMailOutline /> {data[0].contactInfo.companyEmail}
+              <FiPhone /> {data[0].contactInfo.companyPhone}
+            </p>
+          </div>
+        </div>
+        {/* Contact Person Information */}
+        <div className="flex items-center gap-4">
+          <label className="text-black font-semibold">Contact Person</label>
+          <hr className="flex-1 border-t border-gray-300" />
+        </div>
+
+        <div className="flex gap-4 text-sm text-gray-700">
+          <div className="flex flex-col gap-2 w-1/2">
+            <p className="flex items-center gap-1">
+              <FaRegUser /> {data[0].contactPerson.name}
+            </p>
+            <p className="flex items-center gap-1">
+              <LuCalendar /> {data[0].contactPerson.title}
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 w-1/2">
+            <p className="flex items-center gap-1">
+              <FiPhone /> {data[0].contactPerson.phone}
+            </p>
+            <p className="flex items-center gap-1">
+              <MdMailOutline /> {data[0].contactPerson.email}
             </p>
           </div>
         </div>
