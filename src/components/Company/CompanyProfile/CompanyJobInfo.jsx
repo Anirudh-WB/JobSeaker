@@ -6,6 +6,7 @@ import JobPostingUtility from "../../../utility/JobPostingUtility";
 
 function CompanyJobInfo() {
   const jobPostingUtility = JobPostingUtility();
+
   return (
     <>
       <div className="bg-white border rounded-lg p-7 flex flex-col items-center gap-5 w-1/4 sticky top-0 h-fit">
