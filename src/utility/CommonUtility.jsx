@@ -1,6 +1,5 @@
 function CommonUtility() {
-
-  const login = ["JobSeekers", "Company"]
+  const login = ["JobSeekers", "Company"];
 
   const industries = [
     "IT Services & Consulting",
@@ -95,7 +94,18 @@ function CommonUtility() {
     "Serving Notice Period",
   ];
 
-  const noticePeriodNumber = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+  const noticePeriodNumber = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+  ];
 
   const addToArray = (toAdd, state, setState) => {
     setState([...state, toAdd]);
@@ -132,6 +142,66 @@ function CommonUtility() {
     "Other",
   ];
 
+  const jobs = [
+    {
+      title: "Associate Software Developer",
+      company: "XYZ Corporation Inc",
+      experience: "4-5 yrs",
+      salary: "Not Disclosed",
+      location: "Mumbai",
+      workOptions: "Full-time, remote, working from home, flexible schedule",
+      skills: [
+        "C#",
+        "Asp.Net Core",
+        ".Net Core",
+        "Ms Sql Server",
+        "Entity Framework",
+        "Asp.Net",
+        "Asp.Net Mvc5",
+        "Web Api",
+      ],
+      applied: 180,
+    },
+    {
+      title: "Senior Software Developer",
+      company: "Yashu Corporation Inc",
+      experience: "0-10 yrs",
+      salary: "Not Disclosed",
+      location: "Padhgha",
+      workOptions: "Full-time, remote, working from home, flexible schedule",
+      skills: [
+        "C#",
+        "Asp.Net Core",
+        ".Net Core",
+        "Ms Sql Server",
+        "Entity Framework",
+        "Asp.Net",
+        "Asp.Net Mvc5",
+        "Web Api",
+      ],
+      applied: 189,
+    },
+    {
+      title: "Team Lead",
+      company: "Yashu Corporation Inc",
+      experience: "0-15 yrs",
+      salary: "Not Disclosed",
+      location: "Bangalore",
+      workOptions: "Full-time, remote, working from home, flexible schedule",
+      skills: [
+        "C#",
+        "Asp.Net Core",
+        ".Net Core",
+        "Ms Sql Server",
+        "Entity Framework",
+        "Asp.Net",
+        "Asp.Net Mvc5",
+        "Web Api",
+      ],
+      applied: 150,
+    },
+  ];
+
   return {
     login,
     industries,
@@ -159,6 +229,7 @@ function CommonUtility() {
     genders,
     maritialStatuses,
     categories,
+    jobs,
   };
 }
 
