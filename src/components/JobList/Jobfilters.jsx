@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Jobfilters() {
-  const skillsList = [,];
+  const skillsList = [];
   const [openSections, setOpenSections] = useState({
     skills: false,
     experience: true,

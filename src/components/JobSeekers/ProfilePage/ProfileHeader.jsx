@@ -7,7 +7,6 @@ import { IoBriefcaseOutline } from "react-icons/io5";
 import { FiEdit2 } from "react-icons/fi";
 import ProfileHeaderModal from "./Modals/ProfileHeaderModal";
 import ProfileHeaderUtility from "../../../utility/ProfileHeaderUtility";
-import { useState } from "react";
 
 function ProfileHeader() {
   const utility = ProfileHeaderUtility();
