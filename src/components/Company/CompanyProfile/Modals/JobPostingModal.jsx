@@ -12,7 +12,6 @@ import { Editor } from "react-draft-wysiwyg";
 
 export default function JobPostingModal({ isOpen, toggleJobPost }) {
   const commonUtility = CommonUtility();
-  const jobPostingUtility = JobPostingUtility();
   return (
     <>
       <Dialog
@@ -160,7 +159,11 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
                     <label className="text-base font-semibold text-gray-700">
                       Job Description <span className="text-red-600">*</span>
                     </label>
-                    <Editor editorClassName="border" wrapperClassName="h-20" />
+                    <Editor
+                      editorClassName="border p-2"
+                      wrapperClassName="h-20"
+                      placeholder="Type here..."
+                    />
                   </div>
                 </div>
               </div>
@@ -173,7 +176,7 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
                     toggleJobPost();
-                    toast.success("Basic Details saved successfully", {
+                    toast.success("Job post added successfully", {
                       position: "top-right",
                       autoClose: 5000,
                       hideProgressBar: false,
@@ -194,7 +197,7 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
         </div>
 
         <ToastContainer
-          containerId="job__posting__toast"
+          containerId="job_posting_toast"
           position="top-right"
           autoClose={5000}
           hideProgressBar={false}

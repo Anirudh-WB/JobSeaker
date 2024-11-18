@@ -10,8 +10,6 @@ import CommonUtility from "../../../../utility/CommonUtility";
 import CompanyHeaderUtility from "../../../../utility/CompanyHeaderUtility";
 
 export default function CompanyHeaderModal({ isOpen, toggleCompanyHeader }) {
-  const commonUtility = CommonUtility();
-  const companyHeaderUtility = CompanyHeaderUtility();
 
   return (
     <>
