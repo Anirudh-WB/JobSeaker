@@ -1,11 +1,12 @@
 import React from "react";
 import Jobfilters from "../JobList/Jobfilters";
+import Joblist from "./Joblist";
 
 function JoblistPage() {
   return (
     <div className="flex gap-5 px-32">
       <Jobfilters />
-      <div>
+      <div className="flex flex-col gap-6">
         {/* Compact Search Bar */}
         <form className="w-full mt-5 bg-white shadow-md rounded-full">
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 p-2">
@@ -65,8 +66,7 @@ function JoblistPage() {
             </button>
           </div>
         </form>
-
-        <JoblistPage />
+        <Joblist />
       </div>
     </div>
   );
