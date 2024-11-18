@@ -1,6 +1,4 @@
 import { useState } from "react";
-import "quill/dist/quill.snow.css";
-
 
 function JobPostingUtility() {
   const [isJobPostingOpen, setIsJobPostingOpen] = useState(false);
@@ -14,7 +12,7 @@ function JobPostingUtility() {
     setIsJobPostingOpen((prev) => !prev);
   };
 
-  return { isJobPostingOpen, toggleJobPost, jobDescription , handleChange};
+  return { isJobPostingOpen, toggleJobPost, jobDescription, handleChange };
 }
 
 export default JobPostingUtility;
