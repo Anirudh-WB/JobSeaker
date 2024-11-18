@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import KeySkillsModal from "./Modals/KeySkillsModal";
 import KeySkillsUtility from "../../../utility/KeySkillsUtility";
