@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage/HomePage";
 import LoginSidebar from "./components/SideBar/LoginSideBar";
 import Regsiter from "./components/Register/Regsiter";
 import CompanyProfile from "./components/Company/CompanyProfile/CompanyProfile";
+import ApplicantsList from "./components/Company/ApplicantsList/ApplicantsList";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -28,6 +29,7 @@ function App() {
           <Route path="/job-list" element={<Joblist />} />
           <Route path="/job-details" element={<JobDetails />} />
           <Route path="/company-profile" element={<CompanyProfile />} />
+          <Route path="/applicants-list" element={<ApplicantsList />} />
         </Routes>
       </div>
     </div>
