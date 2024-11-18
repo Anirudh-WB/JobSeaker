@@ -7,7 +7,6 @@ import {
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
-import JobPostingUtility from "../../../../utility/JobPostingUtility";
 import { Editor } from "react-draft-wysiwyg";
 
 export default function JobPostingModal({ isOpen, toggleJobPost }) {
