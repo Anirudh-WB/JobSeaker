@@ -8,7 +8,7 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
 import JobPostingUtility from "../../../../utility/JobPostingUtility";
-import ReactQuill from "react-quill";
+import { Editor } from "react-draft-wysiwyg";
 
 export default function JobPostingModal({ isOpen, toggleJobPost }) {
   const commonUtility = CommonUtility();
@@ -156,24 +156,11 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
                     </label>
                   </div>
 
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-3 h-52">
                     <label className="text-base font-semibold text-gray-700">
                       Job Description <span className="text-red-600">*</span>
                     </label>
-                    <ReactQuill
-                      value={jobPostingUtility.jobDescription}
-                      onChange={jobPostingUtility.handleChange}
-                      placeholder="Type the job description here..."
-                      modules={{
-                        toolbar: [
-                          ["bold", "italic", "underline"], // Text styling
-                          [{ list: "ordered" }, { list: "bullet" }], // Lists
-                          ["link"], // Links
-                        ],
-                      }}
-                      className="rounded-md bg-white text-gray-600"
-                      style={{ minHeight: "150px" }}
-                    />
+                    <Editor editorClassName="border" wrapperClassName="h-20" />
                   </div>
                 </div>
               </div>
