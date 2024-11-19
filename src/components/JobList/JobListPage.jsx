@@ -1,5 +1,6 @@
 import React from "react";
 import Jobfilters from "../JobList/Jobfilters";
+import Joblist from "./Joblist";
 
 function JoblistPage() {
   return (
@@ -7,7 +8,7 @@ function JoblistPage() {
       <Jobfilters />
       <div>
         {/* Compact Search Bar */}
-        <form className="w-full mt-5 bg-white shadow-md rounded-full">
+        <form className="w-full my-5 bg-white shadow-md rounded-full">
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 p-2">
             {/* Search Icon */}
             <div className="flex items-center text-gray-400">
@@ -66,7 +67,7 @@ function JoblistPage() {
           </div>
         </form>
 
-        <JoblistPage />
+        <Joblist />
       </div>
     </div>
   );
