@@ -15,7 +15,7 @@ function Joblist() {
       {commonUtility.jobs.map((job, index) => (
         <div
           key={index}
-          className="bg-white border rounded border-gray-200 shadow-lg p-5"
+          className="bg-white border rounded-md border-gray-200 shadow-lg p-5"
         >
           <div className="flex flex-1 justify-between">
             <div className="flex flex-col gap">
@@ -23,9 +23,12 @@ function Joblist() {
               <p className="text-sm text-gray-600">{job.company}</p>
             </div>
 
-            {location.pathname !== "/company-profile" && (
-              <a href="/applicants-list" className="flex items-center gap-1 text-sm font-semibold text-gray-700">
-                <FaUser className="text-xs"/>
+            {location.pathname === "/company-profile" && (
+              <a
+                href="/applicants-list"
+                className="flex items-center gap-1 text-sm font-semibold text-gray-700"
+              >
+                <FaUser className="text-xs" />
                 {job.applied} Applied
               </a>
             )}
@@ -61,7 +64,7 @@ function Joblist() {
             {job.skills.map((skill, skillIndex) => (
               <span
                 key={skillIndex}
-                className="border rounded-full px-3 py-1 text-sm text-gray-600"
+                className="border rounded-full px-3 py-1 text-sm text-gray-600 hover:bg-slate-100"
               >
                 {skill}
               </span>

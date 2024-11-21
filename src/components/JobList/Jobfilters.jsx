@@ -1,14 +1,58 @@
 import React, { useState } from "react";
 
 function Jobfilters() {
-  const skillsList = [];
+  const skillsList = [
+    "JavaScript",
+    "React",
+    "Redux",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "HTML",
+    "CSS",
+    "Bootstrap",
+    "Sass",
+    "jQuery",
+    "TypeScript",
+    "Angular",
+    "Ionic",
+    "React Native",
+    "Python",
+    "Django",
+    "Flask",
+    "SQL",
+    "NoSQL",
+    "GraphQL",
+    "AWS",
+    "Azure",
+    "Docker",
+    "Kubernetes",
+    "Serverless",
+    "DevOps",
+    "Scrum",
+    "Agile",
+    "TDD",
+    "BDD",
+    "CI/CD",
+    "Unit Testing",
+    "Integration Testing",
+    "End-to-End Testing",
+    "Performance Testing",
+    "Security",
+    "Networking",
+    "System Design",
+    "Microservices",
+    "Serverless Architecture",
+    "Cloud Architecture",
+  ];
   const [openSections, setOpenSections] = useState({
     skills: false,
     experience: true,
   });
   const [experienceRange, setExperienceRange] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedSkills, setSelectedSkills] = useState([]);
+  const [selectedSkills, setSelectedSkills] = useState([
+  ]);
 
   const toggleAccordion = (section) => {
     setOpenSections((prev) => ({
@@ -24,7 +68,7 @@ function Jobfilters() {
   const handleSkillClick = (skill) => {
     if (!selectedSkills.includes(skill)) {
       setSelectedSkills([...selectedSkills, skill]);
-      setSearchTerm(""); // Clear the search bar after selection
+      setSearchTerm(""); 
     }
   };
 
@@ -94,7 +138,7 @@ function Jobfilters() {
                 step="1"
                 value={experienceRange}
                 onChange={handleRangeChange}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                className="w-full h-2 bg-blue-700 rounded-lg cursor-pointer "
               />
               <div className="flex justify-between text-sm mt-2">
                 <span className="font-semibold">0 yrs</span>
