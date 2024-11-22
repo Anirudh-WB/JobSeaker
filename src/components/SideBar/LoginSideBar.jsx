@@ -1,7 +1,11 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
+import LoginUtility from "../../utility/LoginUtility";
+import { Bounce, ToastContainer } from "react-toastify";
 
 function LoginSidebar({ isOpen, toggleSidebar }) {
+  const utility = LoginUtility();
+
   return (
     <>
       {isOpen && <div className="fixed inset-0 bg-black/30 z-50" />}
@@ -31,13 +35,19 @@ function LoginSidebar({ isOpen, toggleSidebar }) {
             Email ID / Username
           </label>
           <input
-            type="text"
+            type="email"
+            id="emailAddress"
+            value={utility.loginCredentials.emailAddress}
+            onChange={(e) => utility.handleChange(e)}
             placeholder="Email or Username"
             className="p-3 w-full rounded-xl text-black placeholder-gray-500 outline-none border"
           />
           <label className="font-semibold text-black">Password</label>
           <input
             type="password"
+            id="password"
+            value={utility.loginCredentials.password}
+            onChange={(e) => utility.handleChange(e)}
             placeholder="Enter your password"
             className="p-3 w-full rounded-xl text-black placeholder-gray-500 outline-none border"
           />
@@ -46,12 +56,16 @@ function LoginSidebar({ isOpen, toggleSidebar }) {
           </a>
           <button
             type="submit"
+            onClick={(e) => utility.handleSubmit(e)}
             className="mt-2 w-full h-12 rounded-3xl bg-blue-600 text-white font-bold"
           >
             Login
           </button>
 
-          <a href="/" className="text-blue-600 text-center font-bold text-sm mt-2">
+          <a
+            href="/"
+            className="text-blue-600 text-center font-bold text-sm mt-2"
+          >
             Use OTP to Login
           </a>
 
@@ -68,6 +82,21 @@ function LoginSidebar({ isOpen, toggleSidebar }) {
           </button>
         </form>
       </div>
+
+      {/* <ToastContainer
+        containerId="login__error__toast"
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      /> */}
     </>
   );
 }
