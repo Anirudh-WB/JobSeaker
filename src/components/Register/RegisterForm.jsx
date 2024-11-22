@@ -26,10 +26,12 @@ function RegisterForm() {
       </div>
       <div className="flex gap-3">
         <div className="flex flex-col gap-3 w-4/5">
+
+        <div className="flex flex-1 gap-4">
           {/* First Name */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 w-1/2">
             <label className="text-base font-semibold" for="first_name">
-              Full name <span className="text-red-600 font-semibold">*</span>
+              First name <span className="text-red-600 font-semibold">*</span>
             </label>
             <div className="relative">
               <input
@@ -46,6 +48,29 @@ function RegisterForm() {
               </label>
             </div>
           </div>
+
+          {/* Last Name */}
+          <div className="flex flex-col gap-1 w-1/2">
+            <label className="text-base font-semibold" for="first_name">
+              Last name <span className="text-red-600 font-semibold">*</span>
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                id="floating_outlined"
+                className="w-full outline-none border rounded-md p-2 peer"
+                placeholder=" "
+              />
+              <label
+                for="floating_outlined"
+                className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+              >
+                Enter Last name
+              </label>
+            </div>
+          </div>
+
+        </div>
 
           {/* Email ID */}
           <div className="flex flex-col gap-1">
