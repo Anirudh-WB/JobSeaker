@@ -6,8 +6,6 @@ import {
 } from "@headlessui/react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import CommonUtility from "../../../../utility/CommonUtility";
-import CompanyHeaderUtility from "../../../../utility/CompanyHeaderUtility";
 
 export default function CompanyHeaderModal({ isOpen, toggleCompanyHeader }) {
 
