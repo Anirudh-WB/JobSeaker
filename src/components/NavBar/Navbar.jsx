@@ -1,8 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ toggleSidebar }) {
+  const location = useLocation();
+
   return (
-    <nav className="bg-white border-gray-200 dark:bg-slate-200 w-full h-fit top-0 sticky z-50">
+    <nav className="bg-white border-gray-200 shadow-lg w-full h-fit top-0 sticky z-40">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
@@ -44,16 +47,19 @@ function Navbar() {
           <div className="mt-1 flex space-x-2">
             <button
               type="button"
+              onClick={toggleSidebar}
               className="text-blue-900 bg-white border border-blue-300 focus:outline-none hover:bg-blue-100 focus:ring-4 focus:ring-blue-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-800 dark:text-white dark:border-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-600 dark:focus:ring-blue-700"
             >
               Login
             </button>
-            <button
-              type="button"
-              className="text-red-600 bg-white border border-red-300 focus:outline-none hover:bg-red-100 focus:ring-4 focus:ring-red-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-800 dark:text-white dark:border-red-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            >
-              Register
-            </button>
+            {location.pathname !== "/register" && (
+              <a
+                href="/register"
+                className="text-red-600 bg-white border border-red-300 focus:outline-none hover:bg-red-100 focus:ring-4 focus:ring-red-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-800 dark:text-white dark:border-red-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              >
+                Register
+              </a>
+            )}
           </div>
         </div>
       </div>

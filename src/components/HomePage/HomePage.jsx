@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 
+
 function HomePage() {
   return (
     <>
@@ -19,3 +20,13 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
+
+
+
+
+
+
+
+

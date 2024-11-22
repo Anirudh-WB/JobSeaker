@@ -5,7 +5,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 function Resume() {
   return (
     <div className="p-5 bg-white rounded-xl shadow-md h-fit flex flex-col gap-4">
-      <h2 className="font-semibold text-md" id="Resume">Resume</h2>
+      <h2 className="font-semibold text-lg" id="Resume">Resume</h2>
       <div className="flex items-center justify-between">
         <div className="text-sm">
           <h3 className="font-semibold">John Resume.pdf</h3>

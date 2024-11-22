@@ -1,22 +1,11 @@
 import React, { useState } from "react";
 
 function Jobfilters() {
-  const skillsList = [
-    "JavaScript",
-    "React",
-    "Node.js",
-    "Python",
-    "Java",
-    "CSS",
-    "HTML",
-    "C#",
-    ".NET",
-    "SQL",
-    "AWS",
-    "Docker",
-    "Kubernetes",
-  ];
-  const [openSections, setOpenSections] = useState({ skills: false, experience: true });
+  const skillsList = [];
+  const [openSections, setOpenSections] = useState({
+    skills: false,
+    experience: true,
+  });
   const [experienceRange, setExperienceRange] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSkills, setSelectedSkills] = useState([]);
