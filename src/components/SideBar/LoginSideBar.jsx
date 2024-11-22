@@ -25,9 +25,9 @@ function LoginSidebar({ isOpen, toggleSidebar }) {
 
         <div className="flex items-center justify-between pl-8 pr-8">
           <span className="text-xl font-bold text-black">Login</span>
-          <span className="text-md font-bold text-blue-600">
+          <a href="/register" className="text-md font-bold text-blue-600">
             Register for free
-          </span>
+          </a>
         </div>
 
         <form className="flex flex-col gap-2 p-8">
@@ -83,8 +83,8 @@ function LoginSidebar({ isOpen, toggleSidebar }) {
         </form>
       </div>
 
-      {/* <ToastContainer
-        containerId="login__error__toast"
+      <ToastContainer
+        containerId="login__toast"
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
@@ -96,7 +96,7 @@ function LoginSidebar({ isOpen, toggleSidebar }) {
         pauseOnHover
         theme="colored"
         transition={Bounce}
-      /> */}
+      />
     </>
   );
 }
