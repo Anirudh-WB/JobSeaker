@@ -4,12 +4,13 @@ import { BiRupee } from "react-icons/bi";
 import { IoLocationOutline } from "react-icons/io5";
 import { CgNotes } from "react-icons/cg";
 import CommonUtility from "../../utility/CommonUtility";
-import { useLocation } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import CompanyProfileUtility from "../../utility/CompanyProfileUtility";
 
 function Joblist() {
   const commonUtility = CommonUtility();
-  const location = useLocation();
+  const companyProfileUtility = CompanyProfileUtility();
+
   return (
     <div className="flex-1 flex flex-col gap-5">
       {commonUtility.jobs.map((job, index) => (
@@ -23,7 +24,7 @@ function Joblist() {
               <p className="text-sm text-gray-600">{job.company}</p>
             </div>
 
-            {location.pathname === "/company-profile" && (
+            {companyProfileUtility.canAccess && (
               <a
                 href="/applicants-list"
                 className="flex items-center gap-1 text-sm font-semibold text-gray-700"

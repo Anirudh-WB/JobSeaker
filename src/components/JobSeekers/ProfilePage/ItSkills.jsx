@@ -2,9 +2,15 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ItSkillsModal from "./Modals/ItSkillsModal";
 import ItSkillUtility from "../../../utility/ItSkillsUtility";
+import ProfileUtility from "../../../utility/ProfileUtility";
+import { useDispatch } from "react-redux";
+import { toggleItSkillsModal } from "../../../redux/modal/modalSlice";
 
 function ItSkills() {
   const utility = ItSkillUtility();
+  const profileUtility = ProfileUtility();
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -14,23 +20,25 @@ function ItSkills() {
             IT skills
           </h2>
 
-          <button
-            className="font-semibold text-blue-700"
-            onClick={() => {
-              utility.setSkillToEdit({
-                name: "",
-                version: NaN,
-                lastUsed: NaN,
-                experience: {
-                  year: 0,
-                  month: 0,
-                },
-              });
-              utility.toggleModal();
-            }}
-          >
-            Add details
-          </button>
+          {profileUtility.canAccess && (
+            <button
+              className="font-semibold text-blue-700"
+              onClick={() => {
+                utility.setSkillToEdit({
+                  name: "",
+                  version: NaN,
+                  lastUsed: NaN,
+                  experience: {
+                    year: 0,
+                    month: 0,
+                  },
+                });
+                dispatch(toggleItSkillsModal());
+              }}
+            >
+              Add details
+            </button>
+          )}
         </div>
         <div className="flex items-center gap-1 flex-wrap text-sm text-gray-700">
           <div className="w-full">
@@ -39,7 +47,7 @@ function ItSkills() {
               <h4 className="w-1/5">Version</h4>
               <h4 className="w-1/5">Last used</h4>
               <h4 className="w-1/5">Experience</h4>
-              <h4 className="w-1/5"> </h4>
+              {profileUtility.canAccess && <h4 className="w-1/5"> </h4>}
             </div>
 
             <div className="w-full flex flex-col gap-5 font-medium mt-4">
@@ -61,16 +69,18 @@ function ItSkills() {
                   } ${skill.experience?.month} Month${
                     skill.experience?.month > 1 ? "s" : ""
                   }`}</p>
-                  <p className="w-1/5 text-center">
-                    <button
-                      onClick={() => {
-                        utility.setSkillToEdit(skill);
-                        utility.toggleModal();
-                      }}
-                    >
-                      <FiEdit2 className="text-sm text-gray-700" />
-                    </button>
-                  </p>
+                  {profileUtility.canAccess && (
+                    <p className="w-1/5 text-center">
+                      <button
+                        onClick={() => {
+                          utility.setSkillToEdit(skill);
+                          dispatch(toggleItSkillsModal());
+                        }}
+                      >
+                        <FiEdit2 className="text-sm text-gray-700" />
+                      </button>
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -79,8 +89,6 @@ function ItSkills() {
       </div>
 
       <ItSkillsModal
-        isOpen={utility.isItSkillsOpen}
-        toggleModal={utility.toggleModal}
         skills={utility.itSkills}
         setSkills={utility.setItSkills}
         skillToEdit={utility.skillToEdit}

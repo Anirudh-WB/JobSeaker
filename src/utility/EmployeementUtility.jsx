@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 function EmployeementUtility() {
-  let [isEmploymentOpen, setIsEmploymentOpen] = useState(false);
-
   const [isExpanded, setIsExpanded] = useState([]);
 
   const [employments, setEmployment] = useState([
@@ -34,18 +32,11 @@ function EmployeementUtility() {
     },
   ]);
 
-  const toggleEmployment = () => {
-    setIsEmploymentOpen((prev) => !prev);
-  };
-  
   return {
-    isEmploymentOpen,
-    setIsEmploymentOpen,
     isExpanded,
     setIsExpanded,
     employments,
     setEmployment,
-    toggleEmployment,
   };
 }
 

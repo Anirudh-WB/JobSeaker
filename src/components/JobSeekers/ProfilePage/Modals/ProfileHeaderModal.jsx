@@ -8,18 +8,25 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
 import ProfileHeaderUtility from "../../../../utility/ProfileHeaderUtility";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleProfileHeaderModal } from "../../../../redux/modal/modalSlice";
 
-export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
+export default function ProfileHeaderModal() {
   const commonUtility = CommonUtility();
   const profileHeaderUtility = ProfileHeaderUtility();
+
+  const isProdileHeaderOpen = useSelector(
+    (state) => state.modalReducer.jobSeekerProfile.profileHeaderModal
+  );
+  const dispatch = useDispatch();
 
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isProdileHeaderOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleProfileHeader}
+        onClose={() => dispatch(toggleProfileHeaderModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -32,7 +39,7 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
               <div className="flex justify-end w-full">
                 <button
                   className="text-xl text-gray-500"
-                  onClick={toggleProfileHeader}
+                  onClick={() => dispatch(toggleProfileHeaderModal())}
                 >
                   <RiCloseLargeFill />
                 </button>
@@ -274,13 +281,16 @@ export default function ProfileHeaderModal({ isOpen, toggleProfileHeader }) {
               </div>
 
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleProfileHeader}>
+                <button
+                  className="text-blue-700"
+                  onClick={() => dispatch(toggleProfileHeaderModal())}
+                >
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    toggleProfileHeader();
+                    dispatch(toggleProfileHeaderModal());
                     toast.success("Basic Details saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

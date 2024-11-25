@@ -3,9 +3,15 @@ import { FiEdit2 } from "react-icons/fi";
 import PersonalDetailsModal from "./Modals/PersonalDetailsModal";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import PersonalDetailsUtility from "../../../utility/PersonalDetailsUtility";
+import ProfileUtility from "../../../utility/ProfileUtility";
+import { useDispatch } from "react-redux";
+import { togglePersonalDetailsModal } from "../../../redux/modal/modalSlice";
 
 function PersonalDetails() {
   const utility = PersonalDetailsUtility();
+  const profileUtility = ProfileUtility();
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -14,9 +20,11 @@ function PersonalDetails() {
           <h2 className="font-semibold text-lg" id="PersonalDetails">
             Personal Details
           </h2>
-          <button onClick={utility.toggleModal}>
-            <FiEdit2 className="text-sm text-gray-700" />
-          </button>
+          {profileUtility.canAccess && (
+            <button onClick={() => dispatch(togglePersonalDetailsModal())}>
+              <FiEdit2 className="text-sm text-gray-700" />
+            </button>
+          )}
         </div>
 
         <div className="flex flex-col gap-8">
@@ -26,9 +34,11 @@ function PersonalDetails() {
               <p className="font-semibold text-sm">
                 {utility.personalDetails.gender},{" "}
                 {utility.personalDetails.marritalStatus},{" "}
-                <a href="/" className="text-sm text-blue-700 font-semibold">
-                  Add more info
-                </a>
+                {profileUtility.canAccess && (
+                  <a href="/" className="text-sm text-blue-700 font-semibold">
+                    Add more info
+                  </a>
+                )}
               </p>
             </div>
             <div className="w-1/2">
@@ -54,9 +64,14 @@ function PersonalDetails() {
               <h3 className="text-gray-500 text-sm font-semibold">
                 Work permit
               </h3>
-              <a href="/" className="text-sm text-blue-700 font-semibold">
-                Add Work permit
-              </a>
+              <p>
+                {utility.personalDetails.workPermit}{" "}
+                {profileUtility.canAccess && (
+                  <a href="/" className="text-sm text-blue-700 font-semibold">
+                    Add Work permit
+                  </a>
+                )}
+              </p>
             </div>
           </div>
 
@@ -96,9 +111,11 @@ function PersonalDetails() {
             <h2 className="font-semibold text-base" id="PersonalDetails">
               Languages
             </h2>
-            <a href="/" className="text-base font-semibold text-blue-700">
-              Add languages
-            </a>
+            {profileUtility.canAccess && (
+              <a href="/" className="text-base font-semibold text-blue-700">
+                Add languages
+              </a>
+            )}
           </div>
         </div>
 
@@ -150,11 +167,7 @@ function PersonalDetails() {
         </div>
       </div>
 
-      <PersonalDetailsModal
-        isOpen={utility.isPersonalDetailsOpen}
-        toggleModal={utility.toggleModal}
-        setPersonalDetails={utility.setPersonalDetails}
-      />
+      <PersonalDetailsModal setPersonalDetails={utility.setPersonalDetails} />
     </>
   );
 }

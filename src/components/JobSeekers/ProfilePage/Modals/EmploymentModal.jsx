@@ -8,16 +8,24 @@ import {
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleEmploymentModal } from "../../../../redux/modal/modalSlice";
 
-export default function EmploymentModal({ isOpen, toggleEmployment }) {
+export default function EmploymentModal() {
   const commonUtility = CommonUtility();
+
+  const isEmploymentOpen = useSelector(
+    (state) => state.modalReducer.jobSeekerProfile.employmentModal
+  );
+  const dispatch = useDispatch();
+
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isEmploymentOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleEmployment}
+        onClose={() => dispatch(toggleEmploymentModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -28,11 +36,7 @@ export default function EmploymentModal({ isOpen, toggleEmployment }) {
               className="w-1/2 rounded-3xl bg-white p-10 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="flex justify-end w-full">
-                <CloseButton
-                  as="button"
-                  className="text-xl text-gray-500"
-                  onClick={toggleEmployment}
-                >
+                <CloseButton as="button" className="text-xl text-gray-500">
                   <RiCloseLargeFill />
                 </CloseButton>
               </div>
@@ -253,13 +257,16 @@ export default function EmploymentModal({ isOpen, toggleEmployment }) {
                 </div>
               </div>
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleEmployment}>
+                <button
+                  className="text-blue-700"
+                  onClick={() => dispatch(toggleEmploymentModal())}
+                >
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    toggleEmployment();
+                    dispatch(toggleEmploymentModal());
                     toast.success("Employeement details saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

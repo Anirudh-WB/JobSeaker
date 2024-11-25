@@ -5,17 +5,23 @@ import {
   DialogBackdrop,
 } from "@headlessui/react";
 import { RiCloseLargeFill } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { toggleCompanyHeaderModal } from "../../../../redux/modal/modalSlice";
 
-export default function CompanyHeaderModal({ isOpen, toggleCompanyHeader }) {
+export default function CompanyHeaderModal() {
+  const dispatch = useDispatch();
+  const isCompanyHeaderOpen = useSelector(
+    (state) => state.modalReducer.companyProfile.companyHeaderModal
+  );
 
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isCompanyHeaderOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleCompanyHeader}
+        onClose={() => dispatch(toggleCompanyHeaderModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -28,7 +34,7 @@ export default function CompanyHeaderModal({ isOpen, toggleCompanyHeader }) {
               <div className="flex justify-end w-full">
                 <button
                   className="text-xl text-gray-500"
-                  onClick={toggleCompanyHeader}
+                  onClick={() => dispatch(toggleCompanyHeaderModal())}
                 >
                   <RiCloseLargeFill />
                 </button>
@@ -274,13 +280,16 @@ export default function CompanyHeaderModal({ isOpen, toggleCompanyHeader }) {
               </div>
 
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleCompanyHeader}>
+                <button
+                  className="text-blue-700"
+                  onClick={() => dispatch(toggleCompanyHeaderModal())}
+                >
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    toggleCompanyHeader();
+                    dispatch(toggleCompanyHeaderModal());
                     toast.success("Company Details saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

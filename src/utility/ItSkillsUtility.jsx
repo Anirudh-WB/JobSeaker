@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 function ItSkillsUtility() {
-  let [isItSkillsOpen, setIsItSkillsOpen] = useState(false);
-
   const [skillToEdit, setSkillToEdit] = useState({
     id: 0,
     name: "",
@@ -88,13 +86,7 @@ function ItSkillsUtility() {
     }
   );
 
-  const toggleModal = () => {
-    setIsItSkillsOpen((prev) => !prev);
-  };
-
   return {
-    isItSkillsOpen,
-    toggleModal,
     skillToEdit,
     setSkillToEdit,
     itSkills,

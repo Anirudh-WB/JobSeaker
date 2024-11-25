@@ -2,8 +2,6 @@ import { useState } from "react";
 import CommonUtility from "./CommonUtility";
 
 function CareerUtility() {
-  let [isCareersOpen, setIsCareersOpen] = useState(false);
-
   const [locations, setLocations] = useState([]);
 
   const [inputValue, setInputValue] = useState("");
@@ -32,9 +30,6 @@ function CareerUtility() {
     salary: 0,
   });
 
-  const toggleModal = () => {
-    setIsCareersOpen((prev) => !prev);
-  };
   const addLocation = (e) => {
     e.preventDefault();
     if (
@@ -54,8 +49,6 @@ function CareerUtility() {
   const utility = CommonUtility();
 
   return {
-    isCareersOpen,
-    toggleModal,
     careersTemp,
     setCareersTemp,
     locations,

@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 function ProfileHeaderUtility() {
-  let [isProjectHeaderOpen, setIsProjectHeaderOpen] = useState(false);
   let [projectHeader, setProjectHeader] = useState([
     {
       id: 1,
@@ -18,16 +17,9 @@ function ProfileHeaderUtility() {
 
   const [selectedPeriod, setSelectedPeriod] = useState("");
 
-  const toggleProfileHeader = () => {
-    setIsProjectHeaderOpen((prev) => !prev);
-  };
-
   return {
-    isProjectHeaderOpen,
-    setIsProjectHeaderOpen,
     projectHeader,
     setProjectHeader,
-    toggleProfileHeader,
     selectedPeriod,
     setSelectedPeriod,
   };

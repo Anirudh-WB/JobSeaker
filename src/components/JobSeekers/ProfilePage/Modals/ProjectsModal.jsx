@@ -8,16 +8,24 @@ import {
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleProjectsModal } from "../../../../redux/modal/modalSlice";
 
-export default function ProjectsModal({ isOpen, toggleModal }) {
+export default function ProjectsModal() {
   const commonUtility = CommonUtility();
+  const isProjectsOpen = useSelector(
+    (state) => state.modalReducer.jobSeekerProfile.projectsModal
+  );
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isProjectsOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleModal}
+        onClose={() => dispatch(toggleProjectsModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -28,7 +36,10 @@ export default function ProjectsModal({ isOpen, toggleModal }) {
               className="w-1/2 rounded-3xl bg-white p-10 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               <div className="flex justify-end w-full">
-                <button className="text-xl text-gray-500" onClick={toggleModal}>
+                <button
+                  className="text-xl text-gray-500"
+                  onClick={() => dispatch(toggleProjectsModal())}
+                >
                   <RiCloseLargeFill />
                 </button>
               </div>
@@ -160,13 +171,16 @@ export default function ProjectsModal({ isOpen, toggleModal }) {
                 </form>
               </div>
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleModal}>
+                <button
+                  className="text-blue-700"
+                  onClick={() => dispatch(toggleProjectsModal())}
+                >
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    toggleModal();
+                    dispatch(toggleProjectsModal());
                     toast.success("Project Details successfully", {
                       position: "top-right",
                       autoClose: 5000,

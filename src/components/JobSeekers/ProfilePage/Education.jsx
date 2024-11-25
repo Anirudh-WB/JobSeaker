@@ -2,10 +2,16 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import EducationModal from "./Modals/EducationModal";
 import EducationUtlity from "../../../utility/EducationUtlity";
+import ProfileUtility from "../../../utility/ProfileUtility";
+import { useDispatch } from "react-redux";
+import { toggleEducationModal } from "../../../redux/modal/modalSlice";
 
 function Education() {
-  
-const utility = EducationUtlity();
+  const utility = EducationUtlity();
+  const profileUtility = ProfileUtility();
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="p-5 bg-white rounded-xl shadow-md h-fit flex flex-col gap-4 ">
@@ -13,7 +19,14 @@ const utility = EducationUtlity();
           <h2 className="font-semibold text-md" id="Education">
             Education
           </h2>
-          <button className="text-blue-700 text-base font-semibold" onClick={utility.toggleEducation}>Add</button>
+          {profileUtility.canAccess && (
+            <button
+              className="text-blue-700 text-base font-semibold"
+              onClick={() => dispatch(toggleEducationModal())}
+            >
+              Add
+            </button>
+          )}
         </div>
 
         <div className="flex flex-col gap-8">
@@ -23,9 +36,11 @@ const utility = EducationUtlity();
                 <h3>
                   {edu.degree} from {edu.institution}
                 </h3>
-                <button onClick={utility.toggleEducation}>
-                  <FiEdit2 className="text-sm text-gray-700" />
-                </button>
+                {profileUtility.canAccess && (
+                  <button onClick={() => dispatch(toggleEducationModal())}>
+                    <FiEdit2 className="text-sm text-gray-700" />
+                  </button>
+                )}
               </div>
               <h3 className="text-gray-500">
                 Graduated in {edu.endDate}, {edu.type}
@@ -36,10 +51,7 @@ const utility = EducationUtlity();
         </div>
       </div>
 
-      <EducationModal
-        isOpen={utility.isEducationOpen}
-        toggleEducation={utility.toggleEducation}
-      />
+      <EducationModal />
     </>
   );
 }

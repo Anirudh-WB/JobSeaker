@@ -9,23 +9,27 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
 import PersonalDetailsUtility from "../../../../utility/PersonalDetailsUtility";
+import { useDispatch, useSelector } from "react-redux";
+import { togglePersonalDetailsModal } from "../../../../redux/modal/modalSlice";
 
-export default function PersonalDetailsModal({
-  isOpen,
-  toggleModal,
-  setPersonalDetails,
-}) {
+export default function PersonalDetailsModal({ setPersonalDetails }) {
   const sections = [1, 2, 3];
   const utility = CommonUtility();
   const personalUtility = PersonalDetailsUtility();
 
+  const isPersonalDetailsOpen = useSelector(
+    (state) => state.modalReducer.jobSeekerProfile.personalDetailsModal
+  );
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isPersonalDetailsOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleModal}
+        onClose={() => dispatch(togglePersonalDetailsModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -437,14 +441,17 @@ export default function PersonalDetailsModal({
               </div>
 
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleModal}>
+                <button
+                  className="text-blue-700"
+                  onClick={() => dispatch(togglePersonalDetailsModal())}
+                >
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
                     setPersonalDetails(personalUtility.personalDetailsTemp);
-                    toggleModal();
+                    dispatch(togglePersonalDetailsModal());
                     toast.success("Personal Details saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

@@ -8,21 +8,25 @@ import {
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import ResumeHeadlineUtility from "../../../../utility/ResumeHeadlineUtility";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleResumeHeadlineModal } from "../../../../redux/modal/modalSlice";
 
-export default function ResumeHeadlineModal({
-  isOpen,
-  toggleModal,
-  setResumeHeadline,
-}) {
+export default function ResumeHeadlineModal({ setResumeHeadline }) {
   const utility = ResumeHeadlineUtility();
+
+  const dispatch = useDispatch();
+
+  const isResumeHeadlineOpen = useSelector(
+    (state) => state.modalReducer.jobSeekerProfile.resumeHeadlineModal
+  );
 
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isResumeHeadlineOpen}
         as="div"
         className="relative z-10 focus:outline-none"
-        onClose={toggleModal}
+        onClose={() => dispatch(toggleResumeHeadlineModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -57,14 +61,17 @@ export default function ResumeHeadlineModal({
                 </span>
               </div>
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleModal}>
+                <button
+                  className="text-blue-700"
+                  onClick={() => dispatch(toggleResumeHeadlineModal())}
+                >
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
                     setResumeHeadline(utility.headlineTemp);
-                    toggleModal();
+                    dispatch(toggleResumeHeadlineModal());
                     toast.success("Resume Headline saved successfully", {
                       position: "top-right",
                       autoClose: 5000,
@@ -87,6 +94,7 @@ export default function ResumeHeadlineModal({
       </Dialog>
 
       <ToastContainer
+        containerId="resume__headline__toast"
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}

@@ -3,9 +3,13 @@ import { GoCheckCircleFill } from "react-icons/go";
 import boyPic from "../../../assets/white-boy.a0d2814a.png";
 import JobPostingModal from "./Modals/JobPostingModal";
 import JobPostingUtility from "../../../utility/JobPostingUtility";
+import { useDispatch } from "react-redux";
+import { toggleAddJobModal } from "../../../redux/modal/modalSlice";
 
 function CompanyJobInfo() {
   const jobPostingUtility = JobPostingUtility();
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -34,16 +38,13 @@ function CompanyJobInfo() {
         </div>
         <button
           className="text-white bg-blue-600 py-1.5 px-3 rounded-full"
-          onClick={jobPostingUtility.toggleJobPost}
+          onClick={() => dispatch(toggleAddJobModal())}
         >
           Add Job
         </button>
       </div>
 
-      <JobPostingModal
-        isOpen={jobPostingUtility.isJobPostingOpen}
-        toggleJobPost={jobPostingUtility.toggleJobPost}
-      />
+      <JobPostingModal />
     </>
   );
 }

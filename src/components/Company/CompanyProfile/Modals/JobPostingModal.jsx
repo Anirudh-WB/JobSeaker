@@ -8,16 +8,25 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
 import { Editor } from "react-draft-wysiwyg";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleAddJobModal } from "../../../../redux/modal/modalSlice";
 
-export default function JobPostingModal({ isOpen, toggleJobPost }) {
+export default function JobPostingModal() {
   const commonUtility = CommonUtility();
+
+  const dispatch = useDispatch();
+
+  const isAddJobOpen = useSelector(
+    (state) => state.modalReducer.companyProfile.addJobModal
+  );
+
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isAddJobOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleJobPost}
+        onClose={() => dispatch(toggleAddJobModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -30,7 +39,7 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
               <div className="flex justify-end w-full h-fit">
                 <button
                   className="text-xl text-gray-500"
-                  onClick={toggleJobPost}
+                  onClick={() => dispatch(toggleAddJobModal())}
                 >
                   <RiCloseLargeFill />
                 </button>
@@ -168,14 +177,18 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
               </div>
 
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleJobPost}>
+                <button
+                  className="text-blue-700"
+                  onClick={() => dispatch(toggleAddJobModal())}
+                >
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    toggleJobPost();
+                    dispatch(toggleAddJobModal());
                     toast.success("Job post added successfully", {
+                      toastId: "job__posting__toast",
                       position: "top-right",
                       autoClose: 5000,
                       hideProgressBar: false,
@@ -196,7 +209,7 @@ export default function JobPostingModal({ isOpen, toggleJobPost }) {
         </div>
 
         <ToastContainer
-          containerId="job_posting_toast"
+          containerId="job__posting__toast"
           position="top-right"
           autoClose={5000}
           hideProgressBar={false}

@@ -14,13 +14,10 @@ import { useEffect } from "react";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import ItSkillsUtility from "../../../../utility/ItSkillsUtility";
 import CommonUtility from "../../../../utility/CommonUtility";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleItSkillsModal } from "../../../../redux/modal/modalSlice";
 
-export default function ItSkillsModal({
-  isOpen,
-  toggleModal,
-  setSkills,
-  skillToEdit,
-}) {
+export default function ItSkillsModal({ setSkills, skillToEdit }) {
   useEffect(() => {
     if (skillToEdit) {
       skillsUtility.setSkillsTemp(skillToEdit);
@@ -30,10 +27,16 @@ export default function ItSkillsModal({
   const utility = CommonUtility();
   const skillsUtility = ItSkillsUtility();
 
+  const isItSkillsOpen = useSelector(
+    (state) => state.modalReducer.jobSeekerProfile.itSkillsModal
+  );
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isItSkillsOpen}
         as="div"
         className="relative z-50 focus:outline-none"
         onClose={() => {
@@ -46,7 +49,7 @@ export default function ItSkillsModal({
               month: 0,
             },
           });
-          toggleModal();
+          dispatch(toggleItSkillsModal());
         }}
         __demoMode
       >
@@ -231,7 +234,7 @@ export default function ItSkillsModal({
                   className="text-blue-700"
                   onClick={() => {
                     skillsUtility.setSkillsTemp(skillToEdit);
-                    toggleModal();
+                    dispatch(toggleItSkillsModal());
                   }}
                 >
                   Cancel
@@ -263,7 +266,7 @@ export default function ItSkillsModal({
                         month: 0,
                       },
                     });
-                    toggleModal();
+                    dispatch(toggleItSkillsModal());
                     toast.success("IT Skills saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

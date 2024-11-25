@@ -2,21 +2,25 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import LoginUtility from "../../utility/LoginUtility";
 import { Bounce, ToastContainer } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleLoginSideBar } from "../../redux/modal/modalSlice";
 
-function LoginSidebar({ isOpen, toggleSidebar }) {
+function LoginSidebar() {
   const utility = LoginUtility();
+  const isLoginOpen = useSelector((state) => state.modalReducer.loginSideBar);
+  const dispatch = useDispatch();
 
   return (
     <>
-      {isOpen && <div className="fixed inset-0 bg-black/30 z-50" />}
+      {isLoginOpen && <div className="fixed inset-0 bg-black/30 z-50" />}
       <div
         className={`fixed top-0 right-0 w-1/3 h-full rounded-tl-3xl rounded-bl-3xl shadow-gray-600 bg-white text-white transition-transform z-50 ${
-          isOpen ? "transform translate-x-0" : "transform translate-x-full"
+          isLoginOpen ? "transform translate-x-0" : "transform translate-x-full"
         }`}
       >
         <div className="p-5 text-right">
           <button
-            onClick={toggleSidebar}
+            onClick={() => dispatch(toggleLoginSideBar())}
             className="text-black text-3xl font-bold"
           >
             &times;
