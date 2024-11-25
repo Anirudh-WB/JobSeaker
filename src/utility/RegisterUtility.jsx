@@ -9,19 +9,37 @@ function RegisterUtility() {
     emailAddress: "",
     password: "",
     contactNo: "",
+    role: "JobSeekers", 
   });
 
+  const roleMapping = {
+    Company: 2,
+    JobSeekers: 3,
+  };
+
+  // Handle input changes
   const handleChange = (e) => {
     setRegisterData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post(
-        "http://localhost:5203/api/Auth/register",
-        registerData
-      );
+      
+      const payload = {
+        firstName: registerData.firstName,
+        lastName: registerData.lastName,
+        emailAddress: registerData.emailAddress,
+        password: registerData.password,
+        contactNo: registerData.contactNo,
+        roleId: roleMapping[registerData.role], 
+      };
+
+      const response = await axios.post("http://localhost:5203/api/Auth/register", payload);
+
+      console.log("Response:", response.data);
 
       setRegisterData({
         firstName: "",
@@ -29,8 +47,10 @@ function RegisterUtility() {
         emailAddress: "",
         password: "",
         contactNo: "",
+        role: "JobSeekers",
       });
-      toast.success("Register Successfully", {
+
+      toast.success("Registered Successfully", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -42,7 +62,10 @@ function RegisterUtility() {
         transition: Bounce,
       });
     } catch (error) {
-      toast.error("Invalid Data", {
+      console.error("Error during registration:", error.response?.data || error.message);
+
+      // Error notification
+      toast.error(error.response?.data?.message || "Invalid Data", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -55,6 +78,7 @@ function RegisterUtility() {
       });
     }
   };
+
   return { registerData, handleChange, handleSubmit };
 }
 
