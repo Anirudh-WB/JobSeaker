@@ -23,7 +23,12 @@ function RegisterForm() {
         </div>
         <div className="flex gap-2 items-center">
           <label className="text-base font-semibold">Register as : </label>
-          <select className="ml-2 outline-none border p-2 rounded-md w-2/3 text-sm text-gray-700">
+          <select
+            className="ml-2 outline-none border p-2 rounded-md w-2/3 text-sm text-gray-700"
+            id="role"
+            value={registerUtility.registerData.role}
+            onChange={(e) => registerUtility.handleChange(e)}
+          >
             {commonUtility.login.map((user) => (
               <option>{user}</option>
             ))}

@@ -129,38 +129,61 @@ export default function JobPostingModal() {
                   <label className="text-base font-semibold">
                     Salary <span className="text-red-600">*</span>
                   </label>
-                  <div className="relative">
-                    <input
-                      type="number"
-                      id="floating_outlined"
-                      className="w-full outline-none border rounded-md p-2 peer"
-                      placeholder=" "
-                    />
-                    <label
-                      for="floating_outlined"
-                      className="absolute left-2 text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-                    >
-                      Salary
-                    </label>
+                  <div className="flex flex-1 gap-2 items-center">
+                    <div className="relative w-1/2">
+                      <input
+                        type="number"
+                        id="floating_outlined"
+                        className="w-full outline-none border rounded-md p-2 peer"
+                        placeholder=" "
+                      />
+                      <label
+                        for="floating_outlined"
+                        className="absolute left-2 text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      >
+                        Minimum Salary
+                      </label>
+                    </div>
+                    <span className="text-gray-700 font-semibold text-sm">to</span>
+                    <div className="relative w-1/2">
+                      <input
+                        type="number"
+                        id="floating_outlined"
+                        className="w-full outline-none border rounded-md p-2 peer"
+                        placeholder=" "
+                      />
+                      <label
+                        for="floating_outlined"
+                        className="absolute left-2 text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                      >
+                        Maximum Salary
+                      </label>
+                    </div>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3">
                   <label className="text-base font-semibold">
                     Location <span className="text-red-600">*</span>
                   </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="floating_outlined"
-                      className="w-full outline-none border rounded-md p-2 peer"
-                      placeholder=" "
-                    />
-                    <label
-                      for="floating_outlined"
-                      className="absolute left-2 text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer peer-focus:dark:text-gray-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-                    >
-                      Location
-                    </label>
+                  <div className="flex flex-1 gap-2">
+                    <div className="relative w-1/3">
+                      <select className="peer outline-none border p-2 w-full rounded-md text-gray-700"></select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        Country
+                      </label>
+                    </div>
+                    <div className="relative w-1/3">
+                      <select className="peer outline-none border p-2 w-full rounded-md text-gray-700"></select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        State
+                      </label>
+                    </div>
+                    <div className="relative w-1/3">
+                      <select className="peer outline-none border p-2 w-full rounded-md text-gray-700"></select>
+                      <label className="absolute left-0 top-2 text-sm text-gray-400 bg-white px-2 transition-all duration-300 transform -translate-y-4 scale-75 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4">
+                        City
+                      </label>
+                    </div>
                   </div>
 
                   <div className="flex flex-col gap-3 h-52">
