@@ -15,18 +15,24 @@ import { IoCheckmarkSharp } from "react-icons/io5";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
 import CareerUtility from "../../../../utility/CareerUtility";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleCareerModal } from "../../../../redux/modal/modalSlice";
 
-export default function CareersModal({ isOpen, toggleModal }) {
+export default function CareersModal() {
   const utility = CommonUtility();
   const careerUtility = CareerUtility();
+  const isCareersOpen = useSelector(
+    (state) => state.modalReducer.jobSeekerProfile.careerModal
+  );
+  const dispatch = useDispatch();
 
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isCareersOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleModal}
+        onClose={() => dispatch(toggleCareerModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -352,13 +358,16 @@ export default function CareersModal({ isOpen, toggleModal }) {
               </div>
 
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleModal}>
+                <button
+                  className="text-blue-700"
+                  onClick={() => dispatch(toggleCareerModal())}
+                >
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    toggleModal();
+                    dispatch(toggleCareerModal());
                     toast.success("Careers saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

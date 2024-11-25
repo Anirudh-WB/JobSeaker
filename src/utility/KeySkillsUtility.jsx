@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 function KeySkillsUtility() {
-  let [isKeySkillsOpen, setIsKeySkillsOpen] = useState(false);
-
   let [skills, setSkills] = useState([
     "C #",
     "Asp.Net Core",
@@ -30,10 +28,6 @@ function KeySkillsUtility() {
     "Process Adherence",
   ]);
 
-  const toggleModal = () => {
-    setIsKeySkillsOpen((prev) => !prev);
-  };
-
   const [skillsTemp, setSkillsTemp] = useState(skills);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -43,8 +37,6 @@ function KeySkillsUtility() {
   );
 
   return {
-    isKeySkillsOpen,
-    toggleModal,
     skills,
     setSkills,
     skillsTemp,

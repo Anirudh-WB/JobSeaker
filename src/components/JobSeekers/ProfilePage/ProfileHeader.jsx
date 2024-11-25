@@ -7,10 +7,16 @@ import { IoBriefcaseOutline } from "react-icons/io5";
 import { FiEdit2 } from "react-icons/fi";
 import ProfileHeaderModal from "./Modals/ProfileHeaderModal";
 import ProfileHeaderUtility from "../../../utility/ProfileHeaderUtility";
+import ProfileUtility from "../../../utility/ProfileUtility";
+import { useDispatch } from "react-redux";
+import { toggleProfileHeaderModal } from "../../../redux/modal/modalSlice";
 
 function ProfileHeader() {
   const utility = ProfileHeaderUtility();
- 
+  const profileUtility = ProfileUtility();
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="bg-white p-6 shadow-lg rounded-2xl flex items-center justify-center gap-10">
@@ -29,17 +35,23 @@ function ProfileHeader() {
             <div className="flex flex-col">
               <div className="flex items-end gap-4">
                 <h1 className="text-2xl font-bold">John Doe</h1>
-                <button onClick={utility.toggleProfileHeader}>
-                  <FiEdit2 className="text-sm text-gray-700 mb-1" />
-                </button>
+                {profileUtility.canAccess && (
+                  <button onClick={() => dispatch(toggleProfileHeaderModal())}>
+                    <FiEdit2 className="text-sm text-gray-700 mb-1" />
+                  </button>
+                )}
               </div>
-              <p className="font-semibold text-lg text-gray-700">{utility.projectHeader[0].role}</p>
+              <p className="font-semibold text-lg text-gray-700">
+                {utility.projectHeader[0].role}
+              </p>
               <p className="text-gray-700">at Facebook</p>
             </div>
             <div>
               <p className="text-sm text-gray-500">
                 Profile last updated -{" "}
-                <span className="text-gray-700">{utility.projectHeader[0].lastUpdated}</span>
+                <span className="text-gray-700">
+                  {utility.projectHeader[0].lastUpdated}
+                </span>
               </p>
             </div>
           </div>
@@ -55,9 +67,11 @@ function ProfileHeader() {
               <p className="flex items-center gap-1">
                 <CiWallet />
                 {utility.projectHeader[0].salary}{" "}
-                <span className="font-semibold text-blue-700 px-2">
-                  Add breakup
-                </span>
+                {profileUtility.canAccess && (
+                  <span className="font-semibold text-blue-700 px-2">
+                    Add breakup
+                  </span>
+                )}
               </p>
             </div>
             <hr />
@@ -69,16 +83,14 @@ function ProfileHeader() {
                 <MdMailOutline /> {utility.projectHeader[0].email}
               </p>
               <p className="flex items-center gap-1">
-                <LuCalendar /> {utility.projectHeader[0].noticePeriod} Month notice period
+                <LuCalendar /> {utility.projectHeader[0].noticePeriod} Month
+                notice period
               </p>
             </div>
           </div>
         </div>
       </div>
-      <ProfileHeaderModal
-        isOpen={utility.isProjectHeaderOpen}
-        toggleProfileHeader={utility.toggleProfileHeader}
-      />
+      <ProfileHeaderModal />
     </>
   );
 }

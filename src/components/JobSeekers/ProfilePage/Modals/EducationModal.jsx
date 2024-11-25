@@ -8,17 +8,23 @@ import {
 import { RiCloseLargeFill } from "react-icons/ri";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import CommonUtility from "../../../../utility/CommonUtility";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleEducationModal } from "../../../../redux/modal/modalSlice";
 
-export default function EducationModal({ isOpen, toggleEducation }) {
+export default function EducationModal() {
   const commonUtility = CommonUtility();
+  const isEducationOpen = useSelector(
+    (state) => state.modalReducer.jobSeekerProfile.educationModal
+  );
+  const dispatch = useDispatch();
 
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isEducationOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleEducation}
+        onClose={() => dispatch(toggleEducationModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -188,13 +194,16 @@ export default function EducationModal({ isOpen, toggleEducation }) {
               </div>
 
               <div className="mt-4 flex justify-end gap-10 font-semibold">
-                <button className="text-blue-700" onClick={toggleEducation}>
+                <button
+                  className="text-blue-700"
+                  onClick={() => dispatch(toggleEducationModal())}
+                >
                   Cancel
                 </button>
                 <button
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
-                    toggleEducation();
+                    dispatch(toggleEducationModal());
                     toast.success("Education saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

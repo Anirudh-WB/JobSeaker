@@ -6,9 +6,15 @@ import React from "react";
 import { FaRegUser } from "react-icons/fa6";
 import CompanyHeaderModal from "./Modals/CompanyHeaderModal";
 import CompanyHeaderUtility from "../../../utility/CompanyHeaderUtility";
+import CompanyProfileUtility from "../../../utility/CompanyProfileUtility";
+import { useDispatch } from "react-redux";
+import { toggleCompanyHeaderModal } from "../../../redux/modal/modalSlice";
 
 function CompanyHeader() {
   const utility = CompanyHeaderUtility();
+  const companyProfileUtility = CompanyProfileUtility();
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -26,9 +32,11 @@ function CompanyHeader() {
                 <h1 className="text-2xl font-bold">
                   {utility.companyHeader.companyName}
                 </h1>
-                <button onClick={utility.toggleCompanyHeader}>
-                  <FiEdit2 className="text-sm text-gray-700 mb-1" />
-                </button>
+                {companyProfileUtility.canAccess && (
+                  <button onClick={() => dispatch(toggleCompanyHeaderModal())}>
+                    <FiEdit2 className="text-sm text-gray-700 mb-1" />
+                  </button>
+                )}
               </div>
               <p className="font-semibold text-lg text-gray-700">
                 {utility.companyHeader.companyTagLine}
@@ -95,10 +103,7 @@ function CompanyHeader() {
         </div>
       </div>
 
-      <CompanyHeaderModal
-        isOpen={utility.isCompanyHeaderOpen}
-        toggleCompanyHeader={utility.toggleCompanyHeader}
-      />
+      <CompanyHeaderModal />
     </>
   );
 }

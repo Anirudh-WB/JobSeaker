@@ -2,9 +2,14 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import CareersModal from "./Modals/CareersModal";
 import CareerUtility from "../../../utility/CareerUtility";
+import ProfileUtility from "../../../utility/ProfileUtility";
+import { useDispatch } from "react-redux";
+import { toggleCareerModal } from "../../../redux/modal/modalSlice";
 
 function Careers() {
   const utility = CareerUtility();
+  const profileUtility = ProfileUtility();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -13,9 +18,11 @@ function Careers() {
           <h2 className="font-semibold text-lg" id="careers">
             Careers
           </h2>
-          <button onClick={utility.toggleModal}>
-            <FiEdit2 className="text-sm text-gray-700" />
-          </button>
+          {profileUtility.canAccess && (
+            <button onClick={() => dispatch(toggleCareerModal())}>
+              <FiEdit2 className="text-sm text-gray-700" />
+            </button>
+          )}
         </div>
 
         <div className="flex flex-col gap-8">
@@ -100,10 +107,7 @@ function Careers() {
         </div>
       </div>
 
-      <CareersModal
-        isOpen={utility.isCareersOpen}
-        toggleModal={utility.toggleModal}
-      />
+      <CareersModal />
     </>
   );
 }

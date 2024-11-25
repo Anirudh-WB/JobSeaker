@@ -2,9 +2,16 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ProjectsModal from "./Modals/ProjectsModal";
 import ProjectUtility from "../../../utility/ProjectUtility";
+import ProfileUtility from "../../../utility/ProfileUtility";
+import { useDispatch } from "react-redux";
+import { toggleProjectsModal } from "../../../redux/modal/modalSlice";
 
 function Projects() {
   const utility = ProjectUtility();
+  const profileUtility = ProfileUtility();
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="p-5 bg-white rounded-xl shadow-md h-fit flex flex-col gap-4">
@@ -12,21 +19,25 @@ function Projects() {
           <h2 className="font-semibold text-lg" id="Project">
             Projects
           </h2>
-          <h2
-            className="font-semibold text-blue-700 cursor-pointer"
-            id="Add-Project"
-            onClick={utility.toggleModal}
-          >
-            Add Project
-          </h2>
+          {profileUtility.canAccess && (
+            <button
+              className="font-semibold text-blue-700 cursor-pointer"
+              id="Add-Project"
+              onClick={() => dispatch(toggleProjectsModal())}
+            >
+              Add Project
+            </button>
+          )}
         </div>
         {utility.projectHeadline.map((project, index) => (
           <div key={index} className="flex flex-col gap-1">
             <div className="flex items-center gap-4">
               <span className="font-semibold text-sm">{project.title}</span>
-              <button onClick={utility.toggleModal}>
-                <FiEdit2 className="text-sm text-gray-700" />
-              </button>
+              {profileUtility.canAccess && (
+                <button onClick={() => dispatch(toggleProjectsModal())}>
+                  <FiEdit2 className="text-sm text-gray-700" />
+                </button>
+              )}
             </div>
             <span className="font-semibold text-sm">{project.workType}</span>
             <div className="flex gap-1">
@@ -50,10 +61,7 @@ function Projects() {
           </div>
         ))}
       </div>
-      <ProjectsModal
-        isOpen={utility.isModalOpen}
-        toggleModal={utility.toggleModal}
-      />
+      <ProjectsModal />
     </>
   );
 }

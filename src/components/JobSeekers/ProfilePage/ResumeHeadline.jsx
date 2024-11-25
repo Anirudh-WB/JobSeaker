@@ -2,9 +2,15 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ResumeHeadlineModal from "./Modals/ResumeHeadlineModal";
 import ResumeHeadlineUtility from "../../../utility/ResumeHeadlineUtility";
+import ProfileUtility from "../../../utility/ProfileUtility";
+import { useDispatch } from "react-redux";
+import { toggleResumeHeadlineModal } from "../../../redux/modal/modalSlice";
 
 function ResumeHeadline() {
   const utility = ResumeHeadlineUtility();
+  const profileUtility = ProfileUtility();
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -13,17 +19,15 @@ function ResumeHeadline() {
           <h2 className="font-semibold text-lg" id="Resume-headline">
             Resume headline
           </h2>
-          <button onClick={utility.toggleModal}>
-            <FiEdit2 className="text-sm text-gray-700" />
-          </button>
+          {profileUtility.canAccess && (
+            <button onClick={() => dispatch(toggleResumeHeadlineModal())}>
+              <FiEdit2 className="text-sm text-gray-700" />
+            </button>
+          )}
         </div>
         <p className="text-sm text-gray-800">{utility.resumeHeadline}</p>
       </div>
-      <ResumeHeadlineModal
-        isOpen={utility.isResumeHeadlineOpen}
-        toggleModal={utility.toggleModal}
-        setResumeHeadline={utility.setResumeHeadline}
-      />
+      <ResumeHeadlineModal setResumeHeadline={utility.setResumeHeadline} />
     </>
   );
 }

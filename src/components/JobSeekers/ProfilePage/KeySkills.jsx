@@ -2,9 +2,15 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import KeySkillsModal from "./Modals/KeySkillsModal";
 import KeySkillsUtility from "../../../utility/KeySkillsUtility";
+import ProfileUtility from "../../../utility/ProfileUtility";
+import { useDispatch } from "react-redux";
+import { toggleKeySkillsModal } from "../../../redux/modal/modalSlice";
 
 function KeySkills() {
   const utility = KeySkillsUtility();
+  const profileUtility = ProfileUtility();
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -13,9 +19,11 @@ function KeySkills() {
           <h2 className="font-semibold text-lg" id="Key-skills">
             Key skills
           </h2>
-          <button onClick={utility.toggleModal}>
-            <FiEdit2 className="text-sm text-gray-700" />
-          </button>
+          {profileUtility.canAccess && (
+            <button onClick={() => dispatch(toggleKeySkillsModal())}>
+              <FiEdit2 className="text-sm text-gray-700" />
+            </button>
+          )}
         </div>
         <div className="flex items-center gap-1 flex-wrap text-sm text-gray-700">
           {utility.skills.map((skill, index) => (
@@ -26,11 +34,7 @@ function KeySkills() {
         </div>
       </div>
 
-      <KeySkillsModal
-        isOpen={utility.isKeySkillsOpen}
-        toggleModal={utility.toggleModal}
-        setSkills={utility.setSkills}
-      />
+      <KeySkillsModal setSkills={utility.setSkills} />
     </>
   );
 }

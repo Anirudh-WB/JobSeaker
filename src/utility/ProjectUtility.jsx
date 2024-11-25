@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function ProjectUtility() {
-  let [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [projectHeadline, setProjectHeadline] = useState([
     {
@@ -28,17 +27,11 @@ export default function ProjectUtility() {
     },
   ]);
 
-  const toggleModal = () => {
-    setIsModalOpen((prev) => !prev);
-  };
-
   const toggleReadMore = () => {
     setIsExpanded(!isExpanded);
   };
 
   return {
-    isModalOpen,
-    toggleModal,
     projectHeadline,
     setProjectHeadline,
     isExpanded,

@@ -1,10 +1,15 @@
+import { useDispatch } from "react-redux";
 import EmployeementUtility from "../../../utility/EmployeementUtility";
+import ProfileUtility from "../../../utility/ProfileUtility";
 import EmploymentModal from "./Modals/EmploymentModal";
 import { FiEdit2 } from "react-icons/fi";
+import { toggleEmploymentModal } from "../../../redux/modal/modalSlice";
 
 function Employment() {
-
   const employeeUtility = EmployeementUtility();
+  const profileUtility = ProfileUtility();
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -14,21 +19,25 @@ function Employment() {
             Employment
           </h2>
 
-          <button
-            className="font-semibold text-blue-700"
-            onClick={employeeUtility.toggleEmployment}
-          >
-            Add details
-          </button>
+          {profileUtility.canAccess && (
+            <button
+              className="font-semibold text-blue-700"
+              onClick={() => dispatch(toggleEmploymentModal())}
+            >
+              Add details
+            </button>
+          )}
         </div>
 
         {employeeUtility.employments.map((employment, index) => (
           <div key={index} className="flex flex-col gap-1">
             <div className="flex items-center gap-4">
               <h3 className="font-semibold">{employment.jobTitle}</h3>
-              <button onClick={employeeUtility.toggleEmployment}>
-                <FiEdit2 className="text-sm text-gray-700" />
-              </button>
+              {profileUtility.canAccess && (
+                <button onClick={() => dispatch(toggleEmploymentModal())}>
+                  <FiEdit2 className="text-sm text-gray-700" />
+                </button>
+              )}
             </div>
             <h4>{employment.companyName}</h4>
             {employment.employmentType !== "" ||
@@ -71,17 +80,16 @@ function Employment() {
                 }
                 className="text-blue-700 text-xs font-semibold"
               >
-                {employeeUtility.isExpanded.includes(employment.id) ? "Read Less" : "Read More"}
+                {employeeUtility.isExpanded.includes(employment.id)
+                  ? "Read Less"
+                  : "Read More"}
               </button>
             </p>
           </div>
         ))}
       </div>
 
-      <EmploymentModal
-        isOpen={employeeUtility.isEmploymentOpen}
-        toggleEmployment = {employeeUtility.toggleEmployment}
-      />
+      <EmploymentModal />
     </>
   );
 }

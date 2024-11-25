@@ -10,17 +10,25 @@ import { FiPlus } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import KeySkillsUtility from "../../../../utility/KeySkillsUtility";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleKeySkillsModal } from "../../../../redux/modal/modalSlice";
 
-export default function KeySkillsModal({ isOpen, toggleModal, setSkills }) {
+export default function KeySkillsModal({ setSkills }) {
   const skillUtility = KeySkillsUtility();
+
+  const isKeySkillsOpen = useSelector(
+    (state) => state.modalReducer.jobSeekerProfile.keySkillsModal
+  );
+
+  const dispatch = useDispatch();
 
   return (
     <>
       <Dialog
-        open={isOpen}
+        open={isKeySkillsOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={toggleModal}
+        onClose={() => dispatch(toggleKeySkillsModal())}
         __demoMode
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
@@ -143,7 +151,7 @@ export default function KeySkillsModal({ isOpen, toggleModal, setSkills }) {
                   className="text-blue-700"
                   onClick={() => {
                     skillUtility.setSkillsTemp(skillUtility.skills);
-                    toggleModal();
+                    dispatch(toggleKeySkillsModal());
                   }}
                 >
                   Cancel
@@ -152,7 +160,7 @@ export default function KeySkillsModal({ isOpen, toggleModal, setSkills }) {
                   className="text-white bg-blue-600 px-7 py-2 rounded-full"
                   onClick={() => {
                     setSkills(skillUtility.skillsTemp);
-                    toggleModal();
+                    dispatch(toggleKeySkillsModal());
                     toast.success("Key Skills saved successfully", {
                       position: "top-right",
                       autoClose: 5000,

@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 function EducationUtlity() {
-  let [isEducationOpen, setIsEducationOpen] = useState(false);
   let [education, setEducation] = useState([
     {
       id: 1,
@@ -34,14 +33,8 @@ function EducationUtlity() {
       score: "3.6",
     },
   ]);
-
-  const toggleEducation = () => {
-    setIsEducationOpen((prev) => !prev);
-  };
   
   return {
-    isEducationOpen,
-    toggleEducation,
     education,
     setEducation,
   };

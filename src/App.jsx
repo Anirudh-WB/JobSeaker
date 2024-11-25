@@ -9,6 +9,7 @@ import LoginSidebar from "./components/SideBar/LoginSideBar";
 import Regsiter from "./components/Register/Regsiter";
 import CompanyProfile from "./components/Company/CompanyProfile/CompanyProfile";
 import ApplicantsList from "./components/Company/ApplicantsList/ApplicantsList";
+import Utility from "./utility/Utility";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,6 +17,8 @@ function App() {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const utility = Utility();
 
   return (
     <div className="App bg-gray-50 h-screen w-screen flex flex-col">
