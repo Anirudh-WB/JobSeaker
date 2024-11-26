@@ -6,7 +6,7 @@ function ProfileUtility() {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
 
-    setCanAccess(user.role === "Js001");
+    setCanAccess(user?.role === "Js001");
   }, [canAccess]);
 
   return { canAccess };

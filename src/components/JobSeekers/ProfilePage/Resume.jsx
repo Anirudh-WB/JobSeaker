@@ -1,10 +1,10 @@
 import React from "react";
 import { FiDownload } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
-import ProfileUtility from "../../../utility/ProfileUtility";
+import { useSelector } from "react-redux";
 
 function Resume() {
-  const profileUtility = ProfileUtility();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <div className="p-5 bg-white rounded-xl shadow-md h-fit flex flex-col gap-4">
@@ -20,14 +20,14 @@ function Resume() {
           <button className="p-2.5 bg-gray-100 text-blue-700 rounded-full">
             <FiDownload />
           </button>
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <button className="p-2.5 bg-gray-100 text-blue-700 rounded-full">
               <RiDeleteBinLine />
             </button>
           )}
         </div>
       </div>
-      {profileUtility.canAccess && (
+      {hasAccess && (
         <div className="border rounded-lg border-dashed border-gray-400 flex flex-col items-center justify-center gap-1 p-7 text-sm">
           <button className="border border-blue-700 text-blue-700 rounded-full px-4 py-1.5 font-semibold">
             Update resume

@@ -2,15 +2,14 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ItSkillsModal from "./Modals/ItSkillsModal";
 import ItSkillUtility from "../../../utility/ItSkillsUtility";
-import ProfileUtility from "../../../utility/ProfileUtility";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleItSkillsModal } from "../../../redux/modal/modalSlice";
 
 function ItSkills() {
   const utility = ItSkillUtility();
-  const profileUtility = ProfileUtility();
 
   const dispatch = useDispatch();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <>
@@ -20,7 +19,7 @@ function ItSkills() {
             IT skills
           </h2>
 
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <button
               className="font-semibold text-blue-700"
               onClick={() => {
@@ -47,7 +46,7 @@ function ItSkills() {
               <h4 className="w-1/5">Version</h4>
               <h4 className="w-1/5">Last used</h4>
               <h4 className="w-1/5">Experience</h4>
-              {profileUtility.canAccess && <h4 className="w-1/5"> </h4>}
+              {hasAccess && <h4 className="w-1/5"> </h4>}
             </div>
 
             <div className="w-full flex flex-col gap-5 font-medium mt-4">
@@ -69,7 +68,7 @@ function ItSkills() {
                   } ${skill.experience?.month} Month${
                     skill.experience?.month > 1 ? "s" : ""
                   }`}</p>
-                  {profileUtility.canAccess && (
+                  {hasAccess && (
                     <p className="w-1/5 text-center">
                       <button
                         onClick={() => {

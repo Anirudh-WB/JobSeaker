@@ -1,15 +1,14 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import EmployeementUtility from "../../../utility/EmployeementUtility";
-import ProfileUtility from "../../../utility/ProfileUtility";
 import EmploymentModal from "./Modals/EmploymentModal";
 import { FiEdit2 } from "react-icons/fi";
 import { toggleEmploymentModal } from "../../../redux/modal/modalSlice";
 
 function Employment() {
   const employeeUtility = EmployeementUtility();
-  const profileUtility = ProfileUtility();
 
   const dispatch = useDispatch();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <>
@@ -19,7 +18,7 @@ function Employment() {
             Employment
           </h2>
 
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <button
               className="font-semibold text-blue-700"
               onClick={() => dispatch(toggleEmploymentModal())}
@@ -33,7 +32,7 @@ function Employment() {
           <div key={index} className="flex flex-col gap-1">
             <div className="flex items-center gap-4">
               <h3 className="font-semibold">{employment.jobTitle}</h3>
-              {profileUtility.canAccess && (
+              {hasAccess && (
                 <button onClick={() => dispatch(toggleEmploymentModal())}>
                   <FiEdit2 className="text-sm text-gray-700" />
                 </button>

@@ -2,15 +2,14 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import KeySkillsModal from "./Modals/KeySkillsModal";
 import KeySkillsUtility from "../../../utility/KeySkillsUtility";
-import ProfileUtility from "../../../utility/ProfileUtility";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleKeySkillsModal } from "../../../redux/modal/modalSlice";
 
 function KeySkills() {
   const utility = KeySkillsUtility();
-  const profileUtility = ProfileUtility();
 
   const dispatch = useDispatch();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <>
@@ -19,7 +18,7 @@ function KeySkills() {
           <h2 className="font-semibold text-lg" id="Key-skills">
             Key skills
           </h2>
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <button onClick={() => dispatch(toggleKeySkillsModal())}>
               <FiEdit2 className="text-sm text-gray-700" />
             </button>

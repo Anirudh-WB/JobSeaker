@@ -6,15 +6,14 @@ import React from "react";
 import { FaRegUser } from "react-icons/fa6";
 import CompanyHeaderModal from "./Modals/CompanyHeaderModal";
 import CompanyHeaderUtility from "../../../utility/CompanyHeaderUtility";
-import CompanyProfileUtility from "../../../utility/CompanyProfileUtility";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleCompanyHeaderModal } from "../../../redux/modal/modalSlice";
 
 function CompanyHeader() {
   const utility = CompanyHeaderUtility();
-  const companyProfileUtility = CompanyProfileUtility();
 
   const dispatch = useDispatch();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessCompany);
 
   return (
     <>
@@ -32,7 +31,7 @@ function CompanyHeader() {
                 <h1 className="text-2xl font-bold">
                   {utility.companyHeader.companyName}
                 </h1>
-                {companyProfileUtility.canAccess && (
+                {hasAccess && (
                   <button onClick={() => dispatch(toggleCompanyHeaderModal())}>
                     <FiEdit2 className="text-sm text-gray-700 mb-1" />
                   </button>

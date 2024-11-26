@@ -1,8 +1,8 @@
 import React from "react";
-import ProfileUtility from "../../../utility/ProfileUtility";
+import { useSelector } from "react-redux";
 
 function QuickLinks() {
-  const profileUtility = ProfileUtility();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <div className="flex flex-col gap-7 bg-white rounded-xl border p-5 w-1/4 h-fit sticky top-0">
@@ -10,7 +10,7 @@ function QuickLinks() {
       <div className="flex flex-col px-2 gap-7 text-sm font-medium">
         <a href="#Resume" className="flex items-center justify-between">
           Resume{" "}
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <span className="font-semibold text-blue-700">Update</span>
           )}
         </a>
@@ -18,13 +18,13 @@ function QuickLinks() {
         <a href="#Key-skills">Key skills</a>
         <a href="#Employment" className="flex items-center justify-between">
           Employment{" "}
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <span className="font-semibold text-blue-700">Add</span>
           )}
         </a>
         <a href="#Education" className="flex items-center justify-between">
           Education{" "}
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <span className="font-semibold text-blue-700">Add</span>
           )}
         </a>
