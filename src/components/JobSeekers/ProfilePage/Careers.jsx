@@ -2,14 +2,14 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import CareersModal from "./Modals/CareersModal";
 import CareerUtility from "../../../utility/CareerUtility";
-import ProfileUtility from "../../../utility/ProfileUtility";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleCareerModal } from "../../../redux/modal/modalSlice";
 
 function Careers() {
   const utility = CareerUtility();
-  const profileUtility = ProfileUtility();
+  
   const dispatch = useDispatch();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <>
@@ -18,7 +18,7 @@ function Careers() {
           <h2 className="font-semibold text-lg" id="careers">
             Careers
           </h2>
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <button onClick={() => dispatch(toggleCareerModal())}>
               <FiEdit2 className="text-sm text-gray-700" />
             </button>

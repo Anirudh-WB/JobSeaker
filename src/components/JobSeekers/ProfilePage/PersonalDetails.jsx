@@ -3,15 +3,14 @@ import { FiEdit2 } from "react-icons/fi";
 import PersonalDetailsModal from "./Modals/PersonalDetailsModal";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import PersonalDetailsUtility from "../../../utility/PersonalDetailsUtility";
-import ProfileUtility from "../../../utility/ProfileUtility";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { togglePersonalDetailsModal } from "../../../redux/modal/modalSlice";
 
 function PersonalDetails() {
   const utility = PersonalDetailsUtility();
-  const profileUtility = ProfileUtility();
 
   const dispatch = useDispatch();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <>
@@ -20,7 +19,7 @@ function PersonalDetails() {
           <h2 className="font-semibold text-lg" id="PersonalDetails">
             Personal Details
           </h2>
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <button onClick={() => dispatch(togglePersonalDetailsModal())}>
               <FiEdit2 className="text-sm text-gray-700" />
             </button>
@@ -34,7 +33,7 @@ function PersonalDetails() {
               <p className="font-semibold text-sm">
                 {utility.personalDetails.gender},{" "}
                 {utility.personalDetails.marritalStatus},{" "}
-                {profileUtility.canAccess && (
+                {hasAccess && (
                   <a href="/" className="text-sm text-blue-700 font-semibold">
                     Add more info
                   </a>
@@ -66,7 +65,7 @@ function PersonalDetails() {
               </h3>
               <p>
                 {utility.personalDetails.workPermit}{" "}
-                {profileUtility.canAccess && (
+                {hasAccess && (
                   <a href="/" className="text-sm text-blue-700 font-semibold">
                     Add Work permit
                   </a>
@@ -111,7 +110,7 @@ function PersonalDetails() {
             <h2 className="font-semibold text-base" id="PersonalDetails">
               Languages
             </h2>
-            {profileUtility.canAccess && (
+            {hasAccess && (
               <a href="/" className="text-base font-semibold text-blue-700">
                 Add languages
               </a>

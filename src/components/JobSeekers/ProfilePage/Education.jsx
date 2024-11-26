@@ -2,15 +2,14 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import EducationModal from "./Modals/EducationModal";
 import EducationUtlity from "../../../utility/EducationUtlity";
-import ProfileUtility from "../../../utility/ProfileUtility";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleEducationModal } from "../../../redux/modal/modalSlice";
 
 function Education() {
   const utility = EducationUtlity();
-  const profileUtility = ProfileUtility();
 
   const dispatch = useDispatch();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <>
@@ -19,7 +18,7 @@ function Education() {
           <h2 className="font-semibold text-md" id="Education">
             Education
           </h2>
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <button
               className="text-blue-700 text-base font-semibold"
               onClick={() => dispatch(toggleEducationModal())}
@@ -36,7 +35,7 @@ function Education() {
                 <h3>
                   {edu.degree} from {edu.institution}
                 </h3>
-                {profileUtility.canAccess && (
+                {hasAccess && (
                   <button onClick={() => dispatch(toggleEducationModal())}>
                     <FiEdit2 className="text-sm text-gray-700" />
                   </button>

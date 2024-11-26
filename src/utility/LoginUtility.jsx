@@ -5,6 +5,10 @@ import { setUser } from "../redux/user/userSlice";
 import store from "../redux/store";
 import { useDispatch } from "react-redux";
 import { toggleLoginSideBar } from "../redux/modal/modalSlice";
+import {
+  setCompanyAccess,
+  setJobSeekerAccess,
+} from "../redux/other/otherSlice";
 
 function LoginUtility() {
   const dispatch = useDispatch();
@@ -27,9 +31,17 @@ function LoginUtility() {
         loginCredentials
       );
 
-      store.dispatch(setUser(res.data.userInfo));
+      const user = res.data.userInfo;
 
-      localStorage.setItem("userInfo", JSON.stringify(res.data.userInfo));
+      localStorage.setItem("userInfo", JSON.stringify(user));
+
+      store.dispatch(setUser(user));
+
+      if (user.role === "Cp001") {
+        store.dispatch(setCompanyAccess());
+      } else if (user.role === "Js001") {
+        store.dispatch(setJobSeekerAccess());
+      }
 
       setLoginCredentials({
         emailAddress: "",

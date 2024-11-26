@@ -5,7 +5,7 @@ function CompanyProfileUtility() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
-    setCanAccess(user.role === "Cp001");
+    setCanAccess(user?.role === "Cp001");
   }, [canAccess]);
 
   return { canAccess };

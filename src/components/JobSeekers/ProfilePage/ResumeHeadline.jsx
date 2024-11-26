@@ -2,15 +2,16 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ResumeHeadlineModal from "./Modals/ResumeHeadlineModal";
 import ResumeHeadlineUtility from "../../../utility/ResumeHeadlineUtility";
-import ProfileUtility from "../../../utility/ProfileUtility";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleResumeHeadlineModal } from "../../../redux/modal/modalSlice";
 
 function ResumeHeadline() {
   const utility = ResumeHeadlineUtility();
-  const profileUtility = ProfileUtility();
 
   const dispatch = useDispatch();
+  const hasAccess = useSelector(
+    (state) => state.otherReducer.canAccessJobSeeker
+  );
 
   return (
     <>
@@ -19,7 +20,7 @@ function ResumeHeadline() {
           <h2 className="font-semibold text-lg" id="Resume-headline">
             Resume headline
           </h2>
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <button onClick={() => dispatch(toggleResumeHeadlineModal())}>
               <FiEdit2 className="text-sm text-gray-700" />
             </button>

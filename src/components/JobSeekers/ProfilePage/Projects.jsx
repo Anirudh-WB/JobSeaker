@@ -2,15 +2,14 @@ import React from "react";
 import { FiEdit2 } from "react-icons/fi";
 import ProjectsModal from "./Modals/ProjectsModal";
 import ProjectUtility from "../../../utility/ProjectUtility";
-import ProfileUtility from "../../../utility/ProfileUtility";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleProjectsModal } from "../../../redux/modal/modalSlice";
 
 function Projects() {
   const utility = ProjectUtility();
-  const profileUtility = ProfileUtility();
 
   const dispatch = useDispatch();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <>
@@ -19,7 +18,7 @@ function Projects() {
           <h2 className="font-semibold text-lg" id="Project">
             Projects
           </h2>
-          {profileUtility.canAccess && (
+          {hasAccess && (
             <button
               className="font-semibold text-blue-700 cursor-pointer"
               id="Add-Project"
@@ -33,7 +32,7 @@ function Projects() {
           <div key={index} className="flex flex-col gap-1">
             <div className="flex items-center gap-4">
               <span className="font-semibold text-sm">{project.title}</span>
-              {profileUtility.canAccess && (
+              {hasAccess && (
                 <button onClick={() => dispatch(toggleProjectsModal())}>
                   <FiEdit2 className="text-sm text-gray-700" />
                 </button>

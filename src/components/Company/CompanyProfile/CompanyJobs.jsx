@@ -1,15 +1,15 @@
 import React from "react";
 import Joblist from "../../JobList/Joblist";
 import CompanyJobInfo from "./CompanyJobInfo";
-import CompanyProfileUtility from "../../../utility/CompanyProfileUtility";
+import { useSelector } from "react-redux";
 
 function CompanyJobs() {
-  const companyProfileUtility = CompanyProfileUtility();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessCompany);
 
   return (
     <>
       <div className="flex gap-10 w-full">
-        {companyProfileUtility.canAccess && <CompanyJobInfo />}
+        {hasAccess && <CompanyJobInfo />}
         <Joblist />
       </div>
     </>

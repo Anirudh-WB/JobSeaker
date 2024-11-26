@@ -7,15 +7,14 @@ import { IoBriefcaseOutline } from "react-icons/io5";
 import { FiEdit2 } from "react-icons/fi";
 import ProfileHeaderModal from "./Modals/ProfileHeaderModal";
 import ProfileHeaderUtility from "../../../utility/ProfileHeaderUtility";
-import ProfileUtility from "../../../utility/ProfileUtility";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleProfileHeaderModal } from "../../../redux/modal/modalSlice";
 
 function ProfileHeader() {
   const utility = ProfileHeaderUtility();
-  const profileUtility = ProfileUtility();
 
   const dispatch = useDispatch();
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessJobSeeker);
 
   return (
     <>
@@ -35,7 +34,7 @@ function ProfileHeader() {
             <div className="flex flex-col">
               <div className="flex items-end gap-4">
                 <h1 className="text-2xl font-bold">John Doe</h1>
-                {profileUtility.canAccess && (
+                {hasAccess && (
                   <button onClick={() => dispatch(toggleProfileHeaderModal())}>
                     <FiEdit2 className="text-sm text-gray-700 mb-1" />
                   </button>
@@ -67,7 +66,7 @@ function ProfileHeader() {
               <p className="flex items-center gap-1">
                 <CiWallet />
                 {utility.projectHeader[0].salary}{" "}
-                {profileUtility.canAccess && (
+                {hasAccess && (
                   <span className="font-semibold text-blue-700 px-2">
                     Add breakup
                   </span>

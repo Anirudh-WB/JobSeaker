@@ -5,11 +5,12 @@ import { IoLocationOutline } from "react-icons/io5";
 import { CgNotes } from "react-icons/cg";
 import CommonUtility from "../../utility/CommonUtility";
 import { FaUser } from "react-icons/fa";
-import CompanyProfileUtility from "../../utility/CompanyProfileUtility";
+import { useSelector } from "react-redux";
 
 function Joblist() {
   const commonUtility = CommonUtility();
-  const companyProfileUtility = CompanyProfileUtility();
+  
+  const hasAccess = useSelector((state) => state.otherReducer.canAccessCompany);
 
   return (
     <div className="flex-1 flex flex-col gap-5">
@@ -24,7 +25,7 @@ function Joblist() {
               <p className="text-sm text-gray-600">{job.company}</p>
             </div>
 
-            {companyProfileUtility.canAccess && (
+            {hasAccess && (
               <a
                 href="/applicants-list"
                 className="flex items-center gap-1 text-sm font-semibold text-gray-700"
